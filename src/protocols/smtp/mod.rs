@@ -26,4 +26,6 @@
  * THE SOFTWARE.
  */
 
-pub(crate) mod protocols;
+fn unimplemented() {
+    unimplemented!("SMTP is not implemented");
+}
