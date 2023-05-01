@@ -26,13 +26,8 @@
  * THE SOFTWARE.
  */
 
-mod dns;
-mod ssh;
-mod ftp;
-mod http;
-mod snmp;
-mod smtp;
-mod imap;
-mod gemini;
-mod gopher;
-mod telnet;
+#[cfg(feature = "client")]
+mod client;
+
+#[cfg(feature = "server")]
+mod server;

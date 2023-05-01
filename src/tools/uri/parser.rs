@@ -26,13 +26,9 @@
  * THE SOFTWARE.
  */
 
-mod dns;
-mod ssh;
-mod ftp;
-mod http;
-mod snmp;
-mod smtp;
-mod imap;
-mod gemini;
-mod gopher;
-mod telnet;
+struct URI {
+    pub scheme: String,
+    pub host: String,
+    pub port: i128,
+    pub endpoint: Vec<String>,
+}

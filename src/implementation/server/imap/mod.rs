@@ -26,13 +26,6 @@
  * THE SOFTWARE.
  */
 
-mod dns;
-mod ssh;
-mod ftp;
-mod http;
-mod snmp;
-mod smtp;
-mod imap;
-mod gemini;
-mod gopher;
-mod telnet;
+fn unimplemented() {
+    unimplemented!("IMAP is not implemented");
+}
