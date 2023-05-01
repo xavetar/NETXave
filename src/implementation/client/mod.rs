@@ -26,13 +26,32 @@
  * THE SOFTWARE.
  */
 
+#[cfg(any(feature = "dns", feature = "all_protocols"))]
 mod dns;
+
+#[cfg(any(feature = "ssh", feature = "all_protocols"))]
 mod ssh;
+
+#[cfg(any(feature = "ftp", feature = "all_protocols"))]
 mod ftp;
+
+#[cfg(any(feature = "http", feature = "all_protocols"))]
 mod http;
+
+#[cfg(any(feature = "snmp", feature = "all_protocols"))]
 mod snmp;
+
+#[cfg(any(feature = "smtp", feature = "all_protocols"))]
 mod smtp;
+
+#[cfg(any(feature = "imap", feature = "all_protocols"))]
 mod imap;
+
+#[cfg(any(feature = "gemini", feature = "all_protocols"))]
 mod gemini;
+
+#[cfg(any(feature = "gopher", feature = "all_protocols"))]
 mod gopher;
+
+#[cfg(any(feature = "telnet", feature = "all_protocols"))]
 mod telnet;

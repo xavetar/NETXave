@@ -10,4 +10,37 @@ exclude = [".*", ".DS_Store", "debug/", "target/", "Cargo.lock", "**/*.rs.bk", "
     ".VolumeIcon.icns", ".com.apple.timemachine.donotpresent", ".AppleDB", ".AppleDesktop", "Network Trash Folder",
     "Temporary Items", ".apdisk", ".env", ".gitignore", ".git", ".idea"]
 
+[features]
+default = []
+
+# Sync or Async
+sync = []
+async = []
+
+# Client or Server
+client = []
+server = []
+
+# Protocols
+dns = []
+ssh = []
+ftp = []
+http = []
+snmp = []
+smtp = []
+imap = []
+gemini = []
+gopher = []
+telnet = []
+all_protocols = ["dns", "ssh", "ftp", "http", "snmp", "smtp", "imap", "gemini", "gopher", "telnet"]
+
+# Encryption
+rustls = ["dep:rustls", "dep:webpki-roots"]
+native-tls = ["dep:native-tls"]
+
+__all__ = ["default", "sync", "async", "client", "server", "all_protocols", "rustls", "native-tls"]
+
 [dependencies]
+rustls = { version = "0.21.0", optional = true }
+native-tls = { version = "0.2.11", optional = true }
+webpki-roots = { version = "0.23.0", optional = true }
