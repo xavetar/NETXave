@@ -26,6 +26,8 @@
  * THE SOFTWARE.
  */
 
-fn unimplemented() {
-    unimplemented!("Gopher is not implemented");
-}
+#[cfg(any(feature = "client"))]
+mod client;
+
+#[cfg(any(feature = "server"))]
+mod server;

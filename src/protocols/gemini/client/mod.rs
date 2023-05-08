@@ -26,6 +26,6 @@
  * THE SOFTWARE.
  */
 
-pub(crate) mod connection;
-pub(crate) mod protocols;
-pub(crate) mod tools;
+fn unimplemented() {
+    unimplemented!("Gemini Client is not implemented");
+}

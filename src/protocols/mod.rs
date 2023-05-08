@@ -26,32 +26,35 @@
  * THE SOFTWARE.
  */
 
-#[cfg(any(feature = "dns", feature = "all_protocols"))]
+#[cfg(any(feature = "dns"))]
 mod dns;
 
-#[cfg(any(feature = "ssh", feature = "all_protocols"))]
+#[cfg(any(feature = "ssh"))]
 mod ssh;
 
-#[cfg(any(feature = "ftp", feature = "all_protocols"))]
+#[cfg(any(feature = "ftp"))]
 mod ftp;
 
-#[cfg(any(feature = "http", feature = "all_protocols"))]
+#[cfg(any(feature = "http"))]
 mod http;
 
-#[cfg(any(feature = "snmp", feature = "all_protocols"))]
+#[cfg(any(feature = "snmp"))]
 mod snmp;
 
-#[cfg(any(feature = "smtp", feature = "all_protocols"))]
+#[cfg(any(feature = "pop3"))]
+mod pop3;
+
+#[cfg(any(feature = "smtp"))]
 mod smtp;
 
-#[cfg(any(feature = "imap", feature = "all_protocols"))]
+#[cfg(any(feature = "imap"))]
 mod imap;
 
-#[cfg(any(feature = "gemini", feature = "all_protocols"))]
+#[cfg(any(feature = "gemini"))]
 mod gemini;
 
-#[cfg(any(feature = "gopher", feature = "all_protocols"))]
+#[cfg(any(feature = "gopher"))]
 mod gopher;
 
-#[cfg(any(feature = "telnet", feature = "all_protocols"))]
+#[cfg(any(feature = "telnet"))]
 mod telnet;
