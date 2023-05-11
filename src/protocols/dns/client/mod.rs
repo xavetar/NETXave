@@ -26,6 +26,4 @@
  * THE SOFTWARE.
  */
 
-fn unimplemented() {
-    unimplemented!("DNS Client is not implemented");
-}
+pub mod types;

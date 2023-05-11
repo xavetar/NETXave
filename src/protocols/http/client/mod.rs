@@ -26,6 +26,4 @@
  * THE SOFTWARE.
  */
 
-fn unimplemented() {
-    unimplemented!("HTTP Client is not implemented");
-}
+pub mod types;

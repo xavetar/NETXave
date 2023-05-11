@@ -27,34 +27,34 @@
  */
 
 #[cfg(any(feature = "dns"))]
-mod dns;
+pub mod dns;
 
 #[cfg(any(feature = "ssh"))]
-mod ssh;
+pub mod ssh;
 
 #[cfg(any(feature = "ftp"))]
-mod ftp;
+pub mod ftp;
 
 #[cfg(any(feature = "http"))]
-mod http;
+pub mod http;
 
 #[cfg(any(feature = "snmp"))]
-mod snmp;
+pub mod snmp;
 
 #[cfg(any(feature = "pop3"))]
-mod pop3;
+pub mod pop3;
 
 #[cfg(any(feature = "smtp"))]
-mod smtp;
+pub mod smtp;
 
 #[cfg(any(feature = "imap"))]
-mod imap;
+pub mod imap;
 
 #[cfg(any(feature = "gemini"))]
-mod gemini;
+pub mod gemini;
 
 #[cfg(any(feature = "gopher"))]
-mod gopher;
+pub mod gopher;
 
 #[cfg(any(feature = "telnet"))]
-mod telnet;
+pub mod telnet;

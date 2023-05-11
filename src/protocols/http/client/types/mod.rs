@@ -26,8 +26,9 @@
  * THE SOFTWARE.
  */
 
-#[cfg(any(feature = "client"))]
-pub mod client;
+mod status_codes;
+mod request_types;
 
-#[cfg(any(feature = "server"))]
-pub mod server;
+pub use status_codes::{
+    HTTPStatusInfo, Informational, Success, Redirection, ClientError, ServerError
+};

@@ -26,8 +26,14 @@
  * THE SOFTWARE.
  */
 
-#[cfg(any(feature = "client"))]
-pub mod client;
-
-#[cfg(any(feature = "server"))]
-pub mod server;
+pub enum RequestTypes {
+    GET,
+    HEAD,
+    POST,
+    PUT,
+    DELETE,
+    CONNECT,
+    TRACE,
+    OPTIONS,
+    PATCH
+}
