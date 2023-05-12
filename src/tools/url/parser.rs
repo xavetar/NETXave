@@ -26,7 +26,7 @@
  * THE SOFTWARE.
  */
 
-struct URI {
+struct URLScheme {
     pub scheme: String,
     pub host: String,
     pub port: u16,
