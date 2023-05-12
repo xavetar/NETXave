@@ -29,6 +29,6 @@
 struct URI {
     pub scheme: String,
     pub host: String,
-    pub port: i128,
+    pub port: u16,
     pub endpoint: Vec<String>,
 }

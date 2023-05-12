@@ -26,4 +26,4 @@
  * THE SOFTWARE.
  */
 
-mod uri;
+mod url;
