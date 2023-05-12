@@ -26,6 +26,6 @@
  * THE SOFTWARE.
  */
 
-mod rdata;
-mod methods;
-mod transport;
+fn unimplemented() {
+    unimplemented!("DNAME type is not implemented");
+}

@@ -26,6 +26,6 @@
  * THE SOFTWARE.
  */
 
-mod rdata;
-mod methods;
-mod transport;
+fn unimplemented() {
+    unimplemented!("ZONEMD type is not implemented");
+}
