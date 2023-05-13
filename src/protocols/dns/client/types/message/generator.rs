@@ -41,7 +41,7 @@ struct DNSHeaderSection {
     rd: U1,
     ra: U1,
     z: U3,
-    rcode: u8,
+    rcode: U4,
     qdcount: u16,
     ancount: u16,
     nscount: u16,
