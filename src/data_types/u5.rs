@@ -26,7 +26,43 @@
  * THE SOFTWARE.
  */
 
-mod answer;
-mod message;
-mod methods;
-mod transport;
+pub struct U5(u8);
+
+impl U5 {
+    fn new(value: u8) -> Self {
+        U5(value & 0b00011111)
+    }
+
+    fn set(&mut self, value: u8) {
+        if value > 0 {
+            self.0 |= 0b00011111;
+        } else if value == 0 {
+            self.0 &= 0b11100000;
+        }
+    }
+
+    fn get(&self) -> u8 {
+        return self.0
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::U5;
+
+    #[test]
+    fn u5_test() {
+        let mut u5 = U5::new(1);
+
+        println!("u1 value: {}", u5.get());
+
+        u5.set(32);
+        println!("u1 value: {}", u5.get());
+
+        u5.set(31);
+        println!("u1 value: {}", u5.get());
+
+        u5.set(0);
+        println!("u1 value: {}", u5.get());
+    }
+}

@@ -26,7 +26,35 @@
  * THE SOFTWARE.
  */
 
-mod answer;
-mod message;
-mod methods;
-mod transport;
+// fn unimplemented() {
+//     unimplemented!("DNS Message generator is not implemented");
+// }
+
+use crate::data_types::{U1, U3, U4};
+
+struct DNSHeaderSection {
+    id: u16,
+    qr: U1,
+    opcode: U4,
+    aa: U1,
+    tc: U1,
+    rd: U1,
+    ra: U1,
+    z: U3,
+    rcode: u8,
+    qdcount: u16,
+    ancount: u16,
+    nscount: u16,
+    arcount: u16
+}
+
+struct DNSQuerySection {
+    qname: String,
+    qtype: u16,
+    qclass: u16
+}
+
+struct DNSQueryMessage {
+    header: DNSHeaderSection,
+    query: DNSQuerySection
+}

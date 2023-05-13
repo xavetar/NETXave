@@ -26,6 +26,4 @@
  * THE SOFTWARE.
  */
 
-fn unimplemented() {
-    unimplemented!("Connector DNS is not implemented");
-}
+pub mod request;

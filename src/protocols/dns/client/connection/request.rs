@@ -26,7 +26,6 @@
  * THE SOFTWARE.
  */
 
-mod answer;
-mod message;
-mod methods;
-mod transport;
+fn unimplemented() {
+    unimplemented!("Request DNS is not implemented");
+}

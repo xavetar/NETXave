@@ -26,5 +26,6 @@
  * THE SOFTWARE.
  */
 
+pub mod data_types;
 pub mod protocols;
 pub mod tools;

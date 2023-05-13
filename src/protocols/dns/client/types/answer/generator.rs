@@ -26,7 +26,6 @@
  * THE SOFTWARE.
  */
 
-mod answer;
-mod message;
-mod methods;
-mod transport;
+fn unimplemented() {
+    unimplemented!("DNS Answer generator is not implemented");
+}

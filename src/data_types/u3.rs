@@ -26,7 +26,43 @@
  * THE SOFTWARE.
  */
 
-mod answer;
-mod message;
-mod methods;
-mod transport;
+pub struct U3(u8);
+
+impl U3 {
+    fn new(value: u8) -> Self {
+        U3(value & 0b00000111)
+    }
+
+    fn set(&mut self, value: u8) {
+        if value > 0 {
+            self.0 |= 0b00000111;
+        } else if value == 0 {
+            self.0 &= 0b11111000;
+        }
+    }
+
+    fn get(&self) -> u8 {
+        return self.0
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::U3;
+
+    #[test]
+    fn u3_test() {
+        let mut u3 = U3::new(1);
+
+        println!("u1 value: {}", u3.get());
+
+        u3.set(9);
+        println!("u1 value: {}", u3.get());
+
+        u3.set(7);
+        println!("u1 value: {}", u3.get());
+
+        u3.set(0);
+        println!("u1 value: {}", u3.get());
+    }
+}

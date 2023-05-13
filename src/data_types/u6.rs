@@ -26,7 +26,43 @@
  * THE SOFTWARE.
  */
 
-mod answer;
-mod message;
-mod methods;
-mod transport;
+pub struct U6(u8);
+
+impl U6 {
+    fn new(value: u8) -> Self {
+        U6(value & 0b00111111)
+    }
+
+    fn set(&mut self, value: u8) {
+        if value > 0 {
+            self.0 |= 0b00111111;
+        } else if value == 0 {
+            self.0 &= 0b11000000;
+        }
+    }
+
+    fn get(&self) -> u8 {
+        return self.0
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::U6;
+
+    #[test]
+    fn u6_test() {
+        let mut u6 = U6::new(1);
+
+        println!("u1 value: {}", u6.get());
+
+        u6.set(64);
+        println!("u1 value: {}", u6.get());
+
+        u6.set(63);
+        println!("u1 value: {}", u6.get());
+
+        u6.set(0);
+        println!("u1 value: {}", u6.get());
+    }
+}
