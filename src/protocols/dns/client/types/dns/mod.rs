@@ -26,5 +26,10 @@
  * THE SOFTWARE.
  */
 
-pub mod reader;
-pub(crate) mod generator;
+mod qtype;
+mod qclass;
+pub mod answer;
+pub mod message;
+
+pub use qclass::{QCLASS, QCLASSConversion};
+pub use qtype::{QTYPE, QTYPEConversion};

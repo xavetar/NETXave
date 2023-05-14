@@ -26,6 +26,8 @@
  * THE SOFTWARE.
  */
 
+extern crate core;
+
 pub mod data_types;
 pub mod protocols;
 pub mod tools;

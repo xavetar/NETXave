@@ -26,8 +26,5 @@
  * THE SOFTWARE.
  */
 
-#[cfg(any(feature = "client"))]
-pub mod client;
-
-#[cfg(any(feature = "server"))]
-pub mod server;
+pub mod reader;
+pub mod generator;

@@ -26,7 +26,5 @@
  * THE SOFTWARE.
  */
 
-mod answer;
-mod message;
-mod methods;
-mod transport;
+pub mod dns;
+pub mod connection;

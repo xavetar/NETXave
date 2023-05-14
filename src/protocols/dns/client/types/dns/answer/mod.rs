@@ -27,5 +27,5 @@
  */
 
 pub mod reader;
-pub(self) mod rdata;
-pub(crate) mod generator;
+pub mod rdata;
+pub mod generator;
