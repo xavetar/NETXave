@@ -26,7 +26,7 @@
  * THE SOFTWARE.
  */
 
-pub mod qclass;
-pub mod qtype;
+pub mod qrrclass;
+pub mod qrrtype;
 pub mod answer;
 pub mod message;

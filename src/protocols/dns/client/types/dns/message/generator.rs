@@ -26,10 +26,6 @@
  * THE SOFTWARE.
  */
 
-// fn unimplemented() {
-//     unimplemented!("DNS Message generator is not implemented");
-// }
-
 use crate::data_types::{U1, U3, U4};
 
 struct DNSHeaderSection {
