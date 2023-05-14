@@ -26,4 +26,6 @@
  * THE SOFTWARE.
  */
 
-pub mod http;
+pub const REVERSED: &'static str = "Reversed";
+pub const UNASSIGNED: &'static str = "Unassigned";
+pub const PRIVATE_USE: &'static str = "Private Use";

@@ -26,8 +26,6 @@
  * THE SOFTWARE.
  */
 
-use super::{UNUSED, UNASSIGNED, HTTPStatusInfo, HTTPCodeInfo};
-
 pub enum ServerError {
     InternalServerError = 500,
     NotImplemented = 501,
@@ -72,66 +70,6 @@ impl ServerError {
             ServerError::LoopDetected => "Loop Detected",
             ServerError::NotExtended => "Not Extended",
             ServerError::NetworkAuthenticationRequired => "Network Authentication Required"
-        }
-    }
-}
-
-impl HTTPStatusInfo for ServerError {
-    fn info(code: &u16) -> Result<HTTPCodeInfo, String> {
-        return match *code {
-            500 => Ok(
-                HTTPCodeInfo::new(ServerError::InternalServerError.value(),
-                                  ServerError::InternalServerError.description())
-            ),
-            501 => Ok(
-                HTTPCodeInfo::new(ServerError::NotImplemented.value(),
-                                  ServerError::NotImplemented.description())
-            ),
-            502 => Ok(
-                HTTPCodeInfo::new(ServerError::BadGateway.value(),
-                                  ServerError::BadGateway.description())
-            ),
-            503 => Ok(
-                HTTPCodeInfo::new(ServerError::ServiceUnavailable.value(),
-                                  ServerError::ServiceUnavailable.description())
-            ),
-            504 => Ok(
-                HTTPCodeInfo::new(ServerError::GatewayTimeout.value(),
-                                  ServerError::GatewayTimeout.description())
-            ),
-            505 => Ok(
-                HTTPCodeInfo::new(ServerError::HTTPVersionNotSupported.value(),
-                                  ServerError::HTTPVersionNotSupported.description())
-            ),
-            506 => Ok(
-                HTTPCodeInfo::new(ServerError::VariantAlsoNegotiates.value(),
-                                  ServerError::VariantAlsoNegotiates.description())
-            ),
-            507 => Ok(
-                HTTPCodeInfo::new(ServerError::InsufficientStorage.value(),
-                                  ServerError::InsufficientStorage.description())
-            ),
-            508 => Ok(
-                HTTPCodeInfo::new(ServerError::LoopDetected.value(),
-                                  ServerError::LoopDetected.description())
-            ),
-            509 => Ok(
-                HTTPCodeInfo::new(*code,
-                                  UNASSIGNED)
-            ),
-            510 => Ok(
-                HTTPCodeInfo::new(ServerError::NotExtended.value(),
-                                  ServerError::NotExtended.description())
-            ),
-            511 => Ok(
-                HTTPCodeInfo::new(ServerError::NetworkAuthenticationRequired.value(),
-                                  ServerError::NetworkAuthenticationRequired.description())
-            ),
-            512..=599 => Ok(
-                HTTPCodeInfo::new(*code,
-                                  UNASSIGNED)
-            ),
-            _ => Err(String::from("Unknown Server Error code!"))
         }
     }
 }

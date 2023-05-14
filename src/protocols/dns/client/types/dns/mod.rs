@@ -26,10 +26,7 @@
  * THE SOFTWARE.
  */
 
-mod qtype;
-mod qclass;
+pub mod qclass;
+pub mod qtype;
 pub mod answer;
 pub mod message;
-
-pub use qclass::{QCLASS, QCLASSConversion};
-pub use qtype::{QTYPE, QTYPEConversion};

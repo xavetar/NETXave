@@ -26,8 +26,6 @@
  * THE SOFTWARE.
  */
 
-use super::{UNUSED, UNASSIGNED, HTTPStatusInfo, HTTPCodeInfo};
-
 pub enum Redirection {
     MultipleChoices = 300,
     MovedPermanently = 301,
@@ -63,54 +61,6 @@ impl Redirection {
             Redirection::UseProxy => "Use Proxy",
             Redirection::TemporaryRedirect => "Temporary Redirect",
             Redirection::PermanentRedirect => "Permanent Redirect"
-        }
-    }
-}
-
-impl HTTPStatusInfo for Redirection {
-    fn info(code: &u16) -> Result<HTTPCodeInfo, String> {
-        return match *code {
-            300 => Ok(
-                HTTPCodeInfo::new(Redirection::MultipleChoices.value(),
-                                  Redirection::MultipleChoices.description())
-            ),
-            301 => Ok(
-                HTTPCodeInfo::new(Redirection::MovedPermanently.value(),
-                                  Redirection::MovedPermanently.description())
-            ),
-            302 => Ok(
-                HTTPCodeInfo::new(Redirection::Found.value(),
-                                  Redirection::Found.description())
-            ),
-            303 => Ok(
-                HTTPCodeInfo::new(Redirection::SeeOther.value(),
-                                  Redirection::SeeOther.description())
-            ),
-            304 => Ok(
-                HTTPCodeInfo::new(Redirection::NotModified.value(),
-                                  Redirection::NotModified.description())
-            ),
-            305 => Ok(
-                HTTPCodeInfo::new(Redirection::UseProxy.value(),
-                                  Redirection::UseProxy.description())
-            ),
-            306 => Ok(
-                HTTPCodeInfo::new(*code,
-                                  UNUSED)
-            ),
-            307 => Ok(
-                HTTPCodeInfo::new(Redirection::TemporaryRedirect.value(),
-                                  Redirection::TemporaryRedirect.description())
-            ),
-            308 => Ok(
-                HTTPCodeInfo::new(Redirection::PermanentRedirect.value(),
-                                  Redirection::PermanentRedirect.description())
-            ),
-            309..=399 => Ok(
-                HTTPCodeInfo::new(*code,
-                                  UNASSIGNED)
-            ),
-            _ => Err(String::from("Unknown Redirection code!"))
         }
     }
 }

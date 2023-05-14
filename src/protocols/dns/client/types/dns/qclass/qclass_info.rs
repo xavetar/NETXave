@@ -26,4 +26,28 @@
  * THE SOFTWARE.
  */
 
-pub mod http;
+pub struct QCLASSInfo {
+    name: &'static str,
+    code: u16
+}
+
+impl QCLASSInfo {
+    pub fn new(name: &'static str, code: u16) -> QCLASSInfo {
+        return QCLASSInfo {
+            name: name,
+            code: code
+        }
+    }
+
+    pub fn name(&self) -> &'static str {
+        return &self.name;
+    }
+
+    pub fn code(&self) -> &u16 {
+        return &self.code;
+    }
+
+    pub fn hex(&self) -> String {
+        return format!("{:02x}", &self.code);
+    }
+}

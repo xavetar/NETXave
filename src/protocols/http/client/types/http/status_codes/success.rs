@@ -26,8 +26,6 @@
  * THE SOFTWARE.
  */
 
-use super::{UNUSED, UNASSIGNED, HTTPStatusInfo, HTTPCodeInfo};
-
 pub enum Success {
     OK = 200,
     Created = 201,
@@ -69,62 +67,6 @@ impl Success {
             Success::MultiStatus => "Multi-Status",
             Success::AlreadyReported => "Already Reported",
             Success::IMUsed => "IM Used",
-        }
-    }
-}
-
-impl HTTPStatusInfo for Success {
-    fn info(code: &u16) -> Result<HTTPCodeInfo, String> {
-        return match *code {
-            200 => Ok(
-                HTTPCodeInfo::new(Success::OK.value(),
-                                  Success::OK.description())
-            ),
-            201 => Ok(
-                HTTPCodeInfo::new(Success::Created.value(),
-                                  Success::Created.description())
-            ),
-            202 => Ok(
-                HTTPCodeInfo::new(Success::Accepted.value(),
-                                  Success::Accepted.description())
-            ),
-            203 => Ok(
-                HTTPCodeInfo::new(Success::NonAuthoritativeInformation.value(),
-                                  Success::NonAuthoritativeInformation.description())
-            ),
-            204 => Ok(
-                HTTPCodeInfo::new(Success::NoContent.value(),
-                                  Success::NoContent.description())
-            ),
-            205 => Ok(
-                HTTPCodeInfo::new(Success::ResetContent.value(),
-                                  Success::ResetContent.description())
-            ),
-            206 => Ok(
-                HTTPCodeInfo::new(Success::PartialContent.value(),
-                                  Success::PartialContent.description())
-            ),
-            207 => Ok(
-                HTTPCodeInfo::new(Success::MultiStatus.value(),
-                                  Success::MultiStatus.description())
-            ),
-            208 => Ok(
-                HTTPCodeInfo::new(Success::AlreadyReported.value(),
-                                  Success::AlreadyReported.description())
-            ),
-            209..=225 => Ok(
-                HTTPCodeInfo::new(*code,
-                                  UNASSIGNED)
-            ),
-            226 => Ok(
-                HTTPCodeInfo::new(Success::IMUsed.value(),
-                                  Success::IMUsed.description())
-            ),
-            227..=299 => Ok(
-                HTTPCodeInfo::new(*code,
-                                  UNASSIGNED)
-            ),
-            _ => Err(String::from("Unknown Success code!"))
         }
     }
 }

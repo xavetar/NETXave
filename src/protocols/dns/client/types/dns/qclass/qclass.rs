@@ -26,4 +26,46 @@
  * THE SOFTWARE.
  */
 
-pub mod http;
+pub enum QCLASS {
+    IN = 1,
+    CS = 2,
+    CH = 3,
+    HS = 4,
+    None = 254,
+    ANY = 255
+}
+
+impl QCLASS {
+    pub fn name(&self) -> &'static str {
+        return match self {
+            QCLASS::IN => "IN",
+            QCLASS::CS => "CS",
+            QCLASS::CH => "CH",
+            QCLASS::HS => "HS",
+            QCLASS::None => "None",
+            QCLASS::ANY => "*"
+        }
+    }
+
+    pub fn code(&self) -> u16 {
+        return match self {
+            QCLASS::IN => QCLASS::IN as u16,
+            QCLASS::CS => QCLASS::CS as u16,
+            QCLASS::CH => QCLASS::CH as u16,
+            QCLASS::HS => QCLASS::HS as u16,
+            QCLASS::None => QCLASS::None as u16,
+            QCLASS::ANY => QCLASS::ANY as u16
+        }
+    }
+
+    pub fn hex(&self) -> String {
+        return match self {
+            QCLASS::IN => format!("{:02x}", QCLASS::IN.code()),
+            QCLASS::CS => format!("{:02x}", QCLASS::CS.code()),
+            QCLASS::CH => format!("{:02x}", QCLASS::CH.code()),
+            QCLASS::HS => format!("{:02x}", QCLASS::HS.code()),
+            QCLASS::None => format!("{:02x}", QCLASS::None.code()),
+            QCLASS::ANY => format!("{:02x}", QCLASS::ANY.code())
+        }
+    }
+}

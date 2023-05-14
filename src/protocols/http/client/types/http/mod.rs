@@ -27,3 +27,4 @@
  */
 
 pub mod status_codes;
+pub mod request_types;

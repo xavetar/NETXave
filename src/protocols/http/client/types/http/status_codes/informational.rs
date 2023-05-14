@@ -26,8 +26,6 @@
  * THE SOFTWARE.
  */
 
-use super::{UNUSED, UNASSIGNED, HTTPStatusInfo, HTTPCodeInfo};
-
 pub enum Informational {
     Continue = 100,
     SwitchingProtocols = 101,
@@ -51,34 +49,6 @@ impl Informational {
             Informational::SwitchingProtocols => "Switching Protocols",
             Informational::Processing => "Processing",
             Informational::EarlyHints => "Early Hints"
-        }
-    }
-}
-
-impl HTTPStatusInfo for Informational {
-    fn info(code: &u16) -> Result<HTTPCodeInfo, String> {
-        return match *code {
-            100 => Ok(
-                HTTPCodeInfo::new(Informational::Continue.value(),
-                                  Informational::Continue.description())
-            ),
-            101 => Ok(
-                HTTPCodeInfo::new(Informational::SwitchingProtocols.value(),
-                                  Informational::SwitchingProtocols.description())
-            ),
-            102 => Ok(
-                HTTPCodeInfo::new(Informational::Processing.value(),
-                                  Informational::Processing.description())
-            ),
-            103 => Ok(
-                HTTPCodeInfo::new(Informational::EarlyHints.value(),
-                                  Informational::EarlyHints.description())
-            ),
-            104..=199 => Ok(
-                HTTPCodeInfo::new(*code,
-                                  UNASSIGNED)
-            ),
-            _ => Err(String::from("Unknown Informational code!"))
         }
     }
 }

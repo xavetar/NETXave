@@ -26,4 +26,13 @@
  * THE SOFTWARE.
  */
 
-pub mod http;
+mod constants;
+mod conversion;
+mod qtype;
+mod qtype_info;
+
+pub(self) use constants::{REVERSED, UNASSIGNED, PRIVATE_USE};
+
+pub use qtype::{QTYPE};
+pub use qtype_info::{QTYPEInfo};
+pub use conversion::{QTYPEConversion};

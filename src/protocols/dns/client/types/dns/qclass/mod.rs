@@ -26,4 +26,13 @@
  * THE SOFTWARE.
  */
 
-pub mod http;
+mod constants;
+mod conversion;
+mod qclass;
+mod qclass_info;
+
+pub(self) use constants::{REVERSED, UNASSIGNED, REVERSED_PRIVATE_USE};
+
+pub use qclass::{QCLASS};
+pub use qclass_info::{QCLASSInfo};
+pub use conversion::{QCLASSConversion};
