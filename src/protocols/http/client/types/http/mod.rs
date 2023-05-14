@@ -26,5 +26,4 @@
  * THE SOFTWARE.
  */
 
-pub mod http;
-mod request_types;
+pub mod status_codes;

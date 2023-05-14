@@ -26,5 +26,23 @@
  * THE SOFTWARE.
  */
 
-pub mod http;
-mod request_types;
+mod constants;
+mod code_info;
+mod status_info;
+
+mod informational;
+mod success;
+mod redirection;
+mod client_error;
+mod server_error;
+
+pub(self) use constants::{UNUSED, UNASSIGNED};
+
+pub use code_info::{HTTPCodeInfo};
+pub use status_info::{HTTPStatusInfo};
+
+pub use informational::{Informational};
+pub use success::{Success};
+pub use redirection::{Redirection};
+pub use client_error::{ClientError};
+pub use server_error::{ServerError};

@@ -26,5 +26,8 @@
  * THE SOFTWARE.
  */
 
-pub mod http;
-mod request_types;
+use super::{UNUSED, UNASSIGNED, HTTPCodeInfo};
+
+pub trait HTTPStatusInfo {
+    fn info(code: &u16) -> Result<HTTPCodeInfo, String>;
+}

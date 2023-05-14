@@ -26,5 +26,24 @@
  * THE SOFTWARE.
  */
 
-pub mod http;
-mod request_types;
+pub struct HTTPCodeInfo {
+    value: u16,
+    description: &'static str
+}
+
+impl HTTPCodeInfo {
+    pub fn new(value: u16, description: &'static str) -> HTTPCodeInfo {
+        return HTTPCodeInfo {
+            value: value,
+            description: description
+        }
+    }
+
+    pub fn get_value(&self) -> u16 {
+        return self.value
+    }
+
+    pub fn get_description(&self) -> &'static str {
+        return self.description
+    }
+}

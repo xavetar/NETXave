@@ -26,5 +26,5 @@
  * THE SOFTWARE.
  */
 
-pub mod http;
-mod request_types;
+pub const UNUSED: &'static str = "Unused";
+pub const UNASSIGNED: &'static str = "Unassigned";
