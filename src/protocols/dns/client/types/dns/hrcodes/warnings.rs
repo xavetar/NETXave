@@ -26,9 +26,5 @@
  * THE SOFTWARE.
  */
 
-pub mod hopcodes;
-pub mod hrcodes;
-pub mod qrrclass;
-pub mod qrrtype;
-pub mod answer;
-pub mod message;
+pub const NOT_AUTH_W: &'static str = "Warning: NotAuth has two RFC with same code!";
+pub const BAD_VERS_BAD_SIG_W: &'static str = "Warning: BADVERS, BADSIG has two RFC with same code";

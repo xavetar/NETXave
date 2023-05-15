@@ -26,9 +26,6 @@
  * THE SOFTWARE.
  */
 
-pub mod hopcodes;
-pub mod hrcodes;
-pub mod qrrclass;
-pub mod qrrtype;
-pub mod answer;
-pub mod message;
+pub const REVERSED: &'static str = "Reversed";
+pub const UNASSIGNED: &'static str = "Unassigned";
+pub const REVERSED_PRIVATE_USE: &'static str = "Reversed for Private Use";

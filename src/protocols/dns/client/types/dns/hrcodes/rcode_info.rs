@@ -26,9 +26,34 @@
  * THE SOFTWARE.
  */
 
-pub mod hopcodes;
-pub mod hrcodes;
-pub mod qrrclass;
-pub mod qrrtype;
-pub mod answer;
-pub mod message;
+pub struct RCODEInfo {
+    rcode: u16,
+    name: &'static str,
+    description: &'static str
+}
+
+impl RCODEInfo {
+    pub fn new(rcode: u16, name: &'static str, description: &'static str) -> RCODEInfo {
+        return RCODEInfo {
+            rcode: rcode,
+            name: name,
+            description: description
+        }
+    }
+
+    pub fn rcode(&self) -> &u16 {
+        return &self.rcode;
+    }
+
+    pub fn name(&self) -> &'static str {
+        return &self.name;
+    }
+
+    pub fn description(&self) -> &'static str {
+        return &self.description;
+    }
+
+    pub fn hex(&self) -> String {
+        return format!("{:02x}", &self.rcode);
+    }
+}

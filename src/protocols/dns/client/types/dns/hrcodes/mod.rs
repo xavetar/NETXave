@@ -26,9 +26,16 @@
  * THE SOFTWARE.
  */
 
-pub mod hopcodes;
-pub mod hrcodes;
-pub mod qrrclass;
-pub mod qrrtype;
-pub mod answer;
-pub mod message;
+mod constants;
+mod conversion;
+mod rcodes;
+mod rcode_info;
+
+mod warnings;
+
+pub(self) use constants::{REVERSED, UNASSIGNED, REVERSED_PRIVATE_USE};
+pub(self) use warnings::{NOT_AUTH_W, BAD_VERS_BAD_SIG_W};
+
+pub use rcodes::{RCODES};
+pub use rcode_info::{RCODEInfo};
+pub use conversion::{RCODEConversion};
