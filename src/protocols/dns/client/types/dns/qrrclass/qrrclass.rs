@@ -26,8 +26,46 @@
  * THE SOFTWARE.
  */
 
-pub mod hopcodes;
-pub mod qrrclass;
-pub mod qrrtype;
-pub mod answer;
-pub mod message;
+pub enum QRRCLASS {
+    IN = 1,
+    CS = 2,
+    CH = 3,
+    HS = 4,
+    None = 254,
+    ANY = 255
+}
+
+impl QRRCLASS {
+    pub fn name(&self) -> &'static str {
+        return match self {
+            QRRCLASS::IN => "IN",
+            QRRCLASS::CS => "CS",
+            QRRCLASS::CH => "CH",
+            QRRCLASS::HS => "HS",
+            QRRCLASS::None => "None",
+            QRRCLASS::ANY => "*"
+        }
+    }
+
+    pub fn code(&self) -> u16 {
+        return match self {
+            QRRCLASS::IN => QRRCLASS::IN as u16,
+            QRRCLASS::CS => QRRCLASS::CS as u16,
+            QRRCLASS::CH => QRRCLASS::CH as u16,
+            QRRCLASS::HS => QRRCLASS::HS as u16,
+            QRRCLASS::None => QRRCLASS::None as u16,
+            QRRCLASS::ANY => QRRCLASS::ANY as u16
+        }
+    }
+
+    pub fn hex(&self) -> String {
+        return match self {
+            QRRCLASS::IN => format!("{:02x}", QRRCLASS::IN.code()),
+            QRRCLASS::CS => format!("{:02x}", QRRCLASS::CS.code()),
+            QRRCLASS::CH => format!("{:02x}", QRRCLASS::CH.code()),
+            QRRCLASS::HS => format!("{:02x}", QRRCLASS::HS.code()),
+            QRRCLASS::None => format!("{:02x}", QRRCLASS::None.code()),
+            QRRCLASS::ANY => format!("{:02x}", QRRCLASS::ANY.code())
+        }
+    }
+}

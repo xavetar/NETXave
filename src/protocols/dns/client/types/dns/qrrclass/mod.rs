@@ -28,11 +28,11 @@
 
 mod constants;
 mod conversion;
-mod qclass;
-mod qclass_info;
+mod qrrclass;
+mod qrrclass_info;
 
 pub(self) use constants::{REVERSED, UNASSIGNED, REVERSED_PRIVATE_USE};
 
-pub use qclass::{QCLASS};
-pub use qclass_info::{QCLASSInfo};
-pub use conversion::{QCLASSConversion};
+pub use qrrclass::{QRRCLASS};
+pub use qrrclass_info::{QRRCLASSInfo};
+pub use conversion::{QRRCLASSConversion};

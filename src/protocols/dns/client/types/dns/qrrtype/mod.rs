@@ -28,11 +28,11 @@
 
 mod constants;
 mod conversion;
-mod qtype;
-mod qtype_info;
+mod qrrtype;
+mod qrrtype_info;
 
 pub(self) use constants::{REVERSED, UNASSIGNED, PRIVATE_USE};
 
-pub use qtype::{QTYPE};
-pub use qtype_info::{QTYPEInfo};
-pub use conversion::{QTYPEConversion};
+pub use qrrtype::{QRRTYPE};
+pub use qrrtype_info::{QRRTYPEInfo};
+pub use conversion::{QRRTYPEConversion};

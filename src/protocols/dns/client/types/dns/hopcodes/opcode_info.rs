@@ -26,8 +26,28 @@
  * THE SOFTWARE.
  */
 
-pub mod hopcodes;
-pub mod qrrclass;
-pub mod qrrtype;
-pub mod answer;
-pub mod message;
+pub struct OPCODEInfo {
+    name: &'static str,
+    opcode: u16
+}
+
+impl OPCODEInfo {
+    pub fn new(name: &'static str, opcode: u16) -> OPCODEInfo {
+        return OPCODEInfo {
+            name: name,
+            opcode: opcode
+        }
+    }
+
+    pub fn name(&self) -> &'static str {
+        return &self.name;
+    }
+
+    pub fn opcode(&self) -> &u16 {
+        return &self.code;
+    }
+
+    pub fn hex(&self) -> String {
+        return format!("{:02x}", &self.code);
+    }
+}

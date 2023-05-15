@@ -26,14 +26,14 @@
  * THE SOFTWARE.
  */
 
-pub struct QCLASSInfo {
+pub struct QRRTYPEInfo {
     name: &'static str,
     code: u16
 }
 
-impl QCLASSInfo {
-    pub fn new(name: &'static str, code: u16) -> QCLASSInfo {
-        return QCLASSInfo {
+impl QRRTYPEInfo {
+    pub fn new(name: &'static str, code: u16) -> QRRTYPEInfo {
+        return QRRTYPEInfo {
             name: name,
             code: code
         }

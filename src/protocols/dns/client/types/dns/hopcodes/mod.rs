@@ -26,28 +26,13 @@
  * THE SOFTWARE.
  */
 
-pub struct QTYPEInfo {
-    name: &'static str,
-    code: u16
-}
+mod constants;
+mod conversion;
+mod opcodes;
+mod opcode_info;
 
-impl QTYPEInfo {
-    pub fn new(name: &'static str, code: u16) -> QTYPEInfo {
-        return QTYPEInfo {
-            name: name,
-            code: code
-        }
-    }
+pub(self) use constants::{UNASSIGNED};
 
-    pub fn name(&self) -> &'static str {
-        return &self.name;
-    }
-
-    pub fn code(&self) -> &u16 {
-        return &self.code;
-    }
-
-    pub fn hex(&self) -> String {
-        return format!("{:02x}", &self.code);
-    }
-}
+pub use opcodes::{OPCODES};
+pub use opcode_info::{OPCODEInfo};
+pub use opcodes::{OPCODEConversion};

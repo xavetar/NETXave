@@ -26,92 +26,92 @@
  * THE SOFTWARE.
  */
 
-use super::{QCLASS};
-use super::{QCLASSInfo};
+use super::{QRRCLASS};
+use super::{QRRCLASSInfo};
 use super::{REVERSED, UNASSIGNED, REVERSED_PRIVATE_USE};
 
 
-pub trait QCLASSConversion {
-    fn encode(qclass: &str) -> Result<QCLASSInfo, String>;
-    fn decode(dec: &u16) -> Result<QCLASSInfo, String>;
+pub trait QRRCLASSConversion {
+    fn encode(qclass: &str) -> Result<QRRCLASSInfo, String>;
+    fn decode(dec: &u16) -> Result<QRRCLASSInfo, String>;
 }
 
-impl QCLASSConversion for QCLASS {
-    fn encode(qclass: &str) -> Result<QCLASSInfo, String> {
+impl QRRCLASSConversion for QRRCLASS {
+    fn encode(qclass: &str) -> Result<QRRCLASSInfo, String> {
         return match qclass {
             "IN" => Ok(
-                QCLASSInfo::new(QCLASS::IN.name(),
-                                QCLASS::IN.code())
+                QRRCLASSInfo::new(QRRCLASS::IN.name(),
+                                  QRRCLASS::IN.code())
             ),
             "CS" => Ok(
-                QCLASSInfo::new(QCLASS::CS.name(),
-                                QCLASS::CS.code())
+                QRRCLASSInfo::new(QRRCLASS::CS.name(),
+                                  QRRCLASS::CS.code())
             ),
             "CH" => Ok(
-                QCLASSInfo::new(QCLASS::CH.name(),
-                                QCLASS::CH.code())
+                QRRCLASSInfo::new(QRRCLASS::CH.name(),
+                                  QRRCLASS::CH.code())
             ),
             "HS" => Ok(
-                QCLASSInfo::new(QCLASS::HS.name(),
-                                QCLASS::HS.code())
+                QRRCLASSInfo::new(QRRCLASS::HS.name(),
+                                  QRRCLASS::HS.code())
             ),
             "None" => Ok(
-                QCLASSInfo::new(QCLASS::None.name(),
-                                QCLASS::None.code())
+                QRRCLASSInfo::new(QRRCLASS::None.name(),
+                                  QRRCLASS::None.code())
             ),
             "*" => Ok(
-                QCLASSInfo::new(QCLASS::ANY.name(),
-                                QCLASS::ANY.code())
+                QRRCLASSInfo::new(QRRCLASS::ANY.name(),
+                                  QRRCLASS::ANY.code())
             ),
             _ => Err(String::from("Can't encode QCLASS!"))
         }
     }
 
-    fn decode(decimal: &u16) -> Result<QCLASSInfo, String> {
+    fn decode(decimal: &u16) -> Result<QRRCLASSInfo, String> {
         return match *decimal {
             0 => Ok(
-                QCLASSInfo::new(REVERSED,
-                                *decimal)
+                QRRCLASSInfo::new(REVERSED,
+                                  *decimal)
             ),
             1 => Ok(
-                QCLASSInfo::new(QCLASS::IN.name(),
-                                QCLASS::IN.code())
+                QRRCLASSInfo::new(QRRCLASS::IN.name(),
+                                  QRRCLASS::IN.code())
             ),
             2 => Ok(
-                QCLASSInfo::new(QCLASS::CS.name(),
-                                QCLASS::CS.code())
+                QRRCLASSInfo::new(QRRCLASS::CS.name(),
+                                  QRRCLASS::CS.code())
             ),
             3 => Ok(
-                QCLASSInfo::new(QCLASS::CS.name(),
-                                QCLASS::CS.code())
+                QRRCLASSInfo::new(QRRCLASS::CS.name(),
+                                  QRRCLASS::CS.code())
             ),
             4 => Ok(
-                QCLASSInfo::new(QCLASS::HS.name(),
-                                QCLASS::HS.code())
+                QRRCLASSInfo::new(QRRCLASS::HS.name(),
+                                  QRRCLASS::HS.code())
             ),
             5..=253 => Ok(
-                QCLASSInfo::new(UNASSIGNED,
-                                *decimal)
+                QRRCLASSInfo::new(UNASSIGNED,
+                                  *decimal)
             ),
             254 => Ok(
-                QCLASSInfo::new(QCLASS::None.name(),
-                                QCLASS::None.code())
+                QRRCLASSInfo::new(QRRCLASS::None.name(),
+                                  QRRCLASS::None.code())
             ),
             255 => Ok(
-                QCLASSInfo::new(QCLASS::ANY.name(),
-                                QCLASS::ANY.code())
+                QRRCLASSInfo::new(QRRCLASS::ANY.name(),
+                                  QRRCLASS::ANY.code())
             ),
             256..=65279 => Ok(
-                QCLASSInfo::new(UNASSIGNED,
-                                *decimal)
+                QRRCLASSInfo::new(UNASSIGNED,
+                                  *decimal)
             ),
             65280..=65534 => Ok(
-                QCLASSInfo::new(REVERSED_PRIVATE_USE,
-                                *decimal)
+                QRRCLASSInfo::new(REVERSED_PRIVATE_USE,
+                                  *decimal)
             ),
             65535 => Ok(
-                QCLASSInfo::new(REVERSED,
-                                *decimal)
+                QRRCLASSInfo::new(REVERSED,
+                                  *decimal)
             ),
             _ => Err(String::from("Can't decode QCLASS!"))
         }

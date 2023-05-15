@@ -26,8 +26,4 @@
  * THE SOFTWARE.
  */
 
-pub mod hopcodes;
-pub mod qrrclass;
-pub mod qrrtype;
-pub mod answer;
-pub mod message;
+pub const UNASSIGNED: &'static str = "Unassigned";

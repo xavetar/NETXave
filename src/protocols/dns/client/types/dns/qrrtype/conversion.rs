@@ -26,767 +26,767 @@
  * THE SOFTWARE.
  */
 
-use super::{QTYPE};
-use super::{QTYPEInfo};
+use super::{QRRTYPE};
+use super::{QRRTYPEInfo};
 use super::{REVERSED, UNASSIGNED, PRIVATE_USE};
 
-pub trait QTYPEConversion {
-    fn encode(qclass: &str) -> Result<QTYPEInfo, String>;
-    fn decode(dec: &u16) -> Result<QTYPEInfo, String>;
+pub trait QRRTYPEConversion {
+    fn encode(qclass: &str) -> Result<QRRTYPEInfo, String>;
+    fn decode(dec: &u16) -> Result<QRRTYPEInfo, String>;
 }
 
-impl QTYPEConversion for QTYPE {
-    fn encode(qtype: &str) -> Result<QTYPEInfo, String> {
+impl QRRTYPEConversion for QRRTYPE {
+    fn encode(qtype: &str) -> Result<QRRTYPEInfo, String> {
         return match qtype {
             "A" => Ok(
-                QTYPEInfo::new(QTYPE::A.name(),
-                               QTYPE::A.code())
+                QRRTYPEInfo::new(QRRTYPE::A.name(),
+                                 QRRTYPE::A.code())
             ),
             "NS" => Ok(
-                QTYPEInfo::new(QTYPE::NS.name(),
-                               QTYPE::NS.code())
+                QRRTYPEInfo::new(QRRTYPE::NS.name(),
+                                 QRRTYPE::NS.code())
             ),
             "MD" => Ok(
-                QTYPEInfo::new(QTYPE::MD.name(),
-                               QTYPE::MD.code())
+                QRRTYPEInfo::new(QRRTYPE::MD.name(),
+                                 QRRTYPE::MD.code())
             ),
             "MF" => Ok(
-                QTYPEInfo::new(QTYPE::MF.name(),
-                               QTYPE::MF.code())
+                QRRTYPEInfo::new(QRRTYPE::MF.name(),
+                                 QRRTYPE::MF.code())
             ),
             "CNAME" => Ok(
-                QTYPEInfo::new(QTYPE::CNAME.name(),
-                               QTYPE::CNAME.code())
+                QRRTYPEInfo::new(QRRTYPE::CNAME.name(),
+                                 QRRTYPE::CNAME.code())
             ),
             "SOA" => Ok(
-                QTYPEInfo::new(QTYPE::SOA.name(),
-                               QTYPE::SOA.code())
+                QRRTYPEInfo::new(QRRTYPE::SOA.name(),
+                                 QRRTYPE::SOA.code())
             ),
             "MB" => Ok(
-                QTYPEInfo::new(QTYPE::MB.name(),
-                               QTYPE::MB.code())
+                QRRTYPEInfo::new(QRRTYPE::MB.name(),
+                                 QRRTYPE::MB.code())
             ),
             "MG" => Ok(
-                QTYPEInfo::new(QTYPE::MG.name(),
-                               QTYPE::MG.code())
+                QRRTYPEInfo::new(QRRTYPE::MG.name(),
+                                 QRRTYPE::MG.code())
             ),
             "MR" => Ok(
-                QTYPEInfo::new(QTYPE::MR.name(),
-                               QTYPE::MR.code())
+                QRRTYPEInfo::new(QRRTYPE::MR.name(),
+                                 QRRTYPE::MR.code())
             ),
             "NULL" => Ok(
-                QTYPEInfo::new(QTYPE::NULL.name(),
-                               QTYPE::NULL.code())
+                QRRTYPEInfo::new(QRRTYPE::NULL.name(),
+                                 QRRTYPE::NULL.code())
             ),
             "WKS" => Ok(
-                QTYPEInfo::new(QTYPE::WKS.name(),
-                               QTYPE::WKS.code())
+                QRRTYPEInfo::new(QRRTYPE::WKS.name(),
+                                 QRRTYPE::WKS.code())
             ),
             "PTR" => Ok(
-                QTYPEInfo::new(QTYPE::PTR.name(),
-                               QTYPE::PTR.code())
+                QRRTYPEInfo::new(QRRTYPE::PTR.name(),
+                                 QRRTYPE::PTR.code())
             ),
             "HINFO" => Ok(
-                QTYPEInfo::new(QTYPE::HINFO.name(),
-                               QTYPE::HINFO.code())
+                QRRTYPEInfo::new(QRRTYPE::HINFO.name(),
+                                 QRRTYPE::HINFO.code())
             ),
             "MINFO" => Ok(
-                QTYPEInfo::new(QTYPE::MINFO.name(),
-                               QTYPE::MINFO.code())
+                QRRTYPEInfo::new(QRRTYPE::MINFO.name(),
+                                 QRRTYPE::MINFO.code())
             ),
             "MX" => Ok(
-                QTYPEInfo::new(QTYPE::MX.name(),
-                               QTYPE::MX.code())
+                QRRTYPEInfo::new(QRRTYPE::MX.name(),
+                                 QRRTYPE::MX.code())
             ),
             "TXT" => Ok(
-                QTYPEInfo::new(QTYPE::TXT.name(),
-                               QTYPE::TXT.code())
+                QRRTYPEInfo::new(QRRTYPE::TXT.name(),
+                                 QRRTYPE::TXT.code())
             ),
             "RP" => Ok(
-                QTYPEInfo::new(QTYPE::RP.name(),
-                               QTYPE::RP.code())
+                QRRTYPEInfo::new(QRRTYPE::RP.name(),
+                                 QRRTYPE::RP.code())
             ),
             "AFSDB" => Ok(
-                QTYPEInfo::new(QTYPE::AFSDB.name(),
-                               QTYPE::AFSDB.code())
+                QRRTYPEInfo::new(QRRTYPE::AFSDB.name(),
+                                 QRRTYPE::AFSDB.code())
             ),
             "X25" => Ok(
-                QTYPEInfo::new(QTYPE::X25.name(),
-                               QTYPE::X25.code())
+                QRRTYPEInfo::new(QRRTYPE::X25.name(),
+                                 QRRTYPE::X25.code())
             ),
             "ISDN" => Ok(
-                QTYPEInfo::new(QTYPE::ISDN.name(),
-                               QTYPE::ISDN.code())
+                QRRTYPEInfo::new(QRRTYPE::ISDN.name(),
+                                 QRRTYPE::ISDN.code())
             ),
             "RT" => Ok(
-                QTYPEInfo::new(QTYPE::RT.name(),
-                               QTYPE::RT.code())
+                QRRTYPEInfo::new(QRRTYPE::RT.name(),
+                                 QRRTYPE::RT.code())
             ),
             "NSAP" => Ok(
-                QTYPEInfo::new(QTYPE::NSAP.name(),
-                               QTYPE::NSAP.code())
+                QRRTYPEInfo::new(QRRTYPE::NSAP.name(),
+                                 QRRTYPE::NSAP.code())
             ),
             "NSAP-PTR" => Ok(
-                QTYPEInfo::new(QTYPE::NSAP_PTR.name(),
-                               QTYPE::NSAP_PTR.code())
+                QRRTYPEInfo::new(QRRTYPE::NSAP_PTR.name(),
+                                 QRRTYPE::NSAP_PTR.code())
             ),
             "SIG" => Ok(
-                QTYPEInfo::new(QTYPE::SIG.name(),
-                               QTYPE::SIG.code())
+                QRRTYPEInfo::new(QRRTYPE::SIG.name(),
+                                 QRRTYPE::SIG.code())
             ),
             "KEY" => Ok(
-                QTYPEInfo::new(QTYPE::KEY.name(),
-                               QTYPE::KEY.code())
+                QRRTYPEInfo::new(QRRTYPE::KEY.name(),
+                                 QRRTYPE::KEY.code())
             ),
             "PX" => Ok(
-                QTYPEInfo::new(QTYPE::PX.name(),
-                               QTYPE::PX.code())
+                QRRTYPEInfo::new(QRRTYPE::PX.name(),
+                                 QRRTYPE::PX.code())
             ),
             "GPOS" => Ok(
-                QTYPEInfo::new(QTYPE::GPOS.name(),
-                               QTYPE::GPOS.code())
+                QRRTYPEInfo::new(QRRTYPE::GPOS.name(),
+                                 QRRTYPE::GPOS.code())
             ),
             "AAAA" => Ok(
-                QTYPEInfo::new(QTYPE::AAAA.name(),
-                               QTYPE::AAAA.code())
+                QRRTYPEInfo::new(QRRTYPE::AAAA.name(),
+                                 QRRTYPE::AAAA.code())
             ),
             "LOC" => Ok(
-                QTYPEInfo::new(QTYPE::LOC.name(),
-                               QTYPE::LOC.code())
+                QRRTYPEInfo::new(QRRTYPE::LOC.name(),
+                                 QRRTYPE::LOC.code())
             ),
             "NXT" => Ok(
-                QTYPEInfo::new(QTYPE::NXT.name(),
-                               QTYPE::NXT.code())
+                QRRTYPEInfo::new(QRRTYPE::NXT.name(),
+                                 QRRTYPE::NXT.code())
             ),
             "EID" => Ok(
-                QTYPEInfo::new(QTYPE::EID.name(),
-                               QTYPE::EID.code())
+                QRRTYPEInfo::new(QRRTYPE::EID.name(),
+                                 QRRTYPE::EID.code())
             ),
             "NIMLOC" => Ok(
-                QTYPEInfo::new(QTYPE::NIMLOC.name(),
-                               QTYPE::NIMLOC.code())
+                QRRTYPEInfo::new(QRRTYPE::NIMLOC.name(),
+                                 QRRTYPE::NIMLOC.code())
             ),
             "SRV" => Ok(
-                QTYPEInfo::new(QTYPE::SRV.name(),
-                               QTYPE::SRV.code())
+                QRRTYPEInfo::new(QRRTYPE::SRV.name(),
+                                 QRRTYPE::SRV.code())
             ),
             "ATMA" => Ok(
-                QTYPEInfo::new(QTYPE::ATMA.name(),
-                               QTYPE::ATMA.code())
+                QRRTYPEInfo::new(QRRTYPE::ATMA.name(),
+                                 QRRTYPE::ATMA.code())
             ),
             "NAPTR" => Ok(
-                QTYPEInfo::new(QTYPE::NAPTR.name(),
-                               QTYPE::NAPTR.code())
+                QRRTYPEInfo::new(QRRTYPE::NAPTR.name(),
+                                 QRRTYPE::NAPTR.code())
             ),
             "KX" => Ok(
-                QTYPEInfo::new(QTYPE::KX.name(),
-                               QTYPE::KX.code())
+                QRRTYPEInfo::new(QRRTYPE::KX.name(),
+                                 QRRTYPE::KX.code())
             ),
             "CERT" => Ok(
-                QTYPEInfo::new(QTYPE::CERT.name(),
-                               QTYPE::CERT.code())
+                QRRTYPEInfo::new(QRRTYPE::CERT.name(),
+                                 QRRTYPE::CERT.code())
             ),
             "A6" => Ok(
-                QTYPEInfo::new(QTYPE::A6.name(),
-                               QTYPE::A6.code())
+                QRRTYPEInfo::new(QRRTYPE::A6.name(),
+                                 QRRTYPE::A6.code())
             ),
             "DNAME" => Ok(
-                QTYPEInfo::new(QTYPE::DNAME.name(),
-                               QTYPE::DNAME.code())
+                QRRTYPEInfo::new(QRRTYPE::DNAME.name(),
+                                 QRRTYPE::DNAME.code())
             ),
             "SINK" => Ok(
-                QTYPEInfo::new(QTYPE::SINK.name(),
-                               QTYPE::SINK.code())
+                QRRTYPEInfo::new(QRRTYPE::SINK.name(),
+                                 QRRTYPE::SINK.code())
             ),
             "OPT" => Ok(
-                QTYPEInfo::new(QTYPE::OPT.name(),
-                               QTYPE::OPT.code())
+                QRRTYPEInfo::new(QRRTYPE::OPT.name(),
+                                 QRRTYPE::OPT.code())
             ),
             "APL" => Ok(
-                QTYPEInfo::new(QTYPE::APL.name(),
-                               QTYPE::APL.code())
+                QRRTYPEInfo::new(QRRTYPE::APL.name(),
+                                 QRRTYPE::APL.code())
             ),
             "DS" => Ok(
-                QTYPEInfo::new(QTYPE::DS.name(),
-                               QTYPE::DS.code())
+                QRRTYPEInfo::new(QRRTYPE::DS.name(),
+                                 QRRTYPE::DS.code())
             ),
             "SSHFP" => Ok(
-                QTYPEInfo::new(QTYPE::SSHFP.name(),
-                               QTYPE::SSHFP.code())
+                QRRTYPEInfo::new(QRRTYPE::SSHFP.name(),
+                                 QRRTYPE::SSHFP.code())
             ),
             "IPSECKEY" => Ok(
-                QTYPEInfo::new(QTYPE::IPSECKEY.name(),
-                               QTYPE::IPSECKEY.code())
+                QRRTYPEInfo::new(QRRTYPE::IPSECKEY.name(),
+                                 QRRTYPE::IPSECKEY.code())
             ),
             "RRSIG" => Ok(
-                QTYPEInfo::new(QTYPE::RRSIG.name(),
-                               QTYPE::RRSIG.code())
+                QRRTYPEInfo::new(QRRTYPE::RRSIG.name(),
+                                 QRRTYPE::RRSIG.code())
             ),
             "NSEC" => Ok(
-                QTYPEInfo::new(QTYPE::NSEC.name(),
-                               QTYPE::NSEC.code())
+                QRRTYPEInfo::new(QRRTYPE::NSEC.name(),
+                                 QRRTYPE::NSEC.code())
             ),
             "DNSKEY" => Ok(
-                QTYPEInfo::new(QTYPE::DNSKEY.name(),
-                               QTYPE::DNSKEY.code())
+                QRRTYPEInfo::new(QRRTYPE::DNSKEY.name(),
+                                 QRRTYPE::DNSKEY.code())
             ),
             "DHCID" => Ok(
-                QTYPEInfo::new(QTYPE::DHCID.name(),
-                               QTYPE::DHCID.code())
+                QRRTYPEInfo::new(QRRTYPE::DHCID.name(),
+                                 QRRTYPE::DHCID.code())
             ),
             "NSEC3" => Ok(
-                QTYPEInfo::new(QTYPE::NSEC3.name(),
-                               QTYPE::NSEC3.code())
+                QRRTYPEInfo::new(QRRTYPE::NSEC3.name(),
+                                 QRRTYPE::NSEC3.code())
             ),
             "NSEC3PARAM" => Ok(
-                QTYPEInfo::new(QTYPE::NSEC3PARAM.name(),
-                               QTYPE::NSEC3PARAM.code())
+                QRRTYPEInfo::new(QRRTYPE::NSEC3PARAM.name(),
+                                 QRRTYPE::NSEC3PARAM.code())
             ),
             "TLSA" => Ok(
-                QTYPEInfo::new(QTYPE::TLSA.name(),
-                               QTYPE::TLSA.code())
+                QRRTYPEInfo::new(QRRTYPE::TLSA.name(),
+                                 QRRTYPE::TLSA.code())
             ),
             "SMIMEA" => Ok(
-                QTYPEInfo::new(QTYPE::SMIMEA.name(),
-                               QTYPE::SMIMEA.code())
+                QRRTYPEInfo::new(QRRTYPE::SMIMEA.name(),
+                                 QRRTYPE::SMIMEA.code())
             ),
             "HIP" => Ok(
-                QTYPEInfo::new(QTYPE::HIP.name(),
-                               QTYPE::HIP.code())
+                QRRTYPEInfo::new(QRRTYPE::HIP.name(),
+                                 QRRTYPE::HIP.code())
             ),
             "NINFO" => Ok(
-                QTYPEInfo::new(QTYPE::NINFO.name(),
-                               QTYPE::NINFO.code())
+                QRRTYPEInfo::new(QRRTYPE::NINFO.name(),
+                                 QRRTYPE::NINFO.code())
             ),
             "RKEY" => Ok(
-                QTYPEInfo::new(QTYPE::RKEY.name(),
-                               QTYPE::RKEY.code())
+                QRRTYPEInfo::new(QRRTYPE::RKEY.name(),
+                                 QRRTYPE::RKEY.code())
             ),
             "TALINK" => Ok(
-                QTYPEInfo::new(QTYPE::TALINK.name(),
-                               QTYPE::TALINK.code())
+                QRRTYPEInfo::new(QRRTYPE::TALINK.name(),
+                                 QRRTYPE::TALINK.code())
             ),
             "CDS" => Ok(
-                QTYPEInfo::new(QTYPE::CDS.name(),
-                               QTYPE::CDS.code())
+                QRRTYPEInfo::new(QRRTYPE::CDS.name(),
+                                 QRRTYPE::CDS.code())
             ),
             "CDNSKEY" => Ok(
-                QTYPEInfo::new(QTYPE::CDNSKEY.name(),
-                               QTYPE::CDNSKEY.code())
+                QRRTYPEInfo::new(QRRTYPE::CDNSKEY.name(),
+                                 QRRTYPE::CDNSKEY.code())
             ),
             "OPENPGPKEY" => Ok(
-                QTYPEInfo::new(QTYPE::OPENPGPKEY.name(),
-                               QTYPE::OPENPGPKEY.code())
+                QRRTYPEInfo::new(QRRTYPE::OPENPGPKEY.name(),
+                                 QRRTYPE::OPENPGPKEY.code())
             ),
             "CSYNC" => Ok(
-                QTYPEInfo::new(QTYPE::CSYNC.name(),
-                               QTYPE::CSYNC.code())
+                QRRTYPEInfo::new(QRRTYPE::CSYNC.name(),
+                                 QRRTYPE::CSYNC.code())
             ),
             "ZONEMD" => Ok(
-                QTYPEInfo::new(QTYPE::ZONEMD.name(),
-                               QTYPE::ZONEMD.code())
+                QRRTYPEInfo::new(QRRTYPE::ZONEMD.name(),
+                                 QRRTYPE::ZONEMD.code())
             ),
             "SVCB" => Ok(
-                QTYPEInfo::new(QTYPE::SVCB.name(),
-                               QTYPE::SVCB.code())
+                QRRTYPEInfo::new(QRRTYPE::SVCB.name(),
+                                 QRRTYPE::SVCB.code())
             ),
             "HTTPS" => Ok(
-                QTYPEInfo::new(QTYPE::HTTPS.name(),
-                               QTYPE::HTTPS.code())
+                QRRTYPEInfo::new(QRRTYPE::HTTPS.name(),
+                                 QRRTYPE::HTTPS.code())
             ),
             "SPF" => Ok(
-                QTYPEInfo::new(QTYPE::SPF.name(),
-                               QTYPE::SPF.code())
+                QRRTYPEInfo::new(QRRTYPE::SPF.name(),
+                                 QRRTYPE::SPF.code())
             ),
             "UINFO" => Ok(
-                QTYPEInfo::new(QTYPE::UINFO.name(),
-                               QTYPE::UINFO.code())
+                QRRTYPEInfo::new(QRRTYPE::UINFO.name(),
+                                 QRRTYPE::UINFO.code())
             ),
             "UID" => Ok(
-                QTYPEInfo::new(QTYPE::UID.name(),
-                               QTYPE::UID.code())
+                QRRTYPEInfo::new(QRRTYPE::UID.name(),
+                                 QRRTYPE::UID.code())
             ),
             "GID" => Ok(
-                QTYPEInfo::new(QTYPE::GID.name(),
-                               QTYPE::GID.code())
+                QRRTYPEInfo::new(QRRTYPE::GID.name(),
+                                 QRRTYPE::GID.code())
             ),
             "UNSPEC" => Ok(
-                QTYPEInfo::new(QTYPE::UNSPEC.name(),
-                               QTYPE::UNSPEC.code())
+                QRRTYPEInfo::new(QRRTYPE::UNSPEC.name(),
+                                 QRRTYPE::UNSPEC.code())
             ),
             "NID" => Ok(
-                QTYPEInfo::new(QTYPE::NID.name(),
-                               QTYPE::NID.code())
+                QRRTYPEInfo::new(QRRTYPE::NID.name(),
+                                 QRRTYPE::NID.code())
             ),
             "L32" => Ok(
-                QTYPEInfo::new(QTYPE::L32.name(),
-                               QTYPE::L32.code())
+                QRRTYPEInfo::new(QRRTYPE::L32.name(),
+                                 QRRTYPE::L32.code())
             ),
             "L64" => Ok(
-                QTYPEInfo::new(QTYPE::L64.name(),
-                               QTYPE::L64.code())
+                QRRTYPEInfo::new(QRRTYPE::L64.name(),
+                                 QRRTYPE::L64.code())
             ),
             "LP" => Ok(
-                QTYPEInfo::new(QTYPE::LP.name(),
-                               QTYPE::LP.code())
+                QRRTYPEInfo::new(QRRTYPE::LP.name(),
+                                 QRRTYPE::LP.code())
             ),
             "EUI48" => Ok(
-                QTYPEInfo::new(QTYPE::EUI48.name(),
-                               QTYPE::EUI48.code())
+                QRRTYPEInfo::new(QRRTYPE::EUI48.name(),
+                                 QRRTYPE::EUI48.code())
             ),
             "EUI64" => Ok(
-                QTYPEInfo::new(QTYPE::EUI64.name(),
-                               QTYPE::EUI64.code())
+                QRRTYPEInfo::new(QRRTYPE::EUI64.name(),
+                                 QRRTYPE::EUI64.code())
             ),
             "TKEY" => Ok(
-                QTYPEInfo::new(QTYPE::TKEY.name(),
-                               QTYPE::TKEY.code())
+                QRRTYPEInfo::new(QRRTYPE::TKEY.name(),
+                                 QRRTYPE::TKEY.code())
             ),
             "TSIG" => Ok(
-                QTYPEInfo::new(QTYPE::TSIG.name(),
-                               QTYPE::TSIG.code())
+                QRRTYPEInfo::new(QRRTYPE::TSIG.name(),
+                                 QRRTYPE::TSIG.code())
             ),
             "IXFR" => Ok(
-                QTYPEInfo::new(QTYPE::IXFR.name(),
-                               QTYPE::IXFR.code())
+                QRRTYPEInfo::new(QRRTYPE::IXFR.name(),
+                                 QRRTYPE::IXFR.code())
             ),
             "AXFR" => Ok(
-                QTYPEInfo::new(QTYPE::AXFR.name(),
-                               QTYPE::AXFR.code())
+                QRRTYPEInfo::new(QRRTYPE::AXFR.name(),
+                                 QRRTYPE::AXFR.code())
             ),
             "MAILB" => Ok(
-                QTYPEInfo::new(QTYPE::MAILB.name(),
-                               QTYPE::MAILB.code())
+                QRRTYPEInfo::new(QRRTYPE::MAILB.name(),
+                                 QRRTYPE::MAILB.code())
             ),
             "MAILA" => Ok(
-                QTYPEInfo::new(QTYPE::MAILA.name(),
-                               QTYPE::MAILA.code())
+                QRRTYPEInfo::new(QRRTYPE::MAILA.name(),
+                                 QRRTYPE::MAILA.code())
             ),
             "*" => Ok(
-                QTYPEInfo::new(QTYPE::ANY.name(),
-                               QTYPE::ANY.code())
+                QRRTYPEInfo::new(QRRTYPE::ANY.name(),
+                                 QRRTYPE::ANY.code())
             ),
             "URI" => Ok(
-                QTYPEInfo::new(QTYPE::URI.name(),
-                               QTYPE::URI.code())
+                QRRTYPEInfo::new(QRRTYPE::URI.name(),
+                                 QRRTYPE::URI.code())
             ),
             "CAA" => Ok(
-                QTYPEInfo::new(QTYPE::CAA.name(),
-                               QTYPE::CAA.code())
+                QRRTYPEInfo::new(QRRTYPE::CAA.name(),
+                                 QRRTYPE::CAA.code())
             ),
             "AVC" => Ok(
-                QTYPEInfo::new(QTYPE::AVC.name(),
-                               QTYPE::AVC.code())
+                QRRTYPEInfo::new(QRRTYPE::AVC.name(),
+                                 QRRTYPE::AVC.code())
             ),
             "DOA" => Ok(
-                QTYPEInfo::new(QTYPE::DOA.name(),
-                               QTYPE::DOA.code())
+                QRRTYPEInfo::new(QRRTYPE::DOA.name(),
+                                 QRRTYPE::DOA.code())
             ),
             "AMTRELAY" => Ok(
-                QTYPEInfo::new(QTYPE::AMTRELAY.name(),
-                               QTYPE::AMTRELAY.code())
+                QRRTYPEInfo::new(QRRTYPE::AMTRELAY.name(),
+                                 QRRTYPE::AMTRELAY.code())
             ),
             "TA" => Ok(
-                QTYPEInfo::new(QTYPE::TA.name(),
-                               QTYPE::TA.code())
+                QRRTYPEInfo::new(QRRTYPE::TA.name(),
+                                 QRRTYPE::TA.code())
             ),
             "DLV" => Ok(
-                QTYPEInfo::new(QTYPE::DLV.name(),
-                               QTYPE::DLV.code())
+                QRRTYPEInfo::new(QRRTYPE::DLV.name(),
+                                 QRRTYPE::DLV.code())
             ),
             _ => Err(String::from("Can't encode QTYPE!"))
         }
     }
 
-    fn decode(decimal: &u16) -> Result<QTYPEInfo, String> {
+    fn decode(decimal: &u16) -> Result<QRRTYPEInfo, String> {
         return match *decimal {
             0 => Ok(
-                QTYPEInfo::new(REVERSED,
-                               *decimal)
+                QRRTYPEInfo::new(REVERSED,
+                                 *decimal)
             ),
             1 => Ok(
-                QTYPEInfo::new(QTYPE::A.name(),
-                               QTYPE::A.code())
+                QRRTYPEInfo::new(QRRTYPE::A.name(),
+                                 QRRTYPE::A.code())
             ),
             2 => Ok(
-                QTYPEInfo::new(QTYPE::NS.name(),
-                               QTYPE::NS.code())
+                QRRTYPEInfo::new(QRRTYPE::NS.name(),
+                                 QRRTYPE::NS.code())
             ),
             3 => Ok(
-                QTYPEInfo::new(QTYPE::MD.name(),
-                               QTYPE::MD.code())
+                QRRTYPEInfo::new(QRRTYPE::MD.name(),
+                                 QRRTYPE::MD.code())
             ),
             4 => Ok(
-                QTYPEInfo::new(QTYPE::MF.name(),
-                               QTYPE::MF.code())
+                QRRTYPEInfo::new(QRRTYPE::MF.name(),
+                                 QRRTYPE::MF.code())
             ),
             5 => Ok(
-                QTYPEInfo::new(QTYPE::CNAME.name(),
-                               QTYPE::CNAME.code())
+                QRRTYPEInfo::new(QRRTYPE::CNAME.name(),
+                                 QRRTYPE::CNAME.code())
             ),
             6 => Ok(
-                QTYPEInfo::new(QTYPE::SOA.name(),
-                               QTYPE::SOA.code())
+                QRRTYPEInfo::new(QRRTYPE::SOA.name(),
+                                 QRRTYPE::SOA.code())
             ),
             7 => Ok(
-                QTYPEInfo::new(QTYPE::MB.name(),
-                               QTYPE::MB.code())
+                QRRTYPEInfo::new(QRRTYPE::MB.name(),
+                                 QRRTYPE::MB.code())
             ),
             8 => Ok(
-                QTYPEInfo::new(QTYPE::MG.name(),
-                               QTYPE::MG.code())
+                QRRTYPEInfo::new(QRRTYPE::MG.name(),
+                                 QRRTYPE::MG.code())
             ),
             9 => Ok(
-                QTYPEInfo::new(QTYPE::MR.name(),
-                               QTYPE::MR.code())
+                QRRTYPEInfo::new(QRRTYPE::MR.name(),
+                                 QRRTYPE::MR.code())
             ),
             10 => Ok(
-                QTYPEInfo::new(QTYPE::NULL.name(),
-                               QTYPE::NULL.code())
+                QRRTYPEInfo::new(QRRTYPE::NULL.name(),
+                                 QRRTYPE::NULL.code())
             ),
             11 => Ok(
-                QTYPEInfo::new(QTYPE::WKS.name(),
-                               QTYPE::WKS.code())
+                QRRTYPEInfo::new(QRRTYPE::WKS.name(),
+                                 QRRTYPE::WKS.code())
             ),
             12 => Ok(
-                QTYPEInfo::new(QTYPE::PTR.name(),
-                               QTYPE::PTR.code())
+                QRRTYPEInfo::new(QRRTYPE::PTR.name(),
+                                 QRRTYPE::PTR.code())
             ),
             13 => Ok(
-                QTYPEInfo::new(QTYPE::HINFO.name(),
-                               QTYPE::HINFO.code())
+                QRRTYPEInfo::new(QRRTYPE::HINFO.name(),
+                                 QRRTYPE::HINFO.code())
             ),
             14 => Ok(
-                QTYPEInfo::new(QTYPE::MINFO.name(),
-                               QTYPE::MINFO.code())
+                QRRTYPEInfo::new(QRRTYPE::MINFO.name(),
+                                 QRRTYPE::MINFO.code())
             ),
             15 => Ok(
-                QTYPEInfo::new(QTYPE::MX.name(),
-                               QTYPE::MX.code())
+                QRRTYPEInfo::new(QRRTYPE::MX.name(),
+                                 QRRTYPE::MX.code())
             ),
             16 => Ok(
-                QTYPEInfo::new(QTYPE::TXT.name(),
-                               QTYPE::TXT.code())
+                QRRTYPEInfo::new(QRRTYPE::TXT.name(),
+                                 QRRTYPE::TXT.code())
             ),
             17 => Ok(
-                QTYPEInfo::new(QTYPE::RP.name(),
-                               QTYPE::RP.code())
+                QRRTYPEInfo::new(QRRTYPE::RP.name(),
+                                 QRRTYPE::RP.code())
             ),
             18 => Ok(
-                QTYPEInfo::new(QTYPE::AFSDB.name(),
-                               QTYPE::AFSDB.code())
+                QRRTYPEInfo::new(QRRTYPE::AFSDB.name(),
+                                 QRRTYPE::AFSDB.code())
             ),
             19 => Ok(
-                QTYPEInfo::new(QTYPE::X25.name(),
-                               QTYPE::X25.code())
+                QRRTYPEInfo::new(QRRTYPE::X25.name(),
+                                 QRRTYPE::X25.code())
             ),
             20 => Ok(
-                QTYPEInfo::new(QTYPE::ISDN.name(),
-                               QTYPE::ISDN.code())
+                QRRTYPEInfo::new(QRRTYPE::ISDN.name(),
+                                 QRRTYPE::ISDN.code())
             ),
             21 => Ok(
-                QTYPEInfo::new(QTYPE::RT.name(),
-                               QTYPE::RT.code())
+                QRRTYPEInfo::new(QRRTYPE::RT.name(),
+                                 QRRTYPE::RT.code())
             ),
             22 => Ok(
-                QTYPEInfo::new(QTYPE::NSAP.name(),
-                               QTYPE::NSAP.code())
+                QRRTYPEInfo::new(QRRTYPE::NSAP.name(),
+                                 QRRTYPE::NSAP.code())
             ),
             23 => Ok(
-                QTYPEInfo::new(QTYPE::NSAP_PTR.name(),
-                               QTYPE::NSAP_PTR.code())
+                QRRTYPEInfo::new(QRRTYPE::NSAP_PTR.name(),
+                                 QRRTYPE::NSAP_PTR.code())
             ),
             24 => Ok(
-                QTYPEInfo::new(QTYPE::SIG.name(),
-                               QTYPE::SIG.code())
+                QRRTYPEInfo::new(QRRTYPE::SIG.name(),
+                                 QRRTYPE::SIG.code())
             ),
             25 => Ok(
-                QTYPEInfo::new(QTYPE::KEY.name(),
-                               QTYPE::KEY.code())
+                QRRTYPEInfo::new(QRRTYPE::KEY.name(),
+                                 QRRTYPE::KEY.code())
             ),
             26 => Ok(
-                QTYPEInfo::new(QTYPE::PX.name(),
-                               QTYPE::PX.code())
+                QRRTYPEInfo::new(QRRTYPE::PX.name(),
+                                 QRRTYPE::PX.code())
             ),
             27 => Ok(
-                QTYPEInfo::new(QTYPE::GPOS.name(),
-                               QTYPE::GPOS.code())
+                QRRTYPEInfo::new(QRRTYPE::GPOS.name(),
+                                 QRRTYPE::GPOS.code())
             ),
             28 => Ok(
-                QTYPEInfo::new(QTYPE::AAAA.name(),
-                               QTYPE::AAAA.code())
+                QRRTYPEInfo::new(QRRTYPE::AAAA.name(),
+                                 QRRTYPE::AAAA.code())
             ),
             29 => Ok(
-                QTYPEInfo::new(QTYPE::LOC.name(),
-                               QTYPE::LOC.code())
+                QRRTYPEInfo::new(QRRTYPE::LOC.name(),
+                                 QRRTYPE::LOC.code())
             ),
             30 => Ok(
-                QTYPEInfo::new(QTYPE::NXT.name(),
-                               QTYPE::NXT.code())
+                QRRTYPEInfo::new(QRRTYPE::NXT.name(),
+                                 QRRTYPE::NXT.code())
             ),
             31 => Ok(
-                QTYPEInfo::new(QTYPE::EID.name(),
-                               QTYPE::EID.code())
+                QRRTYPEInfo::new(QRRTYPE::EID.name(),
+                                 QRRTYPE::EID.code())
             ),
             32 => Ok(
-                QTYPEInfo::new(QTYPE::NIMLOC.name(),
-                               QTYPE::NIMLOC.code())
+                QRRTYPEInfo::new(QRRTYPE::NIMLOC.name(),
+                                 QRRTYPE::NIMLOC.code())
             ),
             33 => Ok(
-                QTYPEInfo::new(QTYPE::SRV.name(),
-                               QTYPE::SRV.code())
+                QRRTYPEInfo::new(QRRTYPE::SRV.name(),
+                                 QRRTYPE::SRV.code())
             ),
             34 => Ok(
-                QTYPEInfo::new(QTYPE::ATMA.name(),
-                               QTYPE::ATMA.code())
+                QRRTYPEInfo::new(QRRTYPE::ATMA.name(),
+                                 QRRTYPE::ATMA.code())
             ),
             35 => Ok(
-                QTYPEInfo::new(QTYPE::NAPTR.name(),
-                               QTYPE::NAPTR.code())
+                QRRTYPEInfo::new(QRRTYPE::NAPTR.name(),
+                                 QRRTYPE::NAPTR.code())
             ),
             36 => Ok(
-                QTYPEInfo::new(QTYPE::KX.name(),
-                               QTYPE::KX.code())
+                QRRTYPEInfo::new(QRRTYPE::KX.name(),
+                                 QRRTYPE::KX.code())
             ),
             37 => Ok(
-                QTYPEInfo::new(QTYPE::CERT.name(),
-                               QTYPE::CERT.code())
+                QRRTYPEInfo::new(QRRTYPE::CERT.name(),
+                                 QRRTYPE::CERT.code())
             ),
             38 => Ok(
-                QTYPEInfo::new(QTYPE::A6.name(),
-                               QTYPE::A6.code())
+                QRRTYPEInfo::new(QRRTYPE::A6.name(),
+                                 QRRTYPE::A6.code())
             ),
             39 => Ok(
-                QTYPEInfo::new(QTYPE::DNAME.name(),
-                               QTYPE::DNAME.code())
+                QRRTYPEInfo::new(QRRTYPE::DNAME.name(),
+                                 QRRTYPE::DNAME.code())
             ),
             40 => Ok(
-                QTYPEInfo::new(QTYPE::SINK.name(),
-                               QTYPE::SINK.code())
+                QRRTYPEInfo::new(QRRTYPE::SINK.name(),
+                                 QRRTYPE::SINK.code())
             ),
             41 => Ok(
-                QTYPEInfo::new(QTYPE::OPT.name(),
-                               QTYPE::OPT.code())
+                QRRTYPEInfo::new(QRRTYPE::OPT.name(),
+                                 QRRTYPE::OPT.code())
             ),
             42 => Ok(
-                QTYPEInfo::new(QTYPE::APL.name(),
-                               QTYPE::APL.code())
+                QRRTYPEInfo::new(QRRTYPE::APL.name(),
+                                 QRRTYPE::APL.code())
             ),
             43 => Ok(
-                QTYPEInfo::new(QTYPE::DS.name(),
-                               QTYPE::DS.code())
+                QRRTYPEInfo::new(QRRTYPE::DS.name(),
+                                 QRRTYPE::DS.code())
             ),
             44 => Ok(
-                QTYPEInfo::new(QTYPE::SSHFP.name(),
-                               QTYPE::SSHFP.code())
+                QRRTYPEInfo::new(QRRTYPE::SSHFP.name(),
+                                 QRRTYPE::SSHFP.code())
             ),
             45 => Ok(
-                QTYPEInfo::new(QTYPE::IPSECKEY.name(),
-                               QTYPE::IPSECKEY.code())
+                QRRTYPEInfo::new(QRRTYPE::IPSECKEY.name(),
+                                 QRRTYPE::IPSECKEY.code())
             ),
             46 => Ok(
-                QTYPEInfo::new(QTYPE::RRSIG.name(),
-                               QTYPE::RRSIG.code())
+                QRRTYPEInfo::new(QRRTYPE::RRSIG.name(),
+                                 QRRTYPE::RRSIG.code())
             ),
             47 => Ok(
-                QTYPEInfo::new(QTYPE::NSEC.name(),
-                               QTYPE::NSEC.code())
+                QRRTYPEInfo::new(QRRTYPE::NSEC.name(),
+                                 QRRTYPE::NSEC.code())
             ),
             48 => Ok(
-                QTYPEInfo::new(QTYPE::DNSKEY.name(),
-                               QTYPE::DNSKEY.code())
+                QRRTYPEInfo::new(QRRTYPE::DNSKEY.name(),
+                                 QRRTYPE::DNSKEY.code())
             ),
             49 => Ok(
-                QTYPEInfo::new(QTYPE::DHCID.name(),
-                               QTYPE::DHCID.code())
+                QRRTYPEInfo::new(QRRTYPE::DHCID.name(),
+                                 QRRTYPE::DHCID.code())
             ),
             50 => Ok(
-                QTYPEInfo::new(QTYPE::NSEC3.name(),
-                               QTYPE::NSEC3.code())
+                QRRTYPEInfo::new(QRRTYPE::NSEC3.name(),
+                                 QRRTYPE::NSEC3.code())
             ),
             51 => Ok(
-                QTYPEInfo::new(QTYPE::NSEC3PARAM.name(),
-                               QTYPE::NSEC3PARAM.code())
+                QRRTYPEInfo::new(QRRTYPE::NSEC3PARAM.name(),
+                                 QRRTYPE::NSEC3PARAM.code())
             ),
             52 => Ok(
-                QTYPEInfo::new(QTYPE::TLSA.name(),
-                               QTYPE::TLSA.code())
+                QRRTYPEInfo::new(QRRTYPE::TLSA.name(),
+                                 QRRTYPE::TLSA.code())
             ),
             53 => Ok(
-                QTYPEInfo::new(QTYPE::SMIMEA.name(),
-                               QTYPE::SMIMEA.code())
+                QRRTYPEInfo::new(QRRTYPE::SMIMEA.name(),
+                                 QRRTYPE::SMIMEA.code())
             ),
             54 => Ok(
-                QTYPEInfo::new(UNASSIGNED,
-                               *decimal)
+                QRRTYPEInfo::new(UNASSIGNED,
+                                 *decimal)
             ),
             55 => Ok(
-                QTYPEInfo::new(QTYPE::HIP.name(),
-                               QTYPE::HIP.code())
+                QRRTYPEInfo::new(QRRTYPE::HIP.name(),
+                                 QRRTYPE::HIP.code())
             ),
             56 => Ok(
-                QTYPEInfo::new(QTYPE::NINFO.name(),
-                               QTYPE::NINFO.code())
+                QRRTYPEInfo::new(QRRTYPE::NINFO.name(),
+                                 QRRTYPE::NINFO.code())
             ),
             57 => Ok(
-                QTYPEInfo::new(QTYPE::RKEY.name(),
-                               QTYPE::RKEY.code())
+                QRRTYPEInfo::new(QRRTYPE::RKEY.name(),
+                                 QRRTYPE::RKEY.code())
             ),
             58 => Ok(
-                QTYPEInfo::new(QTYPE::TALINK.name(),
-                               QTYPE::TALINK.code())
+                QRRTYPEInfo::new(QRRTYPE::TALINK.name(),
+                                 QRRTYPE::TALINK.code())
             ),
             59 => Ok(
-                QTYPEInfo::new(QTYPE::CDS.name(),
-                               QTYPE::CDS.code())
+                QRRTYPEInfo::new(QRRTYPE::CDS.name(),
+                                 QRRTYPE::CDS.code())
             ),
             60 => Ok(
-                QTYPEInfo::new(QTYPE::CDNSKEY.name(),
-                               QTYPE::CDNSKEY.code())
+                QRRTYPEInfo::new(QRRTYPE::CDNSKEY.name(),
+                                 QRRTYPE::CDNSKEY.code())
             ),
             61 => Ok(
-                QTYPEInfo::new(QTYPE::OPENPGPKEY.name(),
-                               QTYPE::OPENPGPKEY.code())
+                QRRTYPEInfo::new(QRRTYPE::OPENPGPKEY.name(),
+                                 QRRTYPE::OPENPGPKEY.code())
             ),
             62 => Ok(
-                QTYPEInfo::new(QTYPE::CSYNC.name(),
-                               QTYPE::CSYNC.code())
+                QRRTYPEInfo::new(QRRTYPE::CSYNC.name(),
+                                 QRRTYPE::CSYNC.code())
             ),
             63 => Ok(
-                QTYPEInfo::new(QTYPE::ZONEMD.name(),
-                               QTYPE::ZONEMD.code())
+                QRRTYPEInfo::new(QRRTYPE::ZONEMD.name(),
+                                 QRRTYPE::ZONEMD.code())
             ),
             64 => Ok(
-                QTYPEInfo::new(QTYPE::SVCB.name(),
-                               QTYPE::SVCB.code())
+                QRRTYPEInfo::new(QRRTYPE::SVCB.name(),
+                                 QRRTYPE::SVCB.code())
             ),
             65 => Ok(
-                QTYPEInfo::new(QTYPE::HTTPS.name(),
-                               QTYPE::HTTPS.code())
+                QRRTYPEInfo::new(QRRTYPE::HTTPS.name(),
+                                 QRRTYPE::HTTPS.code())
             ),
             66..=98 => Ok(
-                QTYPEInfo::new(UNASSIGNED,
-                               *decimal)
+                QRRTYPEInfo::new(UNASSIGNED,
+                                 *decimal)
             ),
             99 => Ok(
-                QTYPEInfo::new(QTYPE::SPF.name(),
-                               QTYPE::SPF.code())
+                QRRTYPEInfo::new(QRRTYPE::SPF.name(),
+                                 QRRTYPE::SPF.code())
             ),
             100 => Ok(
-                QTYPEInfo::new(QTYPE::UINFO.name(),
-                               QTYPE::UINFO.code())
+                QRRTYPEInfo::new(QRRTYPE::UINFO.name(),
+                                 QRRTYPE::UINFO.code())
             ),
             101 => Ok(
-                QTYPEInfo::new(QTYPE::UID.name(),
-                               QTYPE::UID.code())
+                QRRTYPEInfo::new(QRRTYPE::UID.name(),
+                                 QRRTYPE::UID.code())
             ),
             102 => Ok(
-                QTYPEInfo::new(QTYPE::GID.name(),
-                               QTYPE::GID.code())
+                QRRTYPEInfo::new(QRRTYPE::GID.name(),
+                                 QRRTYPE::GID.code())
             ),
             103 => Ok(
-                QTYPEInfo::new(QTYPE::UNSPEC.name(),
-                               QTYPE::UNSPEC.code())
+                QRRTYPEInfo::new(QRRTYPE::UNSPEC.name(),
+                                 QRRTYPE::UNSPEC.code())
             ),
             104 => Ok(
-                QTYPEInfo::new(QTYPE::NID.name(),
-                               QTYPE::NID.code())
+                QRRTYPEInfo::new(QRRTYPE::NID.name(),
+                                 QRRTYPE::NID.code())
             ),
             105 => Ok(
-                QTYPEInfo::new(QTYPE::L32.name(),
-                               QTYPE::L32.code())
+                QRRTYPEInfo::new(QRRTYPE::L32.name(),
+                                 QRRTYPE::L32.code())
             ),
             106 => Ok(
-                QTYPEInfo::new(QTYPE::L64.name(),
-                               QTYPE::L64.code())
+                QRRTYPEInfo::new(QRRTYPE::L64.name(),
+                                 QRRTYPE::L64.code())
             ),
             107 => Ok(
-                QTYPEInfo::new(QTYPE::LP.name(),
-                               QTYPE::LP.code())
+                QRRTYPEInfo::new(QRRTYPE::LP.name(),
+                                 QRRTYPE::LP.code())
             ),
             108 => Ok(
-                QTYPEInfo::new(QTYPE::EUI48.name(),
-                               QTYPE::EUI48.code())
+                QRRTYPEInfo::new(QRRTYPE::EUI48.name(),
+                                 QRRTYPE::EUI48.code())
             ),
             109 => Ok(
-                QTYPEInfo::new(QTYPE::EUI64.name(),
-                               QTYPE::EUI64.code())
+                QRRTYPEInfo::new(QRRTYPE::EUI64.name(),
+                                 QRRTYPE::EUI64.code())
             ),
             110..=248 => Ok(
-                QTYPEInfo::new(UNASSIGNED,
-                               *decimal)
+                QRRTYPEInfo::new(UNASSIGNED,
+                                 *decimal)
             ),
             249 => Ok(
-                QTYPEInfo::new(QTYPE::TKEY.name(),
-                               QTYPE::TKEY.code())
+                QRRTYPEInfo::new(QRRTYPE::TKEY.name(),
+                                 QRRTYPE::TKEY.code())
             ),
             250 => Ok(
-                QTYPEInfo::new(QTYPE::TSIG.name(),
-                               QTYPE::TSIG.code())
+                QRRTYPEInfo::new(QRRTYPE::TSIG.name(),
+                                 QRRTYPE::TSIG.code())
             ),
             251 => Ok(
-                QTYPEInfo::new(QTYPE::IXFR.name(),
-                               QTYPE::IXFR.code())
+                QRRTYPEInfo::new(QRRTYPE::IXFR.name(),
+                                 QRRTYPE::IXFR.code())
             ),
             252 => Ok(
-                QTYPEInfo::new(QTYPE::AXFR.name(),
-                               QTYPE::AXFR.code())
+                QRRTYPEInfo::new(QRRTYPE::AXFR.name(),
+                                 QRRTYPE::AXFR.code())
             ),
             253 => Ok(
-                QTYPEInfo::new(QTYPE::MAILB.name(),
-                               QTYPE::MAILB.code())
+                QRRTYPEInfo::new(QRRTYPE::MAILB.name(),
+                                 QRRTYPE::MAILB.code())
             ),
             254 => Ok(
-                QTYPEInfo::new(QTYPE::MAILA.name(),
-                               QTYPE::MAILA.code())
+                QRRTYPEInfo::new(QRRTYPE::MAILA.name(),
+                                 QRRTYPE::MAILA.code())
             ),
             255 => Ok(
-                QTYPEInfo::new(QTYPE::ANY.name(),
-                               QTYPE::ANY.code())
+                QRRTYPEInfo::new(QRRTYPE::ANY.name(),
+                                 QRRTYPE::ANY.code())
             ),
             256 => Ok(
-                QTYPEInfo::new(QTYPE::URI.name(),
-                               QTYPE::URI.code())
+                QRRTYPEInfo::new(QRRTYPE::URI.name(),
+                                 QRRTYPE::URI.code())
             ),
             257 => Ok(
-                QTYPEInfo::new(QTYPE::CAA.name(),
-                               QTYPE::CAA.code())
+                QRRTYPEInfo::new(QRRTYPE::CAA.name(),
+                                 QRRTYPE::CAA.code())
             ),
             258 => Ok(
-                QTYPEInfo::new(QTYPE::AVC.name(),
-                               QTYPE::AVC.code())
+                QRRTYPEInfo::new(QRRTYPE::AVC.name(),
+                                 QRRTYPE::AVC.code())
             ),
             259 => Ok(
-                QTYPEInfo::new(QTYPE::DOA.name(),
-                               QTYPE::DOA.code())
+                QRRTYPEInfo::new(QRRTYPE::DOA.name(),
+                                 QRRTYPE::DOA.code())
             ),
             260 => Ok(
-                QTYPEInfo::new(QTYPE::AMTRELAY.name(),
-                               QTYPE::AMTRELAY.code())
+                QRRTYPEInfo::new(QRRTYPE::AMTRELAY.name(),
+                                 QRRTYPE::AMTRELAY.code())
             ),
             261..=32767 => Ok(
-                QTYPEInfo::new(UNASSIGNED,
-                               *decimal)
+                QRRTYPEInfo::new(UNASSIGNED,
+                                 *decimal)
             ),
             32768 => Ok(
-                QTYPEInfo::new(QTYPE::TA.name(),
-                               QTYPE::TA.code())
+                QRRTYPEInfo::new(QRRTYPE::TA.name(),
+                                 QRRTYPE::TA.code())
             ),
             32769 => Ok(
-                QTYPEInfo::new(QTYPE::DLV.name(),
-                               QTYPE::DLV.code())
+                QRRTYPEInfo::new(QRRTYPE::DLV.name(),
+                                 QRRTYPE::DLV.code())
             ),
             37770..=65279 => Ok(
-                QTYPEInfo::new(UNASSIGNED,
-                               *decimal)
+                QRRTYPEInfo::new(UNASSIGNED,
+                                 *decimal)
             ),
             65280..=65534 => Ok(
-                QTYPEInfo::new(PRIVATE_USE,
-                               *decimal)
+                QRRTYPEInfo::new(PRIVATE_USE,
+                                 *decimal)
             ),
             65535 => Ok(
-                QTYPEInfo::new(REVERSED,
-                               *decimal)
+                QRRTYPEInfo::new(REVERSED,
+                                 *decimal)
             ),
             _ => Err(String::from("Can't decode QTYPE!"))
         }
