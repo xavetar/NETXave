@@ -34,10 +34,12 @@ impl U3 {
     }
 
     fn set(&mut self, value: u8) {
-        if value > 0 {
+        if value > 0 && value <= 7 {
             self.0 |= 0b00000111;
         } else if value == 0 {
             self.0 &= 0b11111000;
+        } else {
+            panic!("The value cannot be greater than 3 bits.")
         }
     }
 
@@ -54,9 +56,6 @@ mod tests {
     fn u3_test() {
         let mut u3 = U3::new(1);
 
-        println!("u1 value: {}", u3.get());
-
-        u3.set(9);
         println!("u1 value: {}", u3.get());
 
         u3.set(7);

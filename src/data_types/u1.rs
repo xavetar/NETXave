@@ -34,10 +34,12 @@ impl U1 {
     }
 
     fn set(&mut self, value: u8) {
-        if value > 0 {
+        if value > 0 && value <= 1 {
             self.0 |= 0b00000001;
         } else if value == 0 {
             self.0 &= 0b11111110;
+        } else {
+            panic!("The value cannot be greater than 1 bits.")
         }
     }
 

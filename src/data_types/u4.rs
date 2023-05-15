@@ -34,10 +34,12 @@ impl U4 {
     }
 
     fn set(&mut self, value: u8) {
-        if value > 0 {
+        if value > 0 && value <= 15 {
             self.0 |= 0b00001111;
         } else if value == 0 {
             self.0 &= 0b11110000;
+        } else {
+            panic!("The value cannot be greater than 4 bits.")
         }
     }
 
@@ -54,9 +56,6 @@ mod tests {
     fn u4_test() {
         let mut u4 = U4::new(1);
 
-        println!("u1 value: {}", u4.get());
-
-        u4.set(16);
         println!("u1 value: {}", u4.get());
 
         u4.set(15);

@@ -34,10 +34,12 @@ impl U5 {
     }
 
     fn set(&mut self, value: u8) {
-        if value > 0 {
+        if value > 0 && value <= 31 {
             self.0 |= 0b00011111;
         } else if value == 0 {
             self.0 &= 0b11100000;
+        } else {
+            panic!("The value cannot be greater than 5 bits.")
         }
     }
 
@@ -54,9 +56,6 @@ mod tests {
     fn u5_test() {
         let mut u5 = U5::new(1);
 
-        println!("u1 value: {}", u5.get());
-
-        u5.set(32);
         println!("u1 value: {}", u5.get());
 
         u5.set(31);

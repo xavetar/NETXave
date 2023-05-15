@@ -34,10 +34,12 @@ impl U7 {
     }
 
     fn set(&mut self, value: u8) {
-        if value > 0 {
+        if value > 0 && value <= 127 {
             self.0 |= 0b01111111;
         } else if value == 0 {
             self.0 &= 0b10000000;
+        } else {
+            panic!("The value cannot be greater than 7 bits.")
         }
     }
 
@@ -54,9 +56,6 @@ mod tests {
     fn u7_test() {
         let mut u7 = U7::new(1);
 
-        println!("u1 value: {}", u7.get());
-
-        u7.set(128);
         println!("u1 value: {}", u7.get());
 
         u7.set(127);

@@ -34,10 +34,12 @@ impl U6 {
     }
 
     fn set(&mut self, value: u8) {
-        if value > 0 {
+        if value > 0 && value <= 63 {
             self.0 |= 0b00111111;
         } else if value == 0 {
             self.0 &= 0b11000000;
+        } else {
+            panic!("The value cannot be greater than 6 bits.")
         }
     }
 
@@ -54,9 +56,6 @@ mod tests {
     fn u6_test() {
         let mut u6 = U6::new(1);
 
-        println!("u1 value: {}", u6.get());
-
-        u6.set(64);
         println!("u1 value: {}", u6.get());
 
         u6.set(63);
