@@ -44,10 +44,10 @@ impl OPCODEInfo {
     }
 
     pub fn opcode(&self) -> &u16 {
-        return &self.code;
+        return &self.opcode;
     }
 
     pub fn hex(&self) -> String {
-        return format!("{:02x}", &self.code);
+        return format!("{:02x}", &self.opcode);
     }
 }

@@ -35,4 +35,4 @@ pub(self) use constants::{UNASSIGNED};
 
 pub use opcodes::{OPCODES};
 pub use opcode_info::{OPCODEInfo};
-pub use opcodes::{OPCODEConversion};
+pub use conversion::{OPCODEConversion};
