@@ -30,6 +30,14 @@ use crate::data_types::{U1, U3, U4};
 use crate::protocols::dns::client::types::dns::{HeaderSection, Flags, Z};
 use crate::protocols::dns::client::types::dns::{QuestionSection};
 
+use crate::protocols::dns::client::types::dns::hqr::{QR};
+use crate::protocols::dns::client::types::dns::haa::{AA};
+use crate::protocols::dns::client::types::dns::htc::{TC};
+use crate::protocols::dns::client::types::dns::hrd::{RD};
+use crate::protocols::dns::client::types::dns::hra::{RA};
+use crate::protocols::dns::client::types::dns::hznone::{None};
+use crate::protocols::dns::client::types::dns::hzad::{AD};
+use crate::protocols::dns::client::types::dns::hzcd::{CD};
 use crate::protocols::dns::client::types::dns::hopcodes::{OPCODES};
 use crate::protocols::dns::client::types::dns::hrcodes::{RCODES};
 use crate::protocols::dns::client::types::dns::qrrtype::{QRRTYPE};
@@ -72,13 +80,20 @@ fn domain_to_qname(domain: &str) -> Result<Vec<u8>, String> {
 pub fn get_query(domain: &str) -> String {
     /// Header
     let mut z = Z::new(
-        U1::new(0),U1::new(0),U1::new(0)
+        None::None.code(),
+        AD::NonAuthentic.code(),
+        CD::NotDisabled.code()
     );
 
     let mut flags = Flags::new(
-        U1::new(0), U4::new(OPCODES::Query.opcode() as u8),
-        U1::new(0), U1::new(0), U1::new(1), U1::new(1),
-        z, U4::new(RCODES::NoError.rcode() as u8)
+        QR::Query.code(),
+        U4::new(OPCODES::Query.opcode() as u8),
+        AA::NonAuthoritativeAnswer.code(),
+        TC::NonTruncated.code(),
+        RD::Recursive.code(),
+        RA::Available.code(),
+        z,
+        U4::new(RCODES::NoError.rcode() as u8)
     );
 
     let mut header = HeaderSection::new(

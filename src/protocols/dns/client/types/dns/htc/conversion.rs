@@ -26,23 +26,41 @@
  * THE SOFTWARE.
  */
 
-mod header_section;
-mod question_section;
+use super::{TC};
+use super::{TCInfo};
 
-pub mod hqr;
-pub mod hopcodes;
-pub mod haa;
-pub mod htc;
-pub mod hrd;
-pub mod hra;
-pub mod hznone;
-pub mod hzad;
-pub mod hzcd;
-pub mod hrcodes;
 
-pub mod qrrclass;
-pub mod qrrtype;
-pub mod rdata;
+pub trait TCConversion {
+    fn encode(name: &str) -> Result<TCInfo, String>;
+    fn decode(dec: &u8) -> Result<TCInfo, String>;
+}
 
-pub use header_section::{HeaderSection, Flags, Z};
-pub use question_section::{QuestionSection};
+impl TCConversion for TC {
+    fn encode(name: &str) -> Result<TCInfo, String> {
+        return match name {
+            "Non-Truncated" => Ok(
+                TCInfo::new(TC::NonTruncated.name(),
+                            TC::NonTruncated.code())
+            ),
+            "Truncated" => Ok(
+                TCInfo::new(TC::Truncated.name(),
+                            TC::Truncated.code())
+            ),
+            _ => Err(String::from("Can't encode TC!"))
+        }
+    }
+
+    fn decode(decimal: &u8) -> Result<TCInfo, String> {
+        return match *decimal {
+            0 => Ok(
+                TCInfo::new(TC::NonTruncated.name(),
+                            TC::NonTruncated.code())
+            ),
+            1 => Ok(
+                TCInfo::new(TC::Truncated.name(),
+                            TC::Truncated.code())
+            ),
+            _ => Err(String::from("Can't decode TC!"))
+        }
+    }
+}

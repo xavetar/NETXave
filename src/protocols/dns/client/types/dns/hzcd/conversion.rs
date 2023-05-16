@@ -26,23 +26,41 @@
  * THE SOFTWARE.
  */
 
-mod header_section;
-mod question_section;
+use super::{CD};
+use super::{CDInfo};
 
-pub mod hqr;
-pub mod hopcodes;
-pub mod haa;
-pub mod htc;
-pub mod hrd;
-pub mod hra;
-pub mod hznone;
-pub mod hzad;
-pub mod hzcd;
-pub mod hrcodes;
 
-pub mod qrrclass;
-pub mod qrrtype;
-pub mod rdata;
+pub trait CDConversion {
+    fn encode(name: &str) -> Result<CDInfo, String>;
+    fn decode(dec: &u8) -> Result<CDInfo, String>;
+}
 
-pub use header_section::{HeaderSection, Flags, Z};
-pub use question_section::{QuestionSection};
+impl CDConversion for CD {
+    fn encode(name: &str) -> Result<CDInfo, String> {
+        return match name {
+            "Not-Disabled" => Ok(
+                CDInfo::new(CD::NotDisabled.name(),
+                            CD::NotDisabled.code())
+            ),
+            "Disabled" => Ok(
+                CDInfo::new(CD::Disabled.name(),
+                            CD::Disabled.code())
+            ),
+            _ => Err(String::from("Can't encode CD!"))
+        }
+    }
+
+    fn decode(decimal: &u8) -> Result<CDInfo, String> {
+        return match *decimal {
+            0 => Ok(
+                CDInfo::new(CD::NotDisabled.name(),
+                            CD::NotDisabled.code())
+            ),
+            1 => Ok(
+                CDInfo::new(CD::Disabled.name(),
+                            CD::Disabled.code())
+            ),
+            _ => Err(String::from("Can't decode CD!"))
+        }
+    }
+}

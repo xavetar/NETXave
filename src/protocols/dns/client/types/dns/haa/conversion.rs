@@ -26,23 +26,41 @@
  * THE SOFTWARE.
  */
 
-mod header_section;
-mod question_section;
+use super::{AA};
+use super::{AAInfo};
 
-pub mod hqr;
-pub mod hopcodes;
-pub mod haa;
-pub mod htc;
-pub mod hrd;
-pub mod hra;
-pub mod hznone;
-pub mod hzad;
-pub mod hzcd;
-pub mod hrcodes;
 
-pub mod qrrclass;
-pub mod qrrtype;
-pub mod rdata;
+pub trait AAConversion {
+    fn encode(name: &str) -> Result<AAInfo, String>;
+    fn decode(dec: &u8) -> Result<AAInfo, String>;
+}
 
-pub use header_section::{HeaderSection, Flags, Z};
-pub use question_section::{QuestionSection};
+impl AAConversion for AA {
+    fn encode(name: &str) -> Result<AAInfo, String> {
+        return match name {
+            "Non-Authoritative Answer" => Ok(
+                AAInfo::new(AA::NonAuthoritativeAnswer.name(),
+                            AA::NonAuthoritativeAnswer.code())
+            ),
+            "Authoritative Answer" => Ok(
+                AAInfo::new(AA::AuthoritativeAnswer.name(),
+                            AA::AuthoritativeAnswer.code())
+            ),
+            _ => Err(String::from("Can't encode AA!"))
+        }
+    }
+
+    fn decode(decimal: &u8) -> Result<AAInfo, String> {
+        return match *decimal {
+            0 => Ok(
+                AAInfo::new(AA::NonAuthoritativeAnswer.name(),
+                            AA::NonAuthoritativeAnswer.code())
+            ),
+            1 => Ok(
+                AAInfo::new(AA::AuthoritativeAnswer.name(),
+                            AA::AuthoritativeAnswer.code())
+            ),
+            _ => Err(String::from("Can't decode AA!"))
+        }
+    }
+}

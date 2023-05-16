@@ -26,23 +26,41 @@
  * THE SOFTWARE.
  */
 
-mod header_section;
-mod question_section;
+use super::{RA};
+use super::{RAInfo};
 
-pub mod hqr;
-pub mod hopcodes;
-pub mod haa;
-pub mod htc;
-pub mod hrd;
-pub mod hra;
-pub mod hznone;
-pub mod hzad;
-pub mod hzcd;
-pub mod hrcodes;
 
-pub mod qrrclass;
-pub mod qrrtype;
-pub mod rdata;
+pub trait RAConversion {
+    fn encode(name: &str) -> Result<RAInfo, String>;
+    fn decode(dec: &u8) -> Result<RAInfo, String>;
+}
 
-pub use header_section::{HeaderSection, Flags, Z};
-pub use question_section::{QuestionSection};
+impl RAConversion for RA {
+    fn encode(name: &str) -> Result<RAInfo, String> {
+        return match name {
+            "Non-Available" => Ok(
+                RAInfo::new(RA::NonAvailable.name(),
+                            RA::NonAvailable.code())
+            ),
+            "Available" => Ok(
+                RAInfo::new(RA::Available.name(),
+                            RA::Available.code())
+            ),
+            _ => Err(String::from("Can't encode RA!"))
+        }
+    }
+
+    fn decode(decimal: &u8) -> Result<RAInfo, String> {
+        return match *decimal {
+            0 => Ok(
+                RAInfo::new(RA::NonAvailable.name(),
+                            RA::NonAvailable.code())
+            ),
+            1 => Ok(
+                RAInfo::new(RA::Available.name(),
+                            RA::Available.code())
+            ),
+            _ => Err(String::from("Can't decode RA!"))
+        }
+    }
+}

@@ -26,23 +26,32 @@
  * THE SOFTWARE.
  */
 
-mod header_section;
-mod question_section;
+use super::{None};
+use super::{NoneInfo};
 
-pub mod hqr;
-pub mod hopcodes;
-pub mod haa;
-pub mod htc;
-pub mod hrd;
-pub mod hra;
-pub mod hznone;
-pub mod hzad;
-pub mod hzcd;
-pub mod hrcodes;
+pub trait NoneConversion {
+    fn encode(name: &str) -> Result<NoneInfo, String>;
+    fn decode(dec: &u8) -> Result<NoneInfo, String>;
+}
 
-pub mod qrrclass;
-pub mod qrrtype;
-pub mod rdata;
+impl NoneConversion for None {
+    fn encode(name: &str) -> Result<NoneInfo, String> {
+        return match name {
+            "None" => Ok(
+                NoneInfo::new(None::None.name(),
+                            None::None.code())
+            ),
+            _ => Err(String::from("Can't encode None!"))
+        }
+    }
 
-pub use header_section::{HeaderSection, Flags, Z};
-pub use question_section::{QuestionSection};
+    fn decode(decimal: &u8) -> Result<NoneInfo, String> {
+        return match *decimal {
+            0 => Ok(
+                NoneInfo::new(None::None.name(),
+                            None::None.code())
+            ),
+            _ => Err(String::from("Can't decode None!"))
+        }
+    }
+}

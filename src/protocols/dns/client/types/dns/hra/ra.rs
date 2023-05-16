@@ -26,23 +26,25 @@
  * THE SOFTWARE.
  */
 
-mod header_section;
-mod question_section;
+use crate::data_types::{U1};
 
-pub mod hqr;
-pub mod hopcodes;
-pub mod haa;
-pub mod htc;
-pub mod hrd;
-pub mod hra;
-pub mod hznone;
-pub mod hzad;
-pub mod hzcd;
-pub mod hrcodes;
+pub enum RA {
+    NonAvailable = 0,
+    Available = 1
+}
 
-pub mod qrrclass;
-pub mod qrrtype;
-pub mod rdata;
+impl RA {
+    pub fn code(&self) -> U1 {
+        return match self {
+            RA::NonAvailable => U1::new(RA::NonAvailable as u8),
+            RA::Available => U1::new(RA::Available as u8),
+        }
+    }
 
-pub use header_section::{HeaderSection, Flags, Z};
-pub use question_section::{QuestionSection};
+    pub fn name(&self) -> &'static str {
+        return match self {
+            RA::NonAvailable => "Non-Available",
+            RA::Available => "Available",
+        }
+    }
+}

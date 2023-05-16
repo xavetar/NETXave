@@ -26,23 +26,41 @@
  * THE SOFTWARE.
  */
 
-mod header_section;
-mod question_section;
+use super::{QR};
+use super::{QRInfo};
 
-pub mod hqr;
-pub mod hopcodes;
-pub mod haa;
-pub mod htc;
-pub mod hrd;
-pub mod hra;
-pub mod hznone;
-pub mod hzad;
-pub mod hzcd;
-pub mod hrcodes;
 
-pub mod qrrclass;
-pub mod qrrtype;
-pub mod rdata;
+pub trait QRConversion {
+    fn encode(name: &str) -> Result<QRInfo, String>;
+    fn decode(dec: &u8) -> Result<QRInfo, String>;
+}
 
-pub use header_section::{HeaderSection, Flags, Z};
-pub use question_section::{QuestionSection};
+impl QRConversion for QR {
+    fn encode(name: &str) -> Result<QRInfo, String> {
+        return match name {
+            "Query" => Ok(
+                QRInfo::new(QR::Query.name(),
+                            QR::Query.code())
+            ),
+            "Response" => Ok(
+                QRInfo::new(QR::Response.name(),
+                            QR::Response.code())
+            ),
+            _ => Err(String::from("Can't encode QR!"))
+        }
+    }
+
+    fn decode(decimal: &u8) -> Result<QRInfo, String> {
+        return match *decimal {
+            0 => Ok(
+                QRInfo::new(QR::Query.name(),
+                            QR::Query.code())
+            ),
+            1 => Ok(
+                QRInfo::new(QR::Response.name(),
+                            QR::Response.code())
+            ),
+            _ => Err(String::from("Can't decode QR!"))
+        }
+    }
+}

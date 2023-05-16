@@ -26,23 +26,41 @@
  * THE SOFTWARE.
  */
 
-mod header_section;
-mod question_section;
+use super::{RD};
+use super::{RDInfo};
 
-pub mod hqr;
-pub mod hopcodes;
-pub mod haa;
-pub mod htc;
-pub mod hrd;
-pub mod hra;
-pub mod hznone;
-pub mod hzad;
-pub mod hzcd;
-pub mod hrcodes;
 
-pub mod qrrclass;
-pub mod qrrtype;
-pub mod rdata;
+pub trait RDConversion {
+    fn encode(name: &str) -> Result<RDInfo, String>;
+    fn decode(dec: &u8) -> Result<RDInfo, String>;
+}
 
-pub use header_section::{HeaderSection, Flags, Z};
-pub use question_section::{QuestionSection};
+impl RDConversion for RD {
+    fn encode(name: &str) -> Result<RDInfo, String> {
+        return match name {
+            "Non-Recursive" => Ok(
+                RDInfo::new(RD::NonRecursive.name(),
+                            RD::NonRecursive.code())
+            ),
+            "Recursive" => Ok(
+                RDInfo::new(RD::Recursive.name(),
+                            RD::Recursive.code())
+            ),
+            _ => Err(String::from("Can't encode RD!"))
+        }
+    }
+
+    fn decode(decimal: &u8) -> Result<RDInfo, String> {
+        return match *decimal {
+            0 => Ok(
+                RDInfo::new(RD::NonRecursive.name(),
+                            RD::NonRecursive.code())
+            ),
+            1 => Ok(
+                RDInfo::new(RD::Recursive.name(),
+                            RD::Recursive.code())
+            ),
+            _ => Err(String::from("Can't decode RD!"))
+        }
+    }
+}

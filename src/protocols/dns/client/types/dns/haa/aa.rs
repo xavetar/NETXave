@@ -26,23 +26,25 @@
  * THE SOFTWARE.
  */
 
-mod header_section;
-mod question_section;
+use crate::data_types::{U1};
 
-pub mod hqr;
-pub mod hopcodes;
-pub mod haa;
-pub mod htc;
-pub mod hrd;
-pub mod hra;
-pub mod hznone;
-pub mod hzad;
-pub mod hzcd;
-pub mod hrcodes;
+pub enum AA {
+    NonAuthoritativeAnswer = 0,
+    AuthoritativeAnswer = 1
+}
 
-pub mod qrrclass;
-pub mod qrrtype;
-pub mod rdata;
+impl AA {
+    pub fn code(&self) -> U1 {
+        return match self {
+            AA::NonAuthoritativeAnswer => U1::new(AA::NonAuthoritativeAnswer as u8),
+            AA::AuthoritativeAnswer => U1::new(AA::AuthoritativeAnswer as u8),
+        }
+    }
 
-pub use header_section::{HeaderSection, Flags, Z};
-pub use question_section::{QuestionSection};
+    pub fn name(&self) -> &'static str {
+        return match self {
+            AA::NonAuthoritativeAnswer => "Non-Authoritative Answer",
+            AA::AuthoritativeAnswer => "Authoritative Answer",
+        }
+    }
+}

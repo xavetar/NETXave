@@ -30,7 +30,7 @@
 pub struct U3(u8);
 
 impl U3 {
-    pub fn new(value: u8) -> Self {
+    pub fn new(value: u8) -> U3 {
         U3(value & 0b00000111)
     }
 

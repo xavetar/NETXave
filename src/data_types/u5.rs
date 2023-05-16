@@ -30,7 +30,7 @@
 pub struct U5(u8);
 
 impl U5 {
-    pub fn new(value: u8) -> Self {
+    pub fn new(value: u8) -> U5 {
         U5(value & 0b00011111)
     }
 

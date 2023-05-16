@@ -26,23 +26,22 @@
  * THE SOFTWARE.
  */
 
-mod header_section;
-mod question_section;
+use crate::data_types::{U1};
 
-pub mod hqr;
-pub mod hopcodes;
-pub mod haa;
-pub mod htc;
-pub mod hrd;
-pub mod hra;
-pub mod hznone;
-pub mod hzad;
-pub mod hzcd;
-pub mod hrcodes;
+pub enum None {
+    None = 0
+}
 
-pub mod qrrclass;
-pub mod qrrtype;
-pub mod rdata;
+impl None {
+    pub fn code(&self) -> U1 {
+        return match self {
+            None::None => U1::new(None::None as u8),
+        }
+    }
 
-pub use header_section::{HeaderSection, Flags, Z};
-pub use question_section::{QuestionSection};
+    pub fn name(&self) -> &'static str {
+        return match self {
+            None::None => "None",
+        }
+    }
+}

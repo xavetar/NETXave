@@ -26,23 +26,10 @@
  * THE SOFTWARE.
  */
 
-mod header_section;
-mod question_section;
+mod conversion;
+mod tc;
+mod tc_info;
 
-pub mod hqr;
-pub mod hopcodes;
-pub mod haa;
-pub mod htc;
-pub mod hrd;
-pub mod hra;
-pub mod hznone;
-pub mod hzad;
-pub mod hzcd;
-pub mod hrcodes;
-
-pub mod qrrclass;
-pub mod qrrtype;
-pub mod rdata;
-
-pub use header_section::{HeaderSection, Flags, Z};
-pub use question_section::{QuestionSection};
+pub use tc::{TC};
+pub use tc_info::{TCInfo};
+pub use conversion::{TCConversion};

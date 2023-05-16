@@ -26,23 +26,41 @@
  * THE SOFTWARE.
  */
 
-mod header_section;
-mod question_section;
+use super::{AD};
+use super::{ADInfo};
 
-pub mod hqr;
-pub mod hopcodes;
-pub mod haa;
-pub mod htc;
-pub mod hrd;
-pub mod hra;
-pub mod hznone;
-pub mod hzad;
-pub mod hzcd;
-pub mod hrcodes;
 
-pub mod qrrclass;
-pub mod qrrtype;
-pub mod rdata;
+pub trait ADConversion {
+    fn encode(name: &str) -> Result<ADInfo, String>;
+    fn decode(dec: &u8) -> Result<ADInfo, String>;
+}
 
-pub use header_section::{HeaderSection, Flags, Z};
-pub use question_section::{QuestionSection};
+impl ADConversion for AD {
+    fn encode(name: &str) -> Result<ADInfo, String> {
+        return match name {
+            "Non-Authentic" => Ok(
+                ADInfo::new(AD::NonAuthentic.name(),
+                            AD::NonAuthentic.code())
+            ),
+            "Authentic" => Ok(
+                ADInfo::new(AD::Authentic.name(),
+                            AD::Authentic.code())
+            ),
+            _ => Err(String::from("Can't encode AD!"))
+        }
+    }
+
+    fn decode(decimal: &u8) -> Result<ADInfo, String> {
+        return match *decimal {
+            0 => Ok(
+                ADInfo::new(AD::NonAuthentic.name(),
+                            AD::NonAuthentic.code())
+            ),
+            1 => Ok(
+                ADInfo::new(AD::Authentic.name(),
+                            AD::Authentic.code())
+            ),
+            _ => Err(String::from("Can't decode AD!"))
+        }
+    }
+}

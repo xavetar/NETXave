@@ -26,23 +26,30 @@
  * THE SOFTWARE.
  */
 
-mod header_section;
-mod question_section;
+use crate::data_types::{U1};
 
-pub mod hqr;
-pub mod hopcodes;
-pub mod haa;
-pub mod htc;
-pub mod hrd;
-pub mod hra;
-pub mod hznone;
-pub mod hzad;
-pub mod hzcd;
-pub mod hrcodes;
+pub struct CDInfo {
+    name: &'static str,
+    code: U1
+}
 
-pub mod qrrclass;
-pub mod qrrtype;
-pub mod rdata;
+impl CDInfo {
+    pub fn new(name: &'static str, code: U1) -> CDInfo {
+        return CDInfo {
+            name: name,
+            code: code
+        }
+    }
 
-pub use header_section::{HeaderSection, Flags, Z};
-pub use question_section::{QuestionSection};
+    pub fn name(&self) -> &'static str {
+        return &self.name;
+    }
+
+    pub fn code(&self) -> &U1 {
+        return &self.code;
+    }
+
+    pub fn hex(&self) -> String {
+        return format!("{:02x}", &self.code.get());
+    }
+}
