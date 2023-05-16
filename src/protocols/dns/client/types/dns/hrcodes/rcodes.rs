@@ -71,7 +71,7 @@ impl RCODES {
             RCODES::DSOTYPENI => RCODES::DSOTYPENI as u16,
             RCODES::BADVERS_BADSIG => {
                 eprintln!("{BAD_VERS_BAD_SIG_W}");
-                return 9 as u16;
+                return RCODES::BADVERS_BADSIG as u16;
             },
             RCODES::BADKEY => RCODES::BADKEY as u16,
             RCODES::BADTIME => RCODES::BADTIME as u16,
