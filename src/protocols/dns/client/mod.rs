@@ -26,5 +26,6 @@
  * THE SOFTWARE.
  */
 
+pub mod wire;
 pub mod types;
 pub mod connection;

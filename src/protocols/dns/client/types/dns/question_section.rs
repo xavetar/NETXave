@@ -26,31 +26,41 @@
  * THE SOFTWARE.
  */
 
-use crate::data_types::{U1, U3, U4};
-
-struct DNSHeaderSection {
-    id: u16,
-    qr: U1,
-    opcode: U4,
-    aa: U1,
-    tc: U1,
-    rd: U1,
-    ra: U1,
-    z: U3,
-    rcode: U4,
-    qdcount: u16,
-    ancount: u16,
-    nscount: u16,
-    arcount: u16
+#[derive(Debug)]
+pub struct QuestionSection {
+    QNAME: Vec<u8>,
+    QTYPE: u16,
+    QCLASS: u16
 }
 
-struct DNSQuerySection {
-    qname: String,
-    qtype: u16,
-    qclass: u16
+impl Default for QuestionSection {
+    fn default() -> QuestionSection {
+        QuestionSection {
+            QNAME: Vec::<u8>::from(""),
+            QTYPE: 0 as u16,
+            QCLASS: 0 as u16
+        }
+    }
 }
 
-struct DNSQueryMessage {
-    header: DNSHeaderSection,
-    query: DNSQuerySection
+impl QuestionSection {
+    pub fn new(domain: Vec<u8>, qtype: u16, qclass: u16) -> QuestionSection {
+        QuestionSection {
+            QNAME: domain,
+            QTYPE: qtype,
+            QCLASS: qclass
+        }
+    }
+
+    pub fn get_qname(&self) -> &Vec<u8> {
+        return &self.QNAME;
+    }
+
+    pub fn get_qtype(&self) -> &u16 {
+        return &self.QTYPE;
+    }
+
+    pub fn get_qclass(&self) -> &u16 {
+        return &self.QCLASS;
+    }
 }

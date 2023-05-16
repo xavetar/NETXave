@@ -26,43 +26,26 @@
  * THE SOFTWARE.
  */
 
+use crate::data_types::{U1, U3, U4};
+use crate::protocols::dns::client::types::dns::{HeaderSection, Flags, Z};
+use crate::protocols::dns::client::types::dns::{QuestionSection};
+
+use crate::protocols::dns::client::types::dns::hopcodes::{OPCODES};
+use crate::protocols::dns::client::types::dns::hrcodes::{RCODES};
+use crate::protocols::dns::client::types::dns::qrrtype::{QRRTYPE};
+use crate::protocols::dns::client::types::dns::qrrclass::{QRRCLASS};
+
 #[derive(Debug)]
-pub struct U4(u8);
-
-impl U4 {
-    pub fn new(value: u8) -> Self {
-        U4(value & 0b00001111)
-    }
-
-    fn set(&mut self, value: u8) {
-        if value > 0 && value <= 15 {
-            self.0 |= 0b00001111;
-        } else if value == 0 {
-            self.0 &= 0b11110000;
-        } else {
-            panic!("The value cannot be greater than 4 bits.")
-        }
-    }
-
-    pub fn get(&self) -> u8 {
-        return self.0
-    }
+pub struct DNSMessage {
+    header: HeaderSection,
+    question: QuestionSection
 }
 
-#[cfg(test)]
-mod tests {
-    use super::U4;
-
-    #[test]
-    fn u4_test() {
-        let mut u4 = U4::new(1);
-
-        println!("u1 value: {}", u4.get());
-
-        u4.set(15);
-        println!("u1 value: {}", u4.get());
-
-        u4.set(0);
-        println!("u1 value: {}", u4.get());
+impl DNSMessage {
+    pub fn new(header: HeaderSection, question: QuestionSection) -> DNSMessage {
+        DNSMessage {
+            header: header,
+            question: question
+        }
     }
 }

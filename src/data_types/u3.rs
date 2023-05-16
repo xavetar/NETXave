@@ -26,10 +26,11 @@
  * THE SOFTWARE.
  */
 
+#[derive(Debug)]
 pub struct U3(u8);
 
 impl U3 {
-    fn new(value: u8) -> Self {
+    pub fn new(value: u8) -> Self {
         U3(value & 0b00000111)
     }
 
@@ -43,7 +44,7 @@ impl U3 {
         }
     }
 
-    fn get(&self) -> u8 {
+    pub fn get(&self) -> u8 {
         return self.0
     }
 }

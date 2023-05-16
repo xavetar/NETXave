@@ -27,5 +27,4 @@
  */
 
 pub mod reader;
-pub mod rdata;
 pub mod generator;

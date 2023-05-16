@@ -26,9 +26,14 @@
  * THE SOFTWARE.
  */
 
+mod header_section;
+mod question_section;
+
 pub mod hopcodes;
 pub mod hrcodes;
 pub mod qrrclass;
 pub mod qrrtype;
-pub mod answer;
-pub mod message;
+pub mod rdata;
+
+pub use header_section::{HeaderSection, Flags, Z};
+pub use question_section::{QuestionSection};
