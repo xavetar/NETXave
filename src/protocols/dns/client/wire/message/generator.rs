@@ -49,3 +49,97 @@ impl DNSMessage {
         }
     }
 }
+
+fn domain_to_qname(domain: &str) -> Result<Vec<u8>, String> {
+    if domain.len() <= 255 {
+        let mut qname: Vec<u8> = Vec::<u8>::new();
+        let addr_parts: Vec<&str> = domain.split(".").collect();
+        for part in addr_parts {
+            if part.len() <= 63 {
+                qname.push(part.len() as u8);
+                qname.extend_from_slice(part.as_bytes());
+            } else {
+                return Err(String::from("Label Length is big then 63 chars!"));
+            }
+        }
+        qname.push(0);
+        return Ok(qname);
+    } else {
+        return Err(String::from("Domain Length is big then 255 chars!"));
+    }
+}
+
+pub fn get_query(domain: &str) -> String {
+    /// Header
+    let mut z = Z::new(
+        U1::new(0),U1::new(0),U1::new(0)
+    );
+
+    let mut flags = Flags::new(
+        U1::new(0), U4::new(OPCODES::Query.opcode() as u8),
+        U1::new(0), U1::new(0), U1::new(1), U1::new(1),
+        z, U4::new(RCODES::NoError.rcode() as u8)
+    );
+
+    let mut header = HeaderSection::new(
+        43690, flags, 1, 0, 0, 0
+    );
+
+    /// Question
+
+    let qname = domain_to_qname(domain).unwrap();
+
+    let mut question = QuestionSection::new(
+        qname,QRRTYPE::A.code(),QRRCLASS::IN.code()
+    );
+
+    /// Message (Query)
+
+    let mut dns_message = DNSMessage::new(header, question);
+
+    let mut bytes_dns_message: Vec<u8> = Vec::<u8>::new();
+
+    // Header:
+
+    // ID
+    bytes_dns_message.extend_from_slice(&dns_message.header.get_id().to_be_bytes());
+
+    println!("ID: {:?}", &dns_message.header.get_id().to_be_bytes().iter().map(|byte| format!("{:02X}", byte)).collect::<Vec<String>>().join(""));
+
+    // Flags
+    let mut dns_flags: u16 = 0;
+    dns_flags |= (dns_message.header.get_flags().get_qr().get() as u16) << 15;
+    dns_flags |= (dns_message.header.get_flags().get_opcode().get() as u16) << 11;
+    dns_flags |= (dns_message.header.get_flags().get_aa().get() as u16) << 10;
+    dns_flags |= (dns_message.header.get_flags().get_tc().get() as u16) << 9;
+    dns_flags |= (dns_message.header.get_flags().get_rd().get() as u16) << 8;
+    dns_flags |= (dns_message.header.get_flags().get_ra().get() as u16) << 7;
+    dns_flags |= (dns_message.header.get_flags().get_z().get_none().get() as u16) << 6;
+    dns_flags |= (dns_message.header.get_flags().get_z().get_ad().get() as u16) << 5;
+    dns_flags |= (dns_message.header.get_flags().get_z().get_cd().get() as u16) << 4;
+    dns_flags |= (dns_message.header.get_flags().get_rcode().get() as u16) << 0;
+
+    bytes_dns_message.extend_from_slice(&dns_flags.to_be_bytes());
+
+    // QDCOUNT
+    bytes_dns_message.extend_from_slice(&dns_message.header.get_qdcount().to_be_bytes());
+    // ANCOUNT
+    bytes_dns_message.extend_from_slice(&dns_message.header.get_ancount().to_be_bytes());
+    // NSCOUNT
+    bytes_dns_message.extend_from_slice(&dns_message.header.get_nscount().to_be_bytes());
+    // ARCOUNT
+    bytes_dns_message.extend_from_slice(&dns_message.header.get_arcount().to_be_bytes());
+
+    // Question:
+
+    // QNAME
+    bytes_dns_message.extend_from_slice(&dns_message.question.get_qname());
+    // QTYPE
+    bytes_dns_message.extend_from_slice(&dns_message.question.get_qtype().to_be_bytes());
+    // QCLASS
+    bytes_dns_message.extend_from_slice(&dns_message.question.get_qclass().to_be_bytes());
+
+    /// TO HEX Repr
+
+    return String::from(bytes_dns_message.iter().map(|byte| format!("{:02X}", byte)).collect::<Vec<String>>().join(""));
+}
