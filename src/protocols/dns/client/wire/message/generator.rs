@@ -78,26 +78,22 @@ fn domain_to_qname(domain: &str) -> Result<Vec<u8>, String> {
 }
 
 pub fn get_query(domain: &str) -> String {
-    /// Header
-    let mut z = Z::new(
-        None::None.code(),
-        AD::NonAuthentic.code(),
-        CD::NotDisabled.code()
-    );
-
-    let mut flags = Flags::new(
-        QR::Query.code(),
-        OPCODES::Query.opcode(),
-        AA::NonAuthoritativeAnswer.code(),
-        TC::NonTruncated.code(),
-        RD::Recursive.code(),
-        RA::Available.code(),
-        z,
-        RCODES::NoError.rcode()
-    );
 
     let mut header = HeaderSection::new(
-        43690, flags, 1, 0, 0, 0
+        43690, Flags::new(
+            QR::Query.code(),
+            OPCODES::Query.opcode(),
+            AA::NonAuthoritativeAnswer.code(),
+            TC::NonTruncated.code(),
+            RD::Recursive.code(),
+            RA::Available.code(),
+            Z::new(
+                None::None.code(),
+                AD::NonAuthentic.code(),
+                CD::NotDisabled.code()
+            ),
+            RCODES::NoError.rcode()
+        ), 1, 0, 0, 0
     );
 
     /// Question

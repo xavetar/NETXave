@@ -70,7 +70,7 @@ impl RCODES {
             },
             RCODES::NotZone => U4::new(RCODES::NotZone as u8),
             RCODES::DSOTYPENI => U4::new(RCODES::DSOTYPENI as u8),
-            _ => Err(String::from("Unsupported RCODE for 4 bits!"))
+            _ => panic!("Unsupported RCODE for 4 bits!")
         }
     }
 
