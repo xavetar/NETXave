@@ -26,24 +26,22 @@
  * THE SOFTWARE.
  */
 
-use crate::data_types::{U4};
-
-pub struct RCODEInfo {
-    rcode: U4,
+pub struct RCODERawInfo {
+    rcode: u16,
     name: &'static str,
     description: &'static str
 }
 
-impl RCODEInfo {
-    pub fn new(rcode: U4, name: &'static str, description: &'static str) -> RCODEInfo {
-        return RCODEInfo {
+impl RCODERawInfo {
+    pub fn new(rcode: u16, name: &'static str, description: &'static str) -> RCODERawInfo {
+        return RCODERawInfo {
             rcode: rcode,
             name: name,
             description: description
         }
     }
 
-    pub fn rcode(&self) -> &U4 {
+    pub fn rcode(&self) -> &u16 {
         return &self.rcode;
     }
 
@@ -56,6 +54,6 @@ impl RCODEInfo {
     }
 
     pub fn hex(&self) -> String {
-        return format!("{:02x}", &self.rcode.get());
+        return format!("{:02x}", &self.rcode);
     }
 }

@@ -26,7 +26,8 @@
  * THE SOFTWARE.
  */
 
-use crate::data_types::U4;
+use crate::data_types::{U4};
+
 use super::{OPCODES};
 use super::{OPCODEInfo};
 use super::{UNASSIGNED};

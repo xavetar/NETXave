@@ -26,6 +26,7 @@
  * THE SOFTWARE.
  */
 
+use crate::data_types::{U4};
 use super::warnings::{NOT_AUTH_W, BAD_VERS_BAD_SIG_W};
 
 pub enum RCODES {
@@ -52,7 +53,28 @@ pub enum RCODES {
 }
 
 impl RCODES {
-    pub fn rcode(&self) -> u16 {
+    pub fn rcode(&self) -> U4 {
+        return match self {
+            RCODES::NoError => U4::new(RCODES::NoError as u8),
+            RCODES::FormErr => U4::new(RCODES::FormErr as u8),
+            RCODES::ServFail => U4::new(RCODES::ServFail as u8),
+            RCODES::NXDomain => U4::new(RCODES::NXDomain as u8),
+            RCODES::NotImp => U4::new(RCODES::NotImp as u8),
+            RCODES::Refused => U4::new(RCODES::Refused as u8),
+            RCODES::YXDomain => U4::new(RCODES::YXDomain as u8),
+            RCODES::YXRRSet => U4::new(RCODES::YXRRSet as u8),
+            RCODES::NXRRSet => U4::new(RCODES::NXRRSet as u8),
+            RCODES::NotAuth => {
+                eprintln!("{NOT_AUTH_W}");
+                return U4::new(RCODES::NotAuth as u8);
+            },
+            RCODES::NotZone => U4::new(RCODES::NotZone as u8),
+            RCODES::DSOTYPENI => U4::new(RCODES::DSOTYPENI as u8),
+            _ => Err(String::from("Unsupported RCODE for 4 bits!"))
+        }
+    }
+
+    pub fn rcode_raw(&self) -> u16 {
         return match self {
             RCODES::NoError => RCODES::NoError as u16,
             RCODES::FormErr => RCODES::FormErr as u16,

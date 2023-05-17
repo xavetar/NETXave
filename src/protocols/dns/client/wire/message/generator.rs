@@ -93,7 +93,7 @@ pub fn get_query(domain: &str) -> String {
         RD::Recursive.code(),
         RA::Available.code(),
         z,
-        U4::new(RCODES::NoError.rcode() as u8)
+        RCODES::NoError.rcode()
     );
 
     let mut header = HeaderSection::new(

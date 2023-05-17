@@ -30,6 +30,7 @@ mod constants;
 mod conversion;
 mod rcodes;
 mod rcode_info;
+mod rcode_raw_info;
 
 mod warnings;
 
@@ -38,4 +39,5 @@ pub(self) use warnings::{NOT_AUTH_W, BAD_VERS_BAD_SIG_W};
 
 pub use rcodes::{RCODES};
 pub use rcode_info::{RCODEInfo};
+pub use rcode_raw_info::{RCODERawInfo};
 pub use conversion::{RCODEConversion};
