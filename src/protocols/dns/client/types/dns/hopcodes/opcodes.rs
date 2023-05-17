@@ -26,6 +26,8 @@
  * THE SOFTWARE.
  */
 
+use crate::data_types::{U4};
+
 pub enum OPCODES {
     Query = 0,
     IQuery = 1,
@@ -36,14 +38,14 @@ pub enum OPCODES {
 }
 
 impl OPCODES {
-    pub fn opcode(&self) -> u16 {
+    pub fn opcode(&self) -> U4 {
         return match self {
-            OPCODES::Query => OPCODES::Query as u16,
-            OPCODES::IQuery => OPCODES::IQuery as u16,
-            OPCODES::Status => OPCODES::Status as u16,
-            OPCODES::Notify => OPCODES::Notify as u16,
-            OPCODES::Update => OPCODES::Update as u16,
-            OPCODES::DSO => OPCODES::DSO as u16
+            OPCODES::Query => U4::new(OPCODES::Query as u8),
+            OPCODES::IQuery => U4::new(OPCODES::IQuery as u8),
+            OPCODES::Status => U4::new(OPCODES::Status as u8),
+            OPCODES::Notify => U4::new(OPCODES::Notify as u8),
+            OPCODES::Update => U4::new(OPCODES::Update as u8),
+            OPCODES::DSO => U4::new(OPCODES::DSO as u8)
         }
     }
 

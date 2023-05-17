@@ -48,7 +48,7 @@ pub enum RCODES {
     BADNAME = 20,
     BADALG = 21,
     BADTRUNC = 22,
-    BADCOOKIE = 23,
+    BADCOOKIE = 23
 }
 
 impl RCODES {

@@ -87,7 +87,7 @@ pub fn get_query(domain: &str) -> String {
 
     let mut flags = Flags::new(
         QR::Query.code(),
-        U4::new(OPCODES::Query.opcode() as u8),
+        OPCODES::Query.opcode(),
         AA::NonAuthoritativeAnswer.code(),
         TC::NonTruncated.code(),
         RD::Recursive.code(),

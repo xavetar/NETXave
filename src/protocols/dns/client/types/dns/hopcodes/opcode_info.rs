@@ -26,13 +26,15 @@
  * THE SOFTWARE.
  */
 
+use crate::data_types::{U4};
+
 pub struct OPCODEInfo {
     name: &'static str,
-    opcode: u16
+    opcode: U4
 }
 
 impl OPCODEInfo {
-    pub fn new(name: &'static str, opcode: u16) -> OPCODEInfo {
+    pub fn new(name: &'static str, opcode: U4) -> OPCODEInfo {
         return OPCODEInfo {
             name: name,
             opcode: opcode
@@ -43,11 +45,11 @@ impl OPCODEInfo {
         return &self.name;
     }
 
-    pub fn opcode(&self) -> &u16 {
+    pub fn opcode(&self) -> &U4 {
         return &self.opcode;
     }
 
     pub fn hex(&self) -> String {
-        return format!("{:02x}", &self.opcode);
+        return format!("{:02x}", &self.opcode.get());
     }
 }

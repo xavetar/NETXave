@@ -26,6 +26,7 @@
  * THE SOFTWARE.
  */
 
+use crate::data_types::U4;
 use super::{OPCODES};
 use super::{OPCODEInfo};
 use super::{UNASSIGNED};
@@ -33,7 +34,7 @@ use super::{UNASSIGNED};
 
 pub trait OPCODEConversion {
     fn encode(name: &str) -> Result<OPCODEInfo, String>;
-    fn decode(dec: &u16) -> Result<OPCODEInfo, String>;
+    fn decode(dec: &u8) -> Result<OPCODEInfo, String>;
 }
 
 impl OPCODEConversion for OPCODES {
@@ -67,7 +68,7 @@ impl OPCODEConversion for OPCODES {
         }
     }
 
-    fn decode(decimal: &u16) -> Result<OPCODEInfo, String> {
+    fn decode(decimal: &u8) -> Result<OPCODEInfo, String> {
         return match *decimal {
             0 => Ok(
                 OPCODEInfo::new(OPCODES::Query.name(),
@@ -83,7 +84,7 @@ impl OPCODEConversion for OPCODES {
             ),
             3 => Ok(
                 OPCODEInfo::new(UNASSIGNED,
-                                *decimal)
+                                U4::new(*decimal))
             ),
             4 => Ok(
                 OPCODEInfo::new(OPCODES::Notify.name(),
@@ -99,7 +100,7 @@ impl OPCODEConversion for OPCODES {
             ),
             7..=15 => Ok(
                 OPCODEInfo::new(UNASSIGNED,
-                                *decimal)
+                                U4::new(*decimal))
             ),
             _ => Err(String::from("Can't decode OPCODE!"))
         }
