@@ -31,6 +31,7 @@ mod conversion;
 mod rcodes;
 mod rcode_info;
 mod rcode_raw_info;
+mod rcode_edns_info;
 
 mod warnings;
 
@@ -40,4 +41,5 @@ pub(self) use warnings::{NOT_AUTH_W, BAD_VERS_BAD_SIG_W};
 pub use rcodes::{RCODES};
 pub use rcode_info::{RCODEInfo};
 pub use rcode_raw_info::{RCODERawInfo};
+pub use rcode_edns_info::{RCODEEDNSInfo};
 pub use conversion::{RCODEConversion};

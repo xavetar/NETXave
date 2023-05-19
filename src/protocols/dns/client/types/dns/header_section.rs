@@ -141,7 +141,7 @@ impl Flags {
             TC: tc,
             RD: rd,
             RA: ra,
-            Z: Default::default(),
+            Z: z,
             RCODE: rcode
         }
     }

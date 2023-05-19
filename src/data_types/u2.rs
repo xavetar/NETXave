@@ -38,7 +38,7 @@ impl U2 {
         if value > 0 && value <= 3 {
             self.0 |= 0b00000011;
         } else if value == 0 {
-            self.0 &= 0b11111100;
+            self.0 &= 0b00000000;
         } else {
             panic!("The value cannot be greater than 2 bits.")
         }

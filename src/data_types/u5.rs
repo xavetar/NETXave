@@ -38,7 +38,7 @@ impl U5 {
         if value > 0 && value <= 31 {
             self.0 |= 0b00011111;
         } else if value == 0 {
-            self.0 &= 0b11100000;
+            self.0 &= 0b00000000;
         } else {
             panic!("The value cannot be greater than 5 bits.")
         }

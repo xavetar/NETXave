@@ -38,7 +38,7 @@ impl U4 {
         if value > 0 && value <= 15 {
             self.0 |= 0b00001111;
         } else if value == 0 {
-            self.0 &= 0b11110000;
+            self.0 &= 0b00000000;
         } else {
             panic!("The value cannot be greater than 4 bits.")
         }

@@ -33,6 +33,7 @@ mod u4;
 mod u5;
 mod u6;
 mod u7;
+mod u12;
 
 pub(crate) use u1::U1;
 pub(crate) use u2::U2;
@@ -41,3 +42,4 @@ pub(crate) use u4::U4;
 pub(crate) use u5::U5;
 pub(crate) use u6::U6;
 pub(crate) use u7::U7;
+pub(crate) use u12::U12;

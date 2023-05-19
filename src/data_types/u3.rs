@@ -38,7 +38,7 @@ impl U3 {
         if value > 0 && value <= 7 {
             self.0 |= 0b00000111;
         } else if value == 0 {
-            self.0 &= 0b11111000;
+            self.0 &= 0b00000000;
         } else {
             panic!("The value cannot be greater than 3 bits.")
         }

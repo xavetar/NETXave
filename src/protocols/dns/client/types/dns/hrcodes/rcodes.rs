@@ -26,7 +26,7 @@
  * THE SOFTWARE.
  */
 
-use crate::data_types::{U4};
+use crate::data_types::{U4, U12};
 use super::warnings::{NOT_AUTH_W, BAD_VERS_BAD_SIG_W};
 
 pub enum RCODES {
@@ -74,6 +74,38 @@ impl RCODES {
         }
     }
 
+    pub fn rcode_edns(&self) -> U12 {
+        return match self {
+            RCODES::NoError => U12::new(RCODES::NoError as u16),
+            RCODES::FormErr => U12::new(RCODES::FormErr as u16),
+            RCODES::ServFail => U12::new(RCODES::ServFail as u16),
+            RCODES::NXDomain => U12::new(RCODES::NXDomain as u16),
+            RCODES::NotImp => U12::new(RCODES::NotImp as u16),
+            RCODES::Refused => U12::new(RCODES::Refused as u16),
+            RCODES::YXDomain => U12::new(RCODES::YXDomain as u16),
+            RCODES::YXRRSet => U12::new(RCODES::YXRRSet as u16),
+            RCODES::NXRRSet => U12::new(RCODES::NXRRSet as u16),
+            RCODES::NotAuth => {
+                eprintln!("{NOT_AUTH_W}");
+                return U12::new(RCODES::NotAuth as u16);
+            },
+            RCODES::NotZone => U12::new(RCODES::NotZone as u16),
+            RCODES::DSOTYPENI => U12::new(RCODES::DSOTYPENI as u16),
+            RCODES::BADVERS_BADSIG => {
+                eprintln!("{BAD_VERS_BAD_SIG_W}");
+                return U12::new(RCODES::BADVERS_BADSIG as u16);
+            },
+            RCODES::BADKEY => U12::new(RCODES::BADKEY as u16),
+            RCODES::BADTIME => U12::new(RCODES::BADTIME as u16),
+            RCODES::BADMODE => U12::new(RCODES::BADMODE as u16),
+            RCODES::BADNAME => U12::new(RCODES::BADNAME as u16),
+            RCODES::BADALG => U12::new(RCODES::BADALG as u16),
+            RCODES::BADTRUNC => U12::new(RCODES::BADTRUNC as u16),
+            RCODES::BADCOOKIE => U12::new(RCODES::BADCOOKIE as u16),
+            _ => panic!("Unsupported RCODE for 12 bits!")
+        }
+    }
+
     pub fn rcode_raw(&self) -> u16 {
         return match self {
             RCODES::NoError => RCODES::NoError as u16,
@@ -101,7 +133,8 @@ impl RCODES {
             RCODES::BADNAME => RCODES::BADNAME as u16,
             RCODES::BADALG => RCODES::BADALG as u16,
             RCODES::BADTRUNC => RCODES::BADTRUNC as u16,
-            RCODES::BADCOOKIE => RCODES::BADCOOKIE as u16
+            RCODES::BADCOOKIE => RCODES::BADCOOKIE as u16,
+            _ => panic!("Unsupported RCODE for 16 bits!")
         }
     }
 

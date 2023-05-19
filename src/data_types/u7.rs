@@ -38,7 +38,7 @@ impl U7 {
         if value > 0 && value <= 127 {
             self.0 |= 0b01111111;
         } else if value == 0 {
-            self.0 &= 0b10000000;
+            self.0 &= 0b00000000;
         } else {
             panic!("The value cannot be greater than 7 bits.")
         }

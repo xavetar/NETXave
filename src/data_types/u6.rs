@@ -38,7 +38,7 @@ impl U6 {
         if value > 0 && value <= 63 {
             self.0 |= 0b00111111;
         } else if value == 0 {
-            self.0 &= 0b11000000;
+            self.0 &= 0b00000000;
         } else {
             panic!("The value cannot be greater than 6 bits.")
         }

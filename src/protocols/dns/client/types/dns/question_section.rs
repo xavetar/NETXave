@@ -44,9 +44,9 @@ impl Default for QuestionSection {
 }
 
 impl QuestionSection {
-    pub fn new(domain: Vec<u8>, qtype: u16, qclass: u16) -> QuestionSection {
+    pub fn new(qname: Vec<u8>, qtype: u16, qclass: u16) -> QuestionSection {
         QuestionSection {
-            QNAME: domain,
+            QNAME: qname,
             QTYPE: qtype,
             QCLASS: qclass
         }

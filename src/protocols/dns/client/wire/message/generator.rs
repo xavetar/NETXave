@@ -98,10 +98,8 @@ pub fn get_query(domain: &str) -> String {
 
     /// Question
 
-    let qname = domain_to_qname(domain).unwrap();
-
     let mut question = QuestionSection::new(
-        qname,QRRTYPE::A.code(),QRRCLASS::IN.code()
+        domain_to_qname(domain).unwrap(),QRRTYPE::A.code(),QRRCLASS::IN.code()
     );
 
     /// Message (Query)

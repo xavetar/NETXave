@@ -27,42 +27,42 @@
  */
 
 #[derive(Debug)]
-pub struct U1(u8);
+pub struct U12(u16);
 
-impl U1 {
-    pub fn new(value: u8) -> U1 {
-        U1(value & 0b00000001)
+impl U12 {
+    pub fn new(value: u16) -> U12 {
+        U12(value & 0b_1111_1111_1111)
     }
 
-    fn set(&mut self, value: u8) {
-        if value > 0 && value <= 1 {
-            self.0 |= 0b00000001;
+    fn set(&mut self, value: u16) {
+        if value > 0 && value <= 4095 {
+            self.0 |= 0b_1111_1111_1111;
         } else if value == 0 {
-            self.0 &= 0b00000000;
+            self.0 &= 0b_0000_0000_0000;
         } else {
-            panic!("The value cannot be greater than 1 bits.")
+            panic!("The value cannot be greater than 12 bits.")
         }
     }
 
-    pub fn get(&self) -> u8 {
+    pub fn get(&self) -> u16 {
         return self.0
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::U1;
+    use super::U12;
 
     #[test]
-    fn u1_test() {
-        let mut u1 = U1::new(0);
+    fn u12_test() {
+        let mut u12 = U12::new(1);
 
-        println!("u1 value: {}", u1.get());
+        println!("u12 value: {}", u12.get());
 
-        u1.set(1);
-        println!("u1 value: {}", u1.get());
+        u12.set(4095);
+        println!("u12 value: {}", u12.get());
 
-        u1.set(0);
-        println!("u1 value: {}", u1.get());
+        u12.set(0);
+        println!("u12 value: {}", u12.get());
     }
 }
