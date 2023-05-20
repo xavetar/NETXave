@@ -26,6 +26,6 @@
  * THE SOFTWARE.
  */
 
-pub const REVERSED: &'static str = "Reversed";
+pub const RESERVED: &'static str = "Reserved";
 pub const UNASSIGNED: &'static str = "Unassigned";
-pub const REVERSED_PRIVATE_USE: &'static str = "Reversed for Private Use";
+pub const RESERVED_PRIVATE_USE: &'static str = "RESERVED for Private Use";

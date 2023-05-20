@@ -26,13 +26,7 @@
  * THE SOFTWARE.
  */
 
-mod constants;
-mod conversion;
-mod type_m;
-mod type_info;
-
-pub(self) use constants::{RESERVED, UNASSIGNED, PRIVATE_USE};
-
-pub use type_m::{TYPE};
-pub use type_info::{TYPEInfo};
-pub use conversion::{TYPEConversion};
+pub const RESERVED: &'static str = "Reserved";
+pub const UNASSIGNED: &'static str = "Unassigned";
+pub const RESERVED_FUTURE_EXPANSION_USE: &'static str = "Reserved for future expansion";
+pub const RESERVED_LOCAL_EXPERIMENTAL_USE: &'static str = "Reserved for Local/Experimental Use";

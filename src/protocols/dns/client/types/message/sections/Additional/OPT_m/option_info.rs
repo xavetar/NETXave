@@ -26,13 +26,30 @@
  * THE SOFTWARE.
  */
 
-mod constants;
-mod conversion;
-mod type_m;
-mod type_info;
+use crate::data_types::{U4};
 
-pub(self) use constants::{RESERVED, UNASSIGNED, PRIVATE_USE};
+pub struct OPTIONInfo {
+    name: &'static str,
+    code: u16
+}
 
-pub use type_m::{TYPE};
-pub use type_info::{TYPEInfo};
-pub use conversion::{TYPEConversion};
+impl OPTIONInfo {
+    pub fn new(name: &'static str, code: u16) -> OPTIONInfo {
+        return OPTIONInfo {
+            name: name,
+            code: code
+        }
+    }
+
+    pub fn name(&self) -> &'static str {
+        return &self.name;
+    }
+
+    pub fn code(&self) -> &u16 {
+        return &self.code;
+    }
+
+    pub fn hex(&self) -> String {
+        return format!("{:02x}", &self.code);
+    }
+}

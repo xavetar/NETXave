@@ -35,7 +35,7 @@ mod rcode_edns_info;
 
 mod warnings;
 
-pub(self) use constants::{REVERSED, UNASSIGNED, REVERSED_PRIVATE_USE};
+pub(self) use constants::{RESERVED, UNASSIGNED, RESERVED_PRIVATE_USE};
 pub(self) use warnings::{NOT_AUTH_W, BAD_VERS_BAD_SIG_W};
 
 pub use rcodes_m::{RCODES};

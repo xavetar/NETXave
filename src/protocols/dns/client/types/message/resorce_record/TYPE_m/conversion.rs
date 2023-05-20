@@ -28,7 +28,7 @@
 
 use super::{TYPE};
 use super::{TYPEInfo};
-use super::{REVERSED, UNASSIGNED, PRIVATE_USE};
+use super::{RESERVED, UNASSIGNED, PRIVATE_USE};
 
 pub trait TYPEConversion {
     fn encode(qclass: &str) -> Result<TYPEInfo, String>;
@@ -401,7 +401,7 @@ impl TYPEConversion for TYPE {
     fn decode(decimal: &u16) -> Result<TYPEInfo, String> {
         return match *decimal {
             0 => Ok(
-                TYPEInfo::new(REVERSED,
+                TYPEInfo::new(RESERVED,
                               *decimal)
             ),
             1 => Ok(
@@ -785,7 +785,7 @@ impl TYPEConversion for TYPE {
                               *decimal)
             ),
             65535 => Ok(
-                TYPEInfo::new(REVERSED,
+                TYPEInfo::new(RESERVED,
                               *decimal)
             ),
             _ => Err(String::from("Can't decode QTYPE!"))

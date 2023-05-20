@@ -26,3 +26,6 @@
  * THE SOFTWARE.
  */
 
+mod OPT_m;
+
+pub use OPT_m::{OPTION, OPTIONInfo, OPTIONConversion};

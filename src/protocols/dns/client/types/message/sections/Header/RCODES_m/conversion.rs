@@ -30,7 +30,7 @@ use crate::data_types::{U4, U12};
 
 use super::{RCODES};
 use super::{RCODEInfo, RCODERawInfo, RCODEEDNSInfo};
-use super::{REVERSED, UNASSIGNED, REVERSED_PRIVATE_USE};
+use super::{RESERVED, UNASSIGNED, RESERVED_PRIVATE_USE};
 
 
 pub trait RCODEConversion {
@@ -47,63 +47,63 @@ impl RCODEConversion for RCODES {
         return match name {
             "NoError" => Ok(
                 RCODEInfo::new(RCODES::NoError.rcode(),
-                                  RCODES::NoError.name(),
-                                  RCODES::NoError.description())
+                               RCODES::NoError.name(),
+                               RCODES::NoError.description())
             ),
             "FormErr" => Ok(
                 RCODEInfo::new(RCODES::FormErr.rcode(),
-                                  RCODES::FormErr.name(),
-                                  RCODES::FormErr.description())
+                               RCODES::FormErr.name(),
+                               RCODES::FormErr.description())
             ),
             "ServFail" => Ok(
                 RCODEInfo::new(RCODES::ServFail.rcode(),
-                                  RCODES::ServFail.name(),
-                                  RCODES::ServFail.description())
+                               RCODES::ServFail.name(),
+                               RCODES::ServFail.description())
             ),
             "NXDomain" => Ok(
                 RCODEInfo::new(RCODES::NXDomain.rcode(),
-                                  RCODES::NXDomain.name(),
-                                  RCODES::NXDomain.description())
+                               RCODES::NXDomain.name(),
+                               RCODES::NXDomain.description())
             ),
             "NotImp" => Ok(
                 RCODEInfo::new(RCODES::NotImp.rcode(),
-                                  RCODES::NotImp.name(),
-                                  RCODES::NotImp.description())
+                               RCODES::NotImp.name(),
+                               RCODES::NotImp.description())
             ),
             "Refused" => Ok(
                 RCODEInfo::new(RCODES::Refused.rcode(),
-                                  RCODES::Refused.name(),
-                                  RCODES::Refused.description())
+                               RCODES::Refused.name(),
+                               RCODES::Refused.description())
             ),
             "YXDomain" => Ok(
                 RCODEInfo::new(RCODES::YXDomain.rcode(),
-                                  RCODES::YXDomain.name(),
-                                  RCODES::YXDomain.description())
+                               RCODES::YXDomain.name(),
+                               RCODES::YXDomain.description())
             ),
             "YXRRSet" => Ok(
                 RCODEInfo::new(RCODES::YXRRSet.rcode(),
-                                  RCODES::YXRRSet.name(),
-                                  RCODES::YXRRSet.description())
+                               RCODES::YXRRSet.name(),
+                               RCODES::YXRRSet.description())
             ),
             "NXRRSet" => Ok(
                 RCODEInfo::new(RCODES::NXRRSet.rcode(),
-                                  RCODES::NXRRSet.name(),
-                                  RCODES::NXRRSet.description())
+                               RCODES::NXRRSet.name(),
+                               RCODES::NXRRSet.description())
             ),
             "NotAuth" => Ok(
                 RCODEInfo::new(RCODES::NotAuth.rcode(),
-                                  RCODES::NotAuth.name(),
-                                  RCODES::NotAuth.description())
+                               RCODES::NotAuth.name(),
+                               RCODES::NotAuth.description())
             ),
             "NotZone" => Ok(
                 RCODEInfo::new(RCODES::NotZone.rcode(),
-                                  RCODES::NotZone.name(),
-                                  RCODES::NotZone.description())
+                               RCODES::NotZone.name(),
+                               RCODES::NotZone.description())
             ),
             "DSOTYPENI" => Ok(
                 RCODEInfo::new(RCODES::DSOTYPENI.rcode(),
-                                  RCODES::DSOTYPENI.name(),
-                                  RCODES::DSOTYPENI.description())
+                               RCODES::DSOTYPENI.name(),
+                               RCODES::DSOTYPENI.description())
             ),
             _ => Err(String::from("Can't encode RCODE (4 bits)!"))
         }
@@ -113,68 +113,68 @@ impl RCODEConversion for RCODES {
         return match *decimal {
             0 => Ok(
                 RCODEInfo::new(RCODES::NoError.rcode(),
-                                  RCODES::NoError.name(),
-                                  RCODES::NoError.description())
+                               RCODES::NoError.name(),
+                               RCODES::NoError.description())
             ),
             1 => Ok(
                 RCODEInfo::new(RCODES::FormErr.rcode(),
-                                  RCODES::FormErr.name(),
-                                  RCODES::FormErr.description())
+                               RCODES::FormErr.name(),
+                               RCODES::FormErr.description())
             ),
             2 => Ok(
                 RCODEInfo::new(RCODES::ServFail.rcode(),
-                                  RCODES::ServFail.name(),
-                                  RCODES::ServFail.description())
+                               RCODES::ServFail.name(),
+                               RCODES::ServFail.description())
             ),
             3 => Ok(
                 RCODEInfo::new(RCODES::NXDomain.rcode(),
-                                  RCODES::NXDomain.name(),
-                                  RCODES::NXDomain.description())
+                               RCODES::NXDomain.name(),
+                               RCODES::NXDomain.description())
             ),
             4 => Ok(
                 RCODEInfo::new(RCODES::NotImp.rcode(),
-                                  RCODES::NotImp.name(),
-                                  RCODES::NotImp.description())
+                               RCODES::NotImp.name(),
+                               RCODES::NotImp.description())
             ),
             5 => Ok(
                 RCODEInfo::new(RCODES::Refused.rcode(),
-                                  RCODES::Refused.name(),
-                                  RCODES::Refused.description())
+                               RCODES::Refused.name(),
+                               RCODES::Refused.description())
             ),
             6 => Ok(
                 RCODEInfo::new(RCODES::YXDomain.rcode(),
-                                  RCODES::YXDomain.name(),
-                                  RCODES::YXDomain.description())
+                               RCODES::YXDomain.name(),
+                               RCODES::YXDomain.description())
             ),
             7 => Ok(
                 RCODEInfo::new(RCODES::YXRRSet.rcode(),
-                                  RCODES::YXRRSet.name(),
-                                  RCODES::YXRRSet.description())
+                               RCODES::YXRRSet.name(),
+                               RCODES::YXRRSet.description())
             ),
             8 => Ok(
                 RCODEInfo::new(RCODES::NXRRSet.rcode(),
-                                  RCODES::NXRRSet.name(),
-                                  RCODES::NXRRSet.description())
+                               RCODES::NXRRSet.name(),
+                               RCODES::NXRRSet.description())
             ),
             9 => Ok(
                 RCODEInfo::new(RCODES::NotAuth.rcode(),
-                                  RCODES::NotAuth.name(),
-                                  RCODES::NotAuth.description())
+                               RCODES::NotAuth.name(),
+                               RCODES::NotAuth.description())
             ),
             10 => Ok(
                 RCODEInfo::new(RCODES::NotZone.rcode(),
-                                  RCODES::NotZone.name(),
-                                  RCODES::NotZone.description())
+                               RCODES::NotZone.name(),
+                               RCODES::NotZone.description())
             ),
             11 => Ok(
                 RCODEInfo::new(RCODES::DSOTYPENI.rcode(),
-                                  RCODES::DSOTYPENI.name(),
-                                  RCODES::DSOTYPENI.description())
+                               RCODES::DSOTYPENI.name(),
+                               RCODES::DSOTYPENI.description())
             ),
             12..=15 => Ok(
                 RCODEInfo::new(U4::new(*decimal),
-                                  UNASSIGNED,
-                                  UNASSIGNED)
+                               UNASSIGNED,
+                               UNASSIGNED)
             ),
             _ => Err(String::from("Can't decode RCODE (4 bits)!"))
         }
@@ -184,103 +184,103 @@ impl RCODEConversion for RCODES {
         return match name {
             "NoError" => Ok(
                 RCODEEDNSInfo::new(RCODES::NoError.rcode_edns(),
-                                  RCODES::NoError.name(),
-                                  RCODES::NoError.description())
+                                   RCODES::NoError.name(),
+                                   RCODES::NoError.description())
             ),
             "FormErr" => Ok(
                 RCODEEDNSInfo::new(RCODES::FormErr.rcode_edns(),
-                                  RCODES::FormErr.name(),
-                                  RCODES::FormErr.description())
+                                   RCODES::FormErr.name(),
+                                   RCODES::FormErr.description())
             ),
             "ServFail" => Ok(
                 RCODEEDNSInfo::new(RCODES::ServFail.rcode_edns(),
-                                  RCODES::ServFail.name(),
-                                  RCODES::ServFail.description())
+                                   RCODES::ServFail.name(),
+                                   RCODES::ServFail.description())
             ),
             "NXDomain" => Ok(
                 RCODEEDNSInfo::new(RCODES::NXDomain.rcode_edns(),
-                                  RCODES::NXDomain.name(),
-                                  RCODES::NXDomain.description())
+                                   RCODES::NXDomain.name(),
+                                   RCODES::NXDomain.description())
             ),
             "NotImp" => Ok(
                 RCODEEDNSInfo::new(RCODES::NotImp.rcode_edns(),
-                                  RCODES::NotImp.name(),
-                                  RCODES::NotImp.description())
+                                   RCODES::NotImp.name(),
+                                   RCODES::NotImp.description())
             ),
             "Refused" => Ok(
                 RCODEEDNSInfo::new(RCODES::Refused.rcode_edns(),
-                                  RCODES::Refused.name(),
-                                  RCODES::Refused.description())
+                                   RCODES::Refused.name(),
+                                   RCODES::Refused.description())
             ),
             "YXDomain" => Ok(
                 RCODEEDNSInfo::new(RCODES::YXDomain.rcode_edns(),
-                                  RCODES::YXDomain.name(),
-                                  RCODES::YXDomain.description())
+                                   RCODES::YXDomain.name(),
+                                   RCODES::YXDomain.description())
             ),
             "YXRRSet" => Ok(
                 RCODEEDNSInfo::new(RCODES::YXRRSet.rcode_edns(),
-                                  RCODES::YXRRSet.name(),
-                                  RCODES::YXRRSet.description())
+                                   RCODES::YXRRSet.name(),
+                                   RCODES::YXRRSet.description())
             ),
             "NXRRSet" => Ok(
                 RCODEEDNSInfo::new(RCODES::NXRRSet.rcode_edns(),
-                                  RCODES::NXRRSet.name(),
-                                  RCODES::NXRRSet.description())
+                                   RCODES::NXRRSet.name(),
+                                   RCODES::NXRRSet.description())
             ),
             "NotAuth" => Ok(
                 RCODEEDNSInfo::new(RCODES::NotAuth.rcode_edns(),
-                                  RCODES::NotAuth.name(),
-                                  RCODES::NotAuth.description())
+                                   RCODES::NotAuth.name(),
+                                   RCODES::NotAuth.description())
             ),
             "NotZone" => Ok(
                 RCODEEDNSInfo::new(RCODES::NotZone.rcode_edns(),
-                                  RCODES::NotZone.name(),
-                                  RCODES::NotZone.description())
+                                   RCODES::NotZone.name(),
+                                   RCODES::NotZone.description())
             ),
             "DSOTYPENI" => Ok(
                 RCODEEDNSInfo::new(RCODES::DSOTYPENI.rcode_edns(),
-                                  RCODES::DSOTYPENI.name(),
-                                  RCODES::DSOTYPENI.description())
+                                   RCODES::DSOTYPENI.name(),
+                                   RCODES::DSOTYPENI.description())
             ),
             "BADVERS" | "BADSIG" | "BADVERS_BADSIG" => Ok(
                 RCODEEDNSInfo::new(RCODES::BADVERS_BADSIG.rcode_edns(),
-                                  RCODES::BADVERS_BADSIG.name(),
-                                  RCODES::BADVERS_BADSIG.description())
+                                   RCODES::BADVERS_BADSIG.name(),
+                                   RCODES::BADVERS_BADSIG.description())
             ),
             "BADKEY" => Ok(
                 RCODEEDNSInfo::new(RCODES::BADKEY.rcode_edns(),
-                                  RCODES::BADKEY.name(),
-                                  RCODES::BADKEY.description())
+                                   RCODES::BADKEY.name(),
+                                   RCODES::BADKEY.description())
             ),
             "BADTIME" => Ok(
                 RCODEEDNSInfo::new(RCODES::BADTIME.rcode_edns(),
-                                  RCODES::BADTIME.name(),
-                                  RCODES::BADTIME.description())
+                                   RCODES::BADTIME.name(),
+                                   RCODES::BADTIME.description())
             ),
             "BADMODE" => Ok(
                 RCODEEDNSInfo::new(RCODES::BADMODE.rcode_edns(),
-                                  RCODES::BADMODE.name(),
-                                  RCODES::BADMODE.description())
+                                   RCODES::BADMODE.name(),
+                                   RCODES::BADMODE.description())
             ),
             "BADNAME" => Ok(
                 RCODEEDNSInfo::new(RCODES::BADNAME.rcode_edns(),
-                                  RCODES::BADNAME.name(),
-                                  RCODES::BADNAME.description())
+                                   RCODES::BADNAME.name(),
+                                   RCODES::BADNAME.description())
             ),
             "BADALG" => Ok(
                 RCODEEDNSInfo::new(RCODES::BADALG.rcode_edns(),
-                                  RCODES::BADALG.name(),
-                                  RCODES::BADALG.description())
+                                   RCODES::BADALG.name(),
+                                   RCODES::BADALG.description())
             ),
             "BADTRUNC" => Ok(
                 RCODEEDNSInfo::new(RCODES::BADTRUNC.rcode_edns(),
-                                  RCODES::BADTRUNC.name(),
-                                  RCODES::BADTRUNC.description())
+                                   RCODES::BADTRUNC.name(),
+                                   RCODES::BADTRUNC.description())
             ),
             "BADCOOKIE" => Ok(
                 RCODEEDNSInfo::new(RCODES::BADCOOKIE.rcode_edns(),
-                                  RCODES::BADCOOKIE.name(),
-                                  RCODES::BADCOOKIE.description())
+                                   RCODES::BADCOOKIE.name(),
+                                   RCODES::BADCOOKIE.description())
             ),
             _ => Err(String::from("Can't encode EDNS RCODE (12 bits)!"))
         }
@@ -290,118 +290,118 @@ impl RCODEConversion for RCODES {
         return match *decimal {
             0 => Ok(
                 RCODEEDNSInfo::new(RCODES::NoError.rcode_edns(),
-                                  RCODES::NoError.name(),
-                                  RCODES::NoError.description())
+                                   RCODES::NoError.name(),
+                                   RCODES::NoError.description())
             ),
             1 => Ok(
                 RCODEEDNSInfo::new(RCODES::FormErr.rcode_edns(),
-                                  RCODES::FormErr.name(),
-                                  RCODES::FormErr.description())
+                                   RCODES::FormErr.name(),
+                                   RCODES::FormErr.description())
             ),
             2 => Ok(
                 RCODEEDNSInfo::new(RCODES::ServFail.rcode_edns(),
-                                  RCODES::ServFail.name(),
-                                  RCODES::ServFail.description())
+                                   RCODES::ServFail.name(),
+                                   RCODES::ServFail.description())
             ),
             3 => Ok(
                 RCODEEDNSInfo::new(RCODES::NXDomain.rcode_edns(),
-                                  RCODES::NXDomain.name(),
-                                  RCODES::NXDomain.description())
+                                   RCODES::NXDomain.name(),
+                                   RCODES::NXDomain.description())
             ),
             4 => Ok(
                 RCODEEDNSInfo::new(RCODES::NotImp.rcode_edns(),
-                                  RCODES::NotImp.name(),
-                                  RCODES::NotImp.description())
+                                   RCODES::NotImp.name(),
+                                   RCODES::NotImp.description())
             ),
             5 => Ok(
                 RCODEEDNSInfo::new(RCODES::Refused.rcode_edns(),
-                                  RCODES::Refused.name(),
-                                  RCODES::Refused.description())
+                                   RCODES::Refused.name(),
+                                   RCODES::Refused.description())
             ),
             6 => Ok(
                 RCODEEDNSInfo::new(RCODES::YXDomain.rcode_edns(),
-                                  RCODES::YXDomain.name(),
-                                  RCODES::YXDomain.description())
+                                   RCODES::YXDomain.name(),
+                                   RCODES::YXDomain.description())
             ),
             7 => Ok(
                 RCODEEDNSInfo::new(RCODES::YXRRSet.rcode_edns(),
-                                  RCODES::YXRRSet.name(),
-                                  RCODES::YXRRSet.description())
+                                   RCODES::YXRRSet.name(),
+                                   RCODES::YXRRSet.description())
             ),
             8 => Ok(
                 RCODEEDNSInfo::new(RCODES::NXRRSet.rcode_edns(),
-                                  RCODES::NXRRSet.name(),
-                                  RCODES::NXRRSet.description())
+                                   RCODES::NXRRSet.name(),
+                                   RCODES::NXRRSet.description())
             ),
             9 => Ok(
                 RCODEEDNSInfo::new(RCODES::NotAuth.rcode_edns(),
-                                  RCODES::NotAuth.name(),
-                                  RCODES::NotAuth.description())
+                                   RCODES::NotAuth.name(),
+                                   RCODES::NotAuth.description())
             ),
             10 => Ok(
                 RCODEEDNSInfo::new(RCODES::NotZone.rcode_edns(),
-                                  RCODES::NotZone.name(),
-                                  RCODES::NotZone.description())
+                                   RCODES::NotZone.name(),
+                                   RCODES::NotZone.description())
             ),
             11 => Ok(
                 RCODEEDNSInfo::new(RCODES::DSOTYPENI.rcode_edns(),
-                                  RCODES::DSOTYPENI.name(),
-                                  RCODES::DSOTYPENI.description())
+                                   RCODES::DSOTYPENI.name(),
+                                   RCODES::DSOTYPENI.description())
             ),
             12..=15 => Ok(
                 RCODEEDNSInfo::new(U12::new(*decimal),
-                                  UNASSIGNED,
-                                  UNASSIGNED)
+                                   UNASSIGNED,
+                                   UNASSIGNED)
             ),
             16 => Ok(
                 RCODEEDNSInfo::new(RCODES::BADVERS_BADSIG.rcode_edns(),
-                                  RCODES::BADVERS_BADSIG.name(),
-                                  RCODES::BADVERS_BADSIG.description())
+                                   RCODES::BADVERS_BADSIG.name(),
+                                   RCODES::BADVERS_BADSIG.description())
             ),
             17 => Ok(
                 RCODEEDNSInfo::new(RCODES::BADKEY.rcode_edns(),
-                                  RCODES::BADKEY.name(),
-                                  RCODES::BADKEY.description())
+                                   RCODES::BADKEY.name(),
+                                   RCODES::BADKEY.description())
             ),
             18 => Ok(
                 RCODEEDNSInfo::new(RCODES::BADTIME.rcode_edns(),
-                                  RCODES::BADTIME.name(),
-                                  RCODES::BADTIME.description())
+                                   RCODES::BADTIME.name(),
+                                   RCODES::BADTIME.description())
             ),
             19 => Ok(
                 RCODEEDNSInfo::new(RCODES::BADMODE.rcode_edns(),
-                                  RCODES::BADMODE.name(),
-                                  RCODES::BADMODE.description())
+                                   RCODES::BADMODE.name(),
+                                   RCODES::BADMODE.description())
             ),
             20 => Ok(
                 RCODEEDNSInfo::new(RCODES::BADNAME.rcode_edns(),
-                                  RCODES::BADNAME.name(),
-                                  RCODES::BADNAME.description())
+                                   RCODES::BADNAME.name(),
+                                   RCODES::BADNAME.description())
             ),
             21 => Ok(
                 RCODEEDNSInfo::new(RCODES::BADALG.rcode_edns(),
-                                  RCODES::BADALG.name(),
-                                  RCODES::BADALG.description())
+                                   RCODES::BADALG.name(),
+                                   RCODES::BADALG.description())
             ),
             22 => Ok(
                 RCODEEDNSInfo::new(RCODES::BADTRUNC.rcode_edns(),
-                                  RCODES::BADTRUNC.name(),
-                                  RCODES::BADTRUNC.description())
+                                   RCODES::BADTRUNC.name(),
+                                   RCODES::BADTRUNC.description())
             ),
             23 => Ok(
                 RCODEEDNSInfo::new(RCODES::BADCOOKIE.rcode_edns(),
-                                  RCODES::BADCOOKIE.name(),
-                                  RCODES::BADCOOKIE.description())
+                                   RCODES::BADCOOKIE.name(),
+                                   RCODES::BADCOOKIE.description())
             ),
             24..=3840 => Ok(
                 RCODEEDNSInfo::new(U12::new(*decimal),
-                                  UNASSIGNED,
-                                  UNASSIGNED)
+                                   UNASSIGNED,
+                                   UNASSIGNED)
             ),
             3841..=4095 => Ok(
                 RCODEEDNSInfo::new(U12::new(*decimal),
-                                  REVERSED_PRIVATE_USE,
-                                  REVERSED_PRIVATE_USE)
+                                   RESERVED_PRIVATE_USE,
+                                   RESERVED_PRIVATE_USE)
             ),
             _ => Err(String::from("Can't decode EDNS RCODE (12 bits)!"))
         }
@@ -577,8 +577,8 @@ impl RCODEConversion for RCODES {
             ),
             12..=15 => Ok(
                 RCODERawInfo::new(*decimal,
-                               UNASSIGNED,
-                               UNASSIGNED)
+                                  UNASSIGNED,
+                                  UNASSIGNED)
             ),
             16 => Ok(
                 RCODERawInfo::new(RCODES::BADVERS_BADSIG.rcode_raw(),
@@ -622,23 +622,23 @@ impl RCODEConversion for RCODES {
             ),
             24..=3840 => Ok(
                 RCODERawInfo::new(*decimal,
-                               UNASSIGNED,
-                               UNASSIGNED)
+                                  UNASSIGNED,
+                                  UNASSIGNED)
             ),
             3841..=4095 => Ok(
                 RCODERawInfo::new(*decimal,
-                               REVERSED_PRIVATE_USE,
-                               REVERSED_PRIVATE_USE)
+                                  RESERVED_PRIVATE_USE,
+                                  RESERVED_PRIVATE_USE)
             ),
             4096..=65534 => Ok(
                 RCODERawInfo::new(*decimal,
-                               UNASSIGNED,
-                               UNASSIGNED)
+                                  UNASSIGNED,
+                                  UNASSIGNED)
             ),
             65535 => Ok(
                 RCODERawInfo::new(*decimal,
-                               REVERSED,
-                               REVERSED)
+                                  RESERVED,
+                                  RESERVED)
             ),
             _ => Err(String::from("Can't decode RAW RCODE!"))
         }

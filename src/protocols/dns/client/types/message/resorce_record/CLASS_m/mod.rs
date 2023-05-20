@@ -31,7 +31,7 @@ mod conversion;
 mod class_m;
 mod class_info;
 
-pub(self) use constants::{REVERSED, UNASSIGNED, REVERSED_PRIVATE_USE};
+pub(self) use constants::{RESERVED, UNASSIGNED, RESERVED_PRIVATE_USE};
 
 pub use class_m::{CLASS};
 pub use class_info::{CLASSInfo};

@@ -34,6 +34,7 @@ use crate::protocols::dns::client::types::message::Header::{
     QR, AA, TC, RD, RA, None, AD, CD, OPCODES, RCODES
 };
 use crate::protocols::dns::client::types::message::Question::{QTYPE, QCLASS};
+use crate::protocols::dns::client::types::message::Additional::{OPTION};
 
 #[derive(Debug)]
 pub struct DNSMessage {

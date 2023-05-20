@@ -28,7 +28,7 @@
 
 use super::{CLASS};
 use super::{CLASSInfo};
-use super::{REVERSED, UNASSIGNED, REVERSED_PRIVATE_USE};
+use super::{RESERVED, UNASSIGNED, RESERVED_PRIVATE_USE};
 
 
 pub trait CLASSConversion {
@@ -70,7 +70,7 @@ impl CLASSConversion for CLASS {
     fn decode(decimal: &u16) -> Result<CLASSInfo, String> {
         return match *decimal {
             0 => Ok(
-                CLASSInfo::new(REVERSED,
+                CLASSInfo::new(RESERVED,
                                *decimal)
             ),
             1 => Ok(
@@ -106,11 +106,11 @@ impl CLASSConversion for CLASS {
                                *decimal)
             ),
             65280..=65534 => Ok(
-                CLASSInfo::new(REVERSED_PRIVATE_USE,
+                CLASSInfo::new(RESERVED_PRIVATE_USE,
                                *decimal)
             ),
             65535 => Ok(
-                CLASSInfo::new(REVERSED,
+                CLASSInfo::new(RESERVED,
                                *decimal)
             ),
             _ => Err(String::from("Can't decode CLASS!"))

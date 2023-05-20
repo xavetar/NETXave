@@ -28,11 +28,13 @@
 
 mod constants;
 mod conversion;
-mod type_m;
-mod type_info;
+mod option_m;
+mod option_info;
 
-pub(self) use constants::{RESERVED, UNASSIGNED, PRIVATE_USE};
+pub(self) use constants::{
+    RESERVED, UNASSIGNED, RESERVED_LOCAL_EXPERIMENTAL_USE, RESERVED_FUTURE_EXPANSION_USE
+};
 
-pub use type_m::{TYPE};
-pub use type_info::{TYPEInfo};
-pub use conversion::{TYPEConversion};
+pub use option_m::{OPTION};
+pub use option_info::{OPTIONInfo};
+pub use conversion::{OPTIONConversion};
