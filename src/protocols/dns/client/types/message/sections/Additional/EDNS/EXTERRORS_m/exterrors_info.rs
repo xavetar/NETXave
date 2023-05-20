@@ -28,14 +28,14 @@
 
 use crate::data_types::{U4};
 
-pub struct OPTIONInfo {
+pub struct EXTERRORSInfo {
     name: &'static str,
     code: u16
 }
 
-impl OPTIONInfo {
-    pub fn new(name: &'static str, code: u16) -> OPTIONInfo {
-        return OPTIONInfo {
+impl EXTERRORSInfo {
+    pub fn new(name: &'static str, code: u16) -> EXTERRORSInfo {
+        return EXTERRORSInfo {
             name: name,
             code: code
         }

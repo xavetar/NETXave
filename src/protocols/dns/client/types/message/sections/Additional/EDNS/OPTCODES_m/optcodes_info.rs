@@ -26,4 +26,30 @@
  * THE SOFTWARE.
  */
 
-pub mod EDNS;
+use crate::data_types::{U4};
+
+pub struct OPTCODESInfo {
+    name: &'static str,
+    code: u16
+}
+
+impl OPTCODESInfo {
+    pub fn new(name: &'static str, code: u16) -> OPTCODESInfo {
+        return OPTCODESInfo {
+            name: name,
+            code: code
+        }
+    }
+
+    pub fn name(&self) -> &'static str {
+        return &self.name;
+    }
+
+    pub fn code(&self) -> &u16 {
+        return &self.code;
+    }
+
+    pub fn hex(&self) -> String {
+        return format!("{:02x}", &self.code);
+    }
+}

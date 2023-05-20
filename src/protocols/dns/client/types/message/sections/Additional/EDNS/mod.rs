@@ -26,4 +26,8 @@
  * THE SOFTWARE.
  */
 
-pub mod EDNS;
+mod OPTCODES_m;
+mod EXTERRORS_m;
+
+pub use OPTCODES_m::{OPTCODES, OPTCODESInfo, OPTCODESConversion};
+pub use EXTERRORS_m::{EXTERRORS, EXTERRORSInfo, EXTERRORSConversion};

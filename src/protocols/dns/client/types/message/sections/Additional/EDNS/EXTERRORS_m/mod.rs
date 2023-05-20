@@ -28,13 +28,13 @@
 
 mod constants;
 mod conversion;
-mod option_m;
-mod option_info;
+mod exterrors_m;
+mod exterrors_info;
 
 pub(self) use constants::{
-    RESERVED, UNASSIGNED, RESERVED_LOCAL_EXPERIMENTAL_USE, RESERVED_FUTURE_EXPANSION_USE
+    UNASSIGNED, RESERVED_PRIVATE_USE
 };
 
-pub use option_m::{OPTION};
-pub use option_info::{OPTIONInfo};
-pub use conversion::{OPTIONConversion};
+pub use exterrors_m::{EXTERRORS};
+pub use exterrors_info::{EXTERRORSInfo};
+pub use conversion::{EXTERRORSConversion};

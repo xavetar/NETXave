@@ -26,4 +26,5 @@
  * THE SOFTWARE.
  */
 
-pub mod EDNS;
+pub const UNASSIGNED: &'static str = "Unassigned";
+pub const RESERVED_PRIVATE_USE: &'static str = "RESERVED for Private Use";

@@ -26,4 +26,15 @@
  * THE SOFTWARE.
  */
 
-pub mod EDNS;
+mod constants;
+mod conversion;
+mod optcodes_m;
+mod optcodes_info;
+
+pub(self) use constants::{
+    RESERVED, UNASSIGNED, RESERVED_LOCAL_EXPERIMENTAL_USE, RESERVED_FUTURE_EXPANSION_USE
+};
+
+pub use optcodes_m::{OPTCODES};
+pub use optcodes_info::{OPTCODESInfo};
+pub use conversion::{OPTCODESConversion};
