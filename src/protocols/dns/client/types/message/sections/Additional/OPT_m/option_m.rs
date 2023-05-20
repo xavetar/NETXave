@@ -52,24 +52,24 @@ impl OPTION {
     pub fn code(&self) -> u16 {
         return match self {
             OPTION::LLQ => OPTION::LLQ as u16,
-            OPTION::UL => OPTION::LLQ as u16,
-            OPTION::NSID => OPTION::LLQ as u16,
+            OPTION::UL => OPTION::UL as u16,
+            OPTION::NSID => OPTION::NSID as u16,
             OPTION::OWNER => OPTION::OWNER as u16,
-            OPTION::DAU => OPTION::LLQ as u16,
-            OPTION::DHU => OPTION::LLQ as u16,
-            OPTION::N3U => OPTION::LLQ as u16,
-            OPTION::ECS => OPTION::LLQ as u16,
-            OPTION::EXPIRE => OPTION::LLQ as u16,
-            OPTION::COOKIE => OPTION::LLQ as u16,
-            OPTION::ETK => OPTION::LLQ as u16,
-            OPTION::PADDING => OPTION::LLQ as u16,
-            OPTION::CHAIN => OPTION::LLQ as u16,
-            OPTION::EKT => OPTION::LLQ as u16,
-            OPTION::EXTENDED_ERROR => OPTION::LLQ as u16,
-            OPTION::ECT => OPTION::LLQ as u16,
-            OPTION::EST => OPTION::LLQ as u16,
-            OPTION::UMBRELLA_IDENT => OPTION::LLQ as u16,
-            OPTION::DEVICE_ID => OPTION::LLQ as u16
+            OPTION::DAU => OPTION::DAU as u16,
+            OPTION::DHU => OPTION::DHU as u16,
+            OPTION::N3U => OPTION::N3U as u16,
+            OPTION::ECS => OPTION::ECS as u16,
+            OPTION::EXPIRE => OPTION::EXPIRE as u16,
+            OPTION::COOKIE => OPTION::COOKIE as u16,
+            OPTION::ETK => OPTION::ETK as u16,
+            OPTION::PADDING => OPTION::PADDING as u16,
+            OPTION::CHAIN => OPTION::CHAIN as u16,
+            OPTION::EKT => OPTION::EKT as u16,
+            OPTION::EXTENDED_ERROR => OPTION::EXTENDED_ERROR as u16,
+            OPTION::ECT => OPTION::ECT as u16,
+            OPTION::EST => OPTION::EST as u16,
+            OPTION::UMBRELLA_IDENT => OPTION::UMBRELLA_IDENT as u16,
+            OPTION::DEVICE_ID => OPTION::DEVICE_ID as u16
         }
     }
 
