@@ -26,5 +26,4 @@
  * THE SOFTWARE.
  */
 
-pub mod answer;
 pub mod message;

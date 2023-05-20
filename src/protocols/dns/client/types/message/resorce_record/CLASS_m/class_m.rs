@@ -26,7 +26,46 @@
  * THE SOFTWARE.
  */
 
-pub mod wire;
-pub mod types;
-pub mod builder;
-pub mod connection;
+pub enum CLASS {
+    IN = 1,
+    CS = 2,
+    CH = 3,
+    HS = 4,
+    None = 254,
+    ANY = 255
+}
+
+impl CLASS {
+    pub fn name(&self) -> &'static str {
+        return match self {
+            CLASS::IN => "IN",
+            CLASS::CS => "CS",
+            CLASS::CH => "CH",
+            CLASS::HS => "HS",
+            CLASS::None => "None",
+            CLASS::ANY => "*"
+        }
+    }
+
+    pub fn code(&self) -> u16 {
+        return match self {
+            CLASS::IN => CLASS::IN as u16,
+            CLASS::CS => CLASS::CS as u16,
+            CLASS::CH => CLASS::CH as u16,
+            CLASS::HS => CLASS::HS as u16,
+            CLASS::None => CLASS::None as u16,
+            CLASS::ANY => CLASS::ANY as u16
+        }
+    }
+
+    pub fn hex(&self) -> String {
+        return match self {
+            CLASS::IN => format!("{:02x}", CLASS::IN.code()),
+            CLASS::CS => format!("{:02x}", CLASS::CS.code()),
+            CLASS::CH => format!("{:02x}", CLASS::CH.code()),
+            CLASS::HS => format!("{:02x}", CLASS::HS.code()),
+            CLASS::None => format!("{:02x}", CLASS::None.code()),
+            CLASS::ANY => format!("{:02x}", CLASS::ANY.code())
+        }
+    }
+}

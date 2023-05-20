@@ -26,7 +26,8 @@
  * THE SOFTWARE.
  */
 
-pub mod wire;
-pub mod types;
-pub mod builder;
-pub mod connection;
+pub mod Header;
+pub mod Question;
+pub mod Answer;
+pub mod Authority;
+pub mod Additional;

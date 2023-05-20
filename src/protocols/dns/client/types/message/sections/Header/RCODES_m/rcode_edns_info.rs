@@ -26,7 +26,36 @@
  * THE SOFTWARE.
  */
 
-pub mod wire;
-pub mod types;
-pub mod builder;
-pub mod connection;
+use crate::data_types::{U12};
+
+pub struct RCODEEDNSInfo {
+    rcode: U12,
+    name: &'static str,
+    description: &'static str
+}
+
+impl RCODEEDNSInfo {
+    pub fn new(rcode: U12, name: &'static str, description: &'static str) -> RCODEEDNSInfo {
+        return RCODEEDNSInfo {
+            rcode: rcode,
+            name: name,
+            description: description
+        }
+    }
+
+    pub fn rcode(&self) -> &U12 {
+        return &self.rcode;
+    }
+
+    pub fn name(&self) -> &'static str {
+        return &self.name;
+    }
+
+    pub fn description(&self) -> &'static str {
+        return &self.description;
+    }
+
+    pub fn hex(&self) -> String {
+        return format!("{:02x}", &self.rcode.get());
+    }
+}

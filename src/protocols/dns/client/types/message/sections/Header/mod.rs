@@ -26,7 +26,24 @@
  * THE SOFTWARE.
  */
 
-pub mod wire;
-pub mod types;
-pub mod builder;
-pub mod connection;
+mod QR_m;
+mod OPCODES_m;
+mod AA_m;
+mod TC_m;
+mod RD_m;
+mod RA_m;
+mod Z_m;
+mod RCODES_m;
+
+pub use QR_m::{QR, QRInfo, QRConversion};
+pub use OPCODES_m::{OPCODES, OPCODEInfo, OPCODEConversion};
+pub use AA_m::{AA, AAInfo, AAConversion};
+pub use TC_m::{TC, TCInfo, TCConversion};
+pub use RD_m::{RD, RDInfo, RDConversion};
+pub use RA_m::{RA, RAInfo, RAConversion};
+pub use Z_m::{
+    None, AD, CD,
+    NoneInfo, ADInfo, CDInfo,
+    NoneConversion, ADConversion, CDConversion
+};
+pub use RCODES_m::{RCODES, RCODEInfo, RCODEEDNSInfo, RCODERawInfo, RCODEConversion};

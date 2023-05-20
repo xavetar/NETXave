@@ -26,7 +26,8 @@
  * THE SOFTWARE.
  */
 
-pub mod wire;
-pub mod types;
-pub mod builder;
-pub mod connection;
+mod QTYPE_m;
+mod QCLASS_m;
+
+pub use QTYPE_m::{QTYPE, QTYPEInfo, QTYPEConversion};
+pub use QCLASS_m::{QCLASS, QCLASSInfo, QCLASSConversion};

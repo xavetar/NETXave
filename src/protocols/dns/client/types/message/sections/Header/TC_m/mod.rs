@@ -26,7 +26,10 @@
  * THE SOFTWARE.
  */
 
-pub mod wire;
-pub mod types;
-pub mod builder;
-pub mod connection;
+mod conversion;
+mod tc_m;
+mod tc_info;
+
+pub use tc_m::{TC};
+pub use tc_info::{TCInfo};
+pub use conversion::{TCConversion};

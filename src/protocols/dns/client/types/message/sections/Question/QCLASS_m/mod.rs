@@ -26,7 +26,6 @@
  * THE SOFTWARE.
  */
 
-pub mod wire;
-pub mod types;
-pub mod builder;
-pub mod connection;
+pub use crate::protocols::dns::client::types::message::resorce_record::{
+    CLASS as QCLASS, CLASSInfo as QCLASSInfo, CLASSConversion as QCLASSConversion
+};

@@ -26,7 +26,10 @@
  * THE SOFTWARE.
  */
 
-pub mod wire;
-pub mod types;
-pub mod builder;
-pub mod connection;
+mod conversion;
+mod cd_m;
+mod cd_info;
+
+pub use cd_m::{CD};
+pub use cd_info::{CDInfo};
+pub use conversion::{CDConversion};

@@ -27,21 +27,13 @@
  */
 
 use crate::data_types::{U1, U3, U4};
-use crate::protocols::dns::client::types::dns::{HeaderSection, Flags, Z};
-use crate::protocols::dns::client::types::dns::{QuestionSection};
+use crate::protocols::dns::client::builder::{HeaderSection, Flags, Z};
+use crate::protocols::dns::client::builder::{QuestionSection};
 
-use crate::protocols::dns::client::types::dns::hqr::{QR};
-use crate::protocols::dns::client::types::dns::haa::{AA};
-use crate::protocols::dns::client::types::dns::htc::{TC};
-use crate::protocols::dns::client::types::dns::hrd::{RD};
-use crate::protocols::dns::client::types::dns::hra::{RA};
-use crate::protocols::dns::client::types::dns::hznone::{None};
-use crate::protocols::dns::client::types::dns::hzad::{AD};
-use crate::protocols::dns::client::types::dns::hzcd::{CD};
-use crate::protocols::dns::client::types::dns::hopcodes::{OPCODES};
-use crate::protocols::dns::client::types::dns::hrcodes::{RCODES};
-use crate::protocols::dns::client::types::dns::qrrtype::{QRRTYPE};
-use crate::protocols::dns::client::types::dns::qrrclass::{QRRCLASS};
+use crate::protocols::dns::client::types::message::Header::{
+    QR, AA, TC, RD, RA, None, AD, CD, OPCODES, RCODES
+};
+use crate::protocols::dns::client::types::message::Question::{QTYPE, QCLASS};
 
 #[derive(Debug)]
 pub struct DNSMessage {
@@ -99,7 +91,7 @@ pub fn get_query(domain: &str) -> String {
     /// Question
 
     let mut question = QuestionSection::new(
-        domain_to_qname(domain).unwrap(),QRRTYPE::A.code(),QRRCLASS::IN.code()
+        domain_to_qname(domain).unwrap(),QTYPE::A.code(),QCLASS::IN.code()
     );
 
     /// Message (Query)

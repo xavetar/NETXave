@@ -26,7 +26,13 @@
  * THE SOFTWARE.
  */
 
-pub mod wire;
-pub mod types;
-pub mod builder;
-pub mod connection;
+mod constants;
+mod conversion;
+mod type_m;
+mod type_info;
+
+pub(self) use constants::{REVERSED, UNASSIGNED, PRIVATE_USE};
+
+pub use type_m::{TYPE};
+pub use type_info::{TYPEInfo};
+pub use conversion::{TYPEConversion};

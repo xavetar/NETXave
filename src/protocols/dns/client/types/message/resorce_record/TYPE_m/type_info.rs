@@ -26,7 +26,28 @@
  * THE SOFTWARE.
  */
 
-pub mod wire;
-pub mod types;
-pub mod builder;
-pub mod connection;
+pub struct TYPEInfo {
+    name: &'static str,
+    code: u16
+}
+
+impl TYPEInfo {
+    pub fn new(name: &'static str, code: u16) -> TYPEInfo {
+        return TYPEInfo {
+            name: name,
+            code: code
+        }
+    }
+
+    pub fn name(&self) -> &'static str {
+        return &self.name;
+    }
+
+    pub fn code(&self) -> &u16 {
+        return &self.code;
+    }
+
+    pub fn hex(&self) -> String {
+        return format!("{:02x}", &self.code);
+    }
+}

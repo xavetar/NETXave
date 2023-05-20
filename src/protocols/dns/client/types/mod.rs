@@ -26,5 +26,5 @@
  * THE SOFTWARE.
  */
 
-pub mod dns;
+pub mod message;
 pub mod connection;

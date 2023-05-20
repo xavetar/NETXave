@@ -26,7 +26,7 @@
  * THE SOFTWARE.
  */
 
-pub mod wire;
-pub mod types;
-pub mod builder;
-pub mod connection;
+mod sections;
+mod resorce_record;
+
+pub use sections::{Header, Question, Answer, Authority, Additional};

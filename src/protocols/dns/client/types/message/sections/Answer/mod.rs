@@ -26,7 +26,10 @@
  * THE SOFTWARE.
  */
 
-pub mod wire;
-pub mod types;
-pub mod builder;
-pub mod connection;
+mod TYPE_m;
+mod CLASS_m;
+mod RDATA_m;
+
+pub use TYPE_m::{TYPE, TYPEInfo, TYPEConversion};
+pub use CLASS_m::{QCLASS, QCLASSInfo, QCLASSConversion};
+pub use RDATA_m::{*};

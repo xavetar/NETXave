@@ -26,7 +26,10 @@
  * THE SOFTWARE.
  */
 
-pub mod wire;
-pub mod types;
-pub mod builder;
-pub mod connection;
+mod conversion;
+mod rd_m;
+mod rd_info;
+
+pub use rd_m::{RD};
+pub use rd_info::{RDInfo};
+pub use conversion::{RDConversion};

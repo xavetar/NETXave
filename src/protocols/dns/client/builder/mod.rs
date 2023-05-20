@@ -26,7 +26,8 @@
  * THE SOFTWARE.
  */
 
-pub mod wire;
-pub mod types;
-pub mod builder;
-pub mod connection;
+mod header;
+mod question;
+
+pub use header::{HeaderSection, Flags, Z};
+pub use question::{QuestionSection};

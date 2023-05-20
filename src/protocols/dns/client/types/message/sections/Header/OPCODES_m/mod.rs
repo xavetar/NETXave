@@ -26,7 +26,13 @@
  * THE SOFTWARE.
  */
 
-pub mod wire;
-pub mod types;
-pub mod builder;
-pub mod connection;
+mod constants;
+mod conversion;
+mod opcodes_m;
+mod opcode_info;
+
+pub(self) use constants::{UNASSIGNED};
+
+pub use opcodes_m::{OPCODES};
+pub use opcode_info::{OPCODEInfo};
+pub use conversion::{OPCODEConversion};

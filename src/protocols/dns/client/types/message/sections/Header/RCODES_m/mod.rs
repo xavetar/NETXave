@@ -26,7 +26,20 @@
  * THE SOFTWARE.
  */
 
-pub mod wire;
-pub mod types;
-pub mod builder;
-pub mod connection;
+mod constants;
+mod conversion;
+mod rcodes_m;
+mod rcode_info;
+mod rcode_raw_info;
+mod rcode_edns_info;
+
+mod warnings;
+
+pub(self) use constants::{REVERSED, UNASSIGNED, REVERSED_PRIVATE_USE};
+pub(self) use warnings::{NOT_AUTH_W, BAD_VERS_BAD_SIG_W};
+
+pub use rcodes_m::{RCODES};
+pub use rcode_info::{RCODEInfo};
+pub use rcode_raw_info::{RCODERawInfo};
+pub use rcode_edns_info::{RCODEEDNSInfo};
+pub use conversion::{RCODEConversion};

@@ -26,7 +26,10 @@
  * THE SOFTWARE.
  */
 
-pub mod wire;
-pub mod types;
-pub mod builder;
-pub mod connection;
+mod conversion;
+mod aa_m;
+mod aa_info;
+
+pub use aa_m::{AA};
+pub use aa_info::{AAInfo};
+pub use conversion::{AAConversion};
