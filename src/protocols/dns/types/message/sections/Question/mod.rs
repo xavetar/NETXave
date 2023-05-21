@@ -26,8 +26,10 @@
  * THE SOFTWARE.
  */
 
+mod QNAME_m;
 mod QTYPE_m;
 mod QCLASS_m;
 
+pub use QNAME_m::{QLABEL, QLABELInfo, QLABELConversion};
 pub use QTYPE_m::{QTYPE, QTYPEInfo, QTYPEConversion};
 pub use QCLASS_m::{QCLASS, QCLASSInfo, QCLASSConversion};

@@ -26,10 +26,6 @@
  * THE SOFTWARE.
  */
 
-mod DO_m;
-mod OPTCODES_m;
-mod EXTERRORS_m;
-
-pub use DO_m::{DO, DOInfo, DOConversion};
-pub use OPTCODES_m::{OPTCODES, OPTCODESInfo, OPTCODESConversion};
-pub use EXTERRORS_m::{EXTERRORS, EXTERRORSInfo, EXTERRORSConversion};
+pub use crate::protocols::dns::types::message::label_types::{
+    BLABEL as QLABEL, BLABELInfo as QLABELInfo, BLABELConversion as QLABELConversion
+};

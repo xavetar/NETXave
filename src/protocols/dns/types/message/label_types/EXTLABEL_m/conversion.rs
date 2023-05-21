@@ -26,10 +26,42 @@
  * THE SOFTWARE.
  */
 
-mod DO_m;
-mod OPTCODES_m;
-mod EXTERRORS_m;
+use crate::data_types::{U6};
 
-pub use DO_m::{DO, DOInfo, DOConversion};
-pub use OPTCODES_m::{OPTCODES, OPTCODESInfo, OPTCODESConversion};
-pub use EXTERRORS_m::{EXTERRORS, EXTERRORSInfo, EXTERRORSConversion};
+use super::{RESERVED_FUTURE_EXPANSION};
+use super::{EXTLABEL};
+use super::{EXTLABELInfo};
+
+pub trait EXTLABELConversion {
+    fn encode(name: &str) -> Result<EXTLABELInfo, String>;
+    fn decode(dec: &u8) -> Result<EXTLABELInfo, String>;
+}
+
+impl EXTLABELConversion for EXTLABEL {
+    fn encode(name: &str) -> Result<EXTLABELInfo, String> {
+        return match name {
+            "BINARY" => Ok(
+                EXTLABELInfo::new(EXTLABEL::BINARY.name(),
+                                  EXTLABEL::BINARY.code(),
+                                  EXTLABEL::BINARY.details())
+            ),
+            _ => Err(String::from("Can't encode EXTENDED LABEL!"))
+        }
+    }
+
+    fn decode(decimal: &u8) -> Result<EXTLABELInfo, String> {
+        return match *decimal {
+            1 => Ok(
+                EXTLABELInfo::new(EXTLABEL::BINARY.name(),
+                                  EXTLABEL::BINARY.code(),
+                                  EXTLABEL::BINARY.details())
+            ),
+            127 => Ok(
+                EXTLABELInfo::new(RESERVED_FUTURE_EXPANSION,
+                                  U6::new(*decimal),
+                                  RESERVED_FUTURE_EXPANSION)
+            ),
+            _ => Err(String::from("Can't decode EXTENDED LABEL!"))
+        }
+    }
+}

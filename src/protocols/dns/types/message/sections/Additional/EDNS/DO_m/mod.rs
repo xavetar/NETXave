@@ -26,10 +26,10 @@
  * THE SOFTWARE.
  */
 
-mod DO_m;
-mod OPTCODES_m;
-mod EXTERRORS_m;
+mod conversion;
+mod do_m;
+mod do_info;
 
-pub use DO_m::{DO, DOInfo, DOConversion};
-pub use OPTCODES_m::{OPTCODES, OPTCODESInfo, OPTCODESConversion};
-pub use EXTERRORS_m::{EXTERRORS, EXTERRORSInfo, EXTERRORSConversion};
+pub use do_m::{DO};
+pub use do_info::{DOInfo};
+pub use conversion::{DOConversion};

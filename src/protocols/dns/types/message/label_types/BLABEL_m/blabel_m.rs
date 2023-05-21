@@ -26,10 +26,36 @@
  * THE SOFTWARE.
  */
 
-mod DO_m;
-mod OPTCODES_m;
-mod EXTERRORS_m;
+use crate::data_types::{U2};
 
-pub use DO_m::{DO, DOInfo, DOConversion};
-pub use OPTCODES_m::{OPTCODES, OPTCODESInfo, OPTCODESConversion};
-pub use EXTERRORS_m::{EXTERRORS, EXTERRORSInfo, EXTERRORSConversion};
+pub enum BLABEL {
+    NORMAL = 0,
+    EXTENDED = 1,
+    COMPRESSED = 3,
+}
+
+impl BLABEL {
+    pub fn code(&self) -> U2 {
+        return match self {
+            BLABEL::NORMAL => U2::new(BLABEL::NORMAL as u8),
+            BLABEL::EXTENDED => U2::new(BLABEL::EXTENDED as u8),
+            BLABEL::COMPRESSED => U2::new(BLABEL::COMPRESSED as u8)
+        }
+    }
+
+    pub fn name(&self) -> &'static str {
+        return match self {
+            BLABEL::NORMAL => "Normal Label",
+            BLABEL::EXTENDED => "Extended Label",
+            BLABEL::COMPRESSED => "Compressed Label"
+        }
+    }
+
+    pub fn details(&self) -> &'static str {
+        return match self {
+            BLABEL::NORMAL => "Lower 6 bits is the length of the label",
+            BLABEL::EXTENDED => "The lower 6 bits and the 8 bits from next octet form a pointer to the compression target",
+            BLABEL::COMPRESSED => "Type the lower 6 bits of this type indicate the type of label in use"
+        }
+    }
+}

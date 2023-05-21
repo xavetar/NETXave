@@ -26,10 +26,25 @@
  * THE SOFTWARE.
  */
 
-mod DO_m;
-mod OPTCODES_m;
-mod EXTERRORS_m;
+use crate::data_types::{U1};
 
-pub use DO_m::{DO, DOInfo, DOConversion};
-pub use OPTCODES_m::{OPTCODES, OPTCODESInfo, OPTCODESConversion};
-pub use EXTERRORS_m::{EXTERRORS, EXTERRORSInfo, EXTERRORSConversion};
+pub enum DO {
+    DISABLED = 0,
+    ENABLED = 1
+}
+
+impl DO {
+    pub fn code(&self) -> U1 {
+        return match self {
+            DO::DISABLED => U1::new(DO::DISABLED as u8),
+            DO::ENABLED => U1::new(DO::ENABLED as u8)
+        }
+    }
+
+    pub fn name(&self) -> &'static str {
+        return match self {
+            DO::DISABLED => "DNSSEC NO",
+            DO::ENABLED => "DNSSEC OK"
+        }
+    }
+}

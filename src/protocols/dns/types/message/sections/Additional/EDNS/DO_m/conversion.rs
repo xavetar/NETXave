@@ -26,10 +26,42 @@
  * THE SOFTWARE.
  */
 
-mod DO_m;
-mod OPTCODES_m;
-mod EXTERRORS_m;
+use crate::data_types::{U1};
 
-pub use DO_m::{DO, DOInfo, DOConversion};
-pub use OPTCODES_m::{OPTCODES, OPTCODESInfo, OPTCODESConversion};
-pub use EXTERRORS_m::{EXTERRORS, EXTERRORSInfo, EXTERRORSConversion};
+use super::{DO};
+use super::{DOInfo};
+
+pub trait DOConversion {
+    fn encode(name: &str) -> Result<DOInfo, String>;
+    fn decode(dec: &u8) -> Result<DOInfo, String>;
+}
+
+impl DOConversion for DO {
+    fn encode(name: &str) -> Result<DOInfo, String> {
+        return match name {
+            "DISABLED" => Ok(
+                DOInfo::new(DO::DISABLED.name(),
+                            DO::DISABLED.code())
+            ),
+            "ENABLED" => Ok(
+                DOInfo::new(DO::ENABLED.name(),
+                            DO::ENABLED.code())
+            ),
+            _ => Err(String::from("Can't encode DO bit!"))
+        }
+    }
+
+    fn decode(decimal: &u8) -> Result<DOInfo, String> {
+        return match *decimal {
+            0 => Ok(
+                DOInfo::new(DO::DISABLED.name(),
+                            DO::DISABLED.code())
+            ),
+            1 => Ok(
+                DOInfo::new(DO::ENABLED.name(),
+                            DO::ENABLED.code())
+            ),
+            _ => Err(String::from("Can't decode DO bit!"))
+        }
+    }
+}

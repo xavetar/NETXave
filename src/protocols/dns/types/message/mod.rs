@@ -27,6 +27,7 @@
  */
 
 mod sections;
+mod label_types;
 mod resorce_record;
 
 pub use sections::{Header, Question, Answer, Authority, Additional, DSO};

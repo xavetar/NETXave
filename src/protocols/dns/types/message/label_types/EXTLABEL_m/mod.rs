@@ -26,10 +26,13 @@
  * THE SOFTWARE.
  */
 
-mod DO_m;
-mod OPTCODES_m;
-mod EXTERRORS_m;
+mod constants;
+mod conversion;
+mod extlabel_m;
+mod extlabel_info;
 
-pub use DO_m::{DO, DOInfo, DOConversion};
-pub use OPTCODES_m::{OPTCODES, OPTCODESInfo, OPTCODESConversion};
-pub use EXTERRORS_m::{EXTERRORS, EXTERRORSInfo, EXTERRORSConversion};
+pub(self) use constants::{RESERVED_FUTURE_EXPANSION};
+
+pub use extlabel_m::{EXTLABEL};
+pub use extlabel_info::{EXTLABELInfo};
+pub use conversion::{EXTLABELConversion};

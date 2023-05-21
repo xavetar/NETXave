@@ -26,10 +26,36 @@
  * THE SOFTWARE.
  */
 
-mod DO_m;
-mod OPTCODES_m;
-mod EXTERRORS_m;
+use crate::data_types::{U6};
 
-pub use DO_m::{DO, DOInfo, DOConversion};
-pub use OPTCODES_m::{OPTCODES, OPTCODESInfo, OPTCODESConversion};
-pub use EXTERRORS_m::{EXTERRORS, EXTERRORSInfo, EXTERRORSConversion};
+pub struct EXTLABELInfo {
+    name: &'static str,
+    code: U6,
+    details: &'static str
+}
+
+impl EXTLABELInfo {
+    pub fn new(name: &'static str, code: U6, details: &'static str) -> EXTLABELInfo {
+        return EXTLABELInfo {
+            name: name,
+            code: code,
+            details: details
+        }
+    }
+
+    pub fn name(&self) -> &'static str {
+        return &self.name;
+    }
+
+    pub fn code(&self) -> &U6 {
+        return &self.code;
+    }
+
+    pub fn details(&self) -> &'static str {
+        return &self.details;
+    }
+
+    pub fn hex(&self) -> String {
+        return format!("{:02x}", &self.code.get());
+    }
+}

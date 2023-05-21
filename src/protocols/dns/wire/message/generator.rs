@@ -26,14 +26,14 @@
  * THE SOFTWARE.
  */
 
-use crate::data_types::{U1, U3, U4};
+use crate::data_types::{U1, U3, U4, U6};
 use crate::protocols::dns::builder::{HeaderSection, Flags, Z};
 use crate::protocols::dns::builder::{QuestionSection};
 
 use crate::protocols::dns::types::message::Header::{
     QR, AA, TC, RD, RA, None, AD, CD, OPCODES, RCODES
 };
-use crate::protocols::dns::types::message::Question::{QTYPE, QCLASS};
+use crate::protocols::dns::types::message::Question::{QLABEL, QTYPE, QCLASS};
 use crate::protocols::dns::types::message::Additional::EDNS::{OPTCODES};
 use crate::protocols::dns::types::message::DSO::{DSOTYPE};
 
@@ -58,7 +58,8 @@ fn domain_to_qname(domain: &str) -> Result<Vec<u8>, String> {
         let addr_parts: Vec<&str> = domain.split(".").collect();
         for part in addr_parts {
             if part.len() <= 63 {
-                qname.push(part.len() as u8);
+                // Push Normal Label and use bitwise "OR" for addition with a result of 6 bit length.
+                qname.push((QLABEL::NORMAL.code().get() << 6) | U6::new(part.len() as u8).get());
                 qname.extend_from_slice(part.as_bytes());
             } else {
                 return Err(String::from("Label Length is big then 63 chars!"));

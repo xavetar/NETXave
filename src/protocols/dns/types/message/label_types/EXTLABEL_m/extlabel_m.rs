@@ -26,10 +26,28 @@
  * THE SOFTWARE.
  */
 
-mod DO_m;
-mod OPTCODES_m;
-mod EXTERRORS_m;
+use crate::data_types::{U6};
 
-pub use DO_m::{DO, DOInfo, DOConversion};
-pub use OPTCODES_m::{OPTCODES, OPTCODESInfo, OPTCODESConversion};
-pub use EXTERRORS_m::{EXTERRORS, EXTERRORSInfo, EXTERRORSConversion};
+pub enum EXTLABEL {
+    BINARY = 1
+}
+
+impl EXTLABEL {
+    pub fn code(&self) -> U6 {
+        return match self {
+            EXTLABEL::BINARY => U6::new(EXTLABEL::BINARY as u8)
+        }
+    }
+
+    pub fn name(&self) -> &'static str {
+        return match self {
+            EXTLABEL::BINARY => "Binary Label"
+        }
+    }
+
+    pub fn details(&self) -> &'static str {
+        return match self {
+            EXTLABEL::BINARY => "Binary Label Representation"
+        }
+    }
+}

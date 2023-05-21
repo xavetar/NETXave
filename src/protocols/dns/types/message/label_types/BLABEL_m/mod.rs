@@ -26,10 +26,13 @@
  * THE SOFTWARE.
  */
 
-mod DO_m;
-mod OPTCODES_m;
-mod EXTERRORS_m;
+mod constants;
+mod conversion;
+mod blabel_m;
+mod blabel_info;
 
-pub use DO_m::{DO, DOInfo, DOConversion};
-pub use OPTCODES_m::{OPTCODES, OPTCODESInfo, OPTCODESConversion};
-pub use EXTERRORS_m::{EXTERRORS, EXTERRORSInfo, EXTERRORSConversion};
+pub(self) use constants::{UNALLOCATED};
+
+pub use blabel_m::{BLABEL};
+pub use blabel_info::{BLABELInfo};
+pub use conversion::{BLABELConversion};
