@@ -26,7 +26,8 @@
  * THE SOFTWARE.
  */
 
-mod sections;
-mod resorce_record;
-
-pub use sections::{Header, Question, Answer, Authority, Additional, DSO};
+pub const RESERVED: &'static str = "Reserved";
+pub const UNASSIGNED: &'static str = "Unassigned";
+pub const RESERVED_FUTURE_EXPANSION_USE: &'static str = "Reserved for future expansion";
+pub const RESERVED_EXPERIMENTAL_LOCAL_USE: &'static str = "Reserved for Experimental/Local Use";
+pub const UNASSIGNED_RESERVED_DSO_SESSION_MANAGEMENT_TLV: &'static str = "Unassigned, reserved for DSO session management";

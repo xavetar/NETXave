@@ -26,3 +26,6 @@
  * THE SOFTWARE.
  */
 
+fn unimplemented() {
+    unimplemented!("Authority is not implemented");
+}

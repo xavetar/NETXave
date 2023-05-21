@@ -26,7 +26,16 @@
  * THE SOFTWARE.
  */
 
-mod sections;
-mod resorce_record;
+mod constants;
+mod conversion;
+mod type_m;
+mod type_info;
 
-pub use sections::{Header, Question, Answer, Authority, Additional, DSO};
+pub(self) use constants::{
+    RESERVED, UNASSIGNED, RESERVED_FUTURE_EXPANSION_USE, RESERVED_EXPERIMENTAL_LOCAL_USE,
+    UNASSIGNED_RESERVED_DSO_SESSION_MANAGEMENT_TLV
+};
+
+pub use type_m::{DSOTYPE};
+pub use type_info::{DSOTYPEInfo};
+pub use conversion::{DSOTYPEConversion};

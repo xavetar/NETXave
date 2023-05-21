@@ -35,6 +35,7 @@ use crate::protocols::dns::client::types::message::Header::{
 };
 use crate::protocols::dns::client::types::message::Question::{QTYPE, QCLASS};
 use crate::protocols::dns::client::types::message::Additional::EDNS::{OPTCODES};
+use crate::protocols::dns::client::types::message::DSO::{DSOTYPE};
 
 #[derive(Debug)]
 pub struct DNSMessage {

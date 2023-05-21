@@ -26,7 +26,34 @@
  * THE SOFTWARE.
  */
 
-mod sections;
-mod resorce_record;
+pub struct DSOTYPEInfo {
+    name: &'static str,
+    code: u16,
+    rtt0: bool
+}
 
-pub use sections::{Header, Question, Answer, Authority, Additional, DSO};
+impl DSOTYPEInfo {
+    pub fn new(name: &'static str, code: u16, rtt0: bool) -> DSOTYPEInfo {
+        return DSOTYPEInfo {
+            name: name,
+            code: code,
+            rtt0: rtt0
+        }
+    }
+
+    pub fn name(&self) -> &'static str {
+        return &self.name;
+    }
+
+    pub fn code(&self) -> &u16 {
+        return &self.code;
+    }
+
+    pub fn rtt0(&self) -> &bool {
+        return &self.rtt0;
+    }
+
+    pub fn hex(&self) -> String {
+        return format!("{:02x}", &self.code);
+    }
+}

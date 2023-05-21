@@ -31,3 +31,4 @@ pub mod Question;
 pub mod Answer;
 pub mod Authority;
 pub mod Additional;
+pub mod DSO;

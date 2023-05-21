@@ -26,7 +26,6 @@
  * THE SOFTWARE.
  */
 
-mod sections;
-mod resorce_record;
+mod TYPE_m;
 
-pub use sections::{Header, Question, Answer, Authority, Additional, DSO};
+pub use TYPE_m::{DSOTYPE, DSOTYPEInfo, DSOTYPEConversion};
