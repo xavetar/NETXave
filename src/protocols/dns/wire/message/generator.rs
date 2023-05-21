@@ -27,15 +27,15 @@
  */
 
 use crate::data_types::{U1, U3, U4};
-use crate::protocols::dns::client::builder::{HeaderSection, Flags, Z};
-use crate::protocols::dns::client::builder::{QuestionSection};
+use crate::protocols::dns::builder::{HeaderSection, Flags, Z};
+use crate::protocols::dns::builder::{QuestionSection};
 
-use crate::protocols::dns::client::types::message::Header::{
+use crate::protocols::dns::types::message::Header::{
     QR, AA, TC, RD, RA, None, AD, CD, OPCODES, RCODES
 };
-use crate::protocols::dns::client::types::message::Question::{QTYPE, QCLASS};
-use crate::protocols::dns::client::types::message::Additional::EDNS::{OPTCODES};
-use crate::protocols::dns::client::types::message::DSO::{DSOTYPE};
+use crate::protocols::dns::types::message::Question::{QTYPE, QCLASS};
+use crate::protocols::dns::types::message::Additional::EDNS::{OPTCODES};
+use crate::protocols::dns::types::message::DSO::{DSOTYPE};
 
 #[derive(Debug)]
 pub struct DNSMessage {

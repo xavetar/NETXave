@@ -26,4 +26,6 @@
  * THE SOFTWARE.
  */
 
-pub mod request;
+pub use crate::protocols::dns::types::message::resorce_record::{
+    TYPE as QTYPE, TYPEInfo as QTYPEInfo, TYPEConversion as QTYPEConversion
+};

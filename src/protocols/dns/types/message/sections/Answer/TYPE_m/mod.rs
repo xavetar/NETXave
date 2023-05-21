@@ -26,6 +26,6 @@
  * THE SOFTWARE.
  */
 
-pub use crate::protocols::dns::client::types::message::resorce_record::{
-    CLASS as QCLASS, CLASSInfo as QCLASSInfo, CLASSConversion as QCLASSConversion
+pub use crate::protocols::dns::types::message::resorce_record::{
+    TYPE, TYPEInfo, TYPEConversion
 };

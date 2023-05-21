@@ -26,6 +26,6 @@
  * THE SOFTWARE.
  */
 
-pub use crate::protocols::dns::client::types::message::resorce_record::{
-    TYPE, TYPEInfo, TYPEConversion
-};
+fn unimplemented() {
+    unimplemented!("DNS Client is not implemented");
+}

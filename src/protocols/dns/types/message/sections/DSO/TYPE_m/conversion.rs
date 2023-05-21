@@ -33,7 +33,6 @@ use super::{
     UNASSIGNED_RESERVED_DSO_SESSION_MANAGEMENT_TLV
 };
 
-
 pub trait DSOTYPEConversion {
     fn encode(name: &str) -> Result<DSOTYPEInfo, String>;
     fn decode(dec: &u16) -> Result<DSOTYPEInfo, String>;
