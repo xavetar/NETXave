@@ -26,12 +26,6 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
-
-mod constants;
-pub mod connection;
-
-pub mod message;
-
-mod names;
-mod rr;
+pub mod BASE;
+pub mod SE;
+pub mod DSO;

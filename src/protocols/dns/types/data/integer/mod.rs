@@ -26,12 +26,24 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+pub(self) use crate::protocols::dns::types::data::meta::{Newable};
 
-mod constants;
-pub mod connection;
+mod u1;
+mod u2;
+mod u3;
+mod u4;
+mod u5;
+mod u6;
+mod u7;
+mod u12;
+mod u15;
 
-pub mod message;
-
-mod names;
-mod rr;
+pub(crate) use u1::{U1};
+pub(crate) use u2::{U2};
+pub(crate) use u3::{U3};
+pub(crate) use u4::{U4};
+pub(crate) use u5::{U5};
+pub(crate) use u6::{U6};
+pub(crate) use u7::{U7};
+pub(crate) use u12::{U12};
+pub(crate) use u15::{U15};

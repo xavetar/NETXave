@@ -26,12 +26,32 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+use super::{U2};
 
-mod constants;
-pub mod connection;
+pub struct LABEL_Details {
+    name: &'static str,
+    code: U2,
+    details: &'static str
+}
 
-pub mod message;
+impl LABEL_Details {
+    pub fn new(name: &'static str, code: U2, details: &'static str) -> LABEL_Details {
+        return LABEL_Details {
+            name: name,
+            code: code,
+            details: details
+        }
+    }
 
-mod names;
-mod rr;
+    pub fn name(&self) -> &'static str {
+        return &self.name;
+    }
+
+    pub fn code(&self) -> &U2 {
+        return &self.code;
+    }
+
+    pub fn details(&self) -> &'static str {
+        return &self.details;
+    }
+}

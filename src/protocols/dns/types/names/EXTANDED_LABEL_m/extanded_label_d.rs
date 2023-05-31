@@ -26,12 +26,32 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+use super::{U6};
 
-mod constants;
-pub mod connection;
+pub struct EXTANDED_LABEL_Details {
+    name: &'static str,
+    code: U6,
+    details: &'static str
+}
 
-pub mod message;
+impl EXTANDED_LABEL_Details {
+    pub fn new(name: &'static str, code: U6, details: &'static str) -> EXTANDED_LABEL_Details {
+        return EXTANDED_LABEL_Details {
+            name: name,
+            code: code,
+            details: details
+        }
+    }
 
-mod names;
-mod rr;
+    pub fn name(&self) -> &'static str {
+        return &self.name;
+    }
+
+    pub fn code(&self) -> &U6 {
+        return &self.code;
+    }
+
+    pub fn details(&self) -> &'static str {
+        return &self.details;
+    }
+}

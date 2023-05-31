@@ -26,12 +26,13 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
-
 mod constants;
-pub mod connection;
+mod warnings;
 
-pub mod message;
-
-mod names;
-mod rr;
+pub use constants::{
+    RESERVED, UNASSIGNED, PRIVATE_USE, UNALLOCATED, RESERVED_PRIVATE_USE, RESERVED_FUTURE_EXPANSION,
+    RESERVED_FUTURE_EXPANSION_USE, RESERVED_LOCAL_EXPERIMENTAL_USE
+};
+pub use warnings::{
+    NOT_AUTH_W, BAD_VERS_BAD_SIG_W
+};

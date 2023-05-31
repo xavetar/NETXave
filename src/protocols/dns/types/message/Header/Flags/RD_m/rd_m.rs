@@ -26,12 +26,41 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+use super::{U1};
 
-mod constants;
-pub mod connection;
+pub enum RD {
+    NO = 0,
+    YES = 1
+}
 
-pub mod message;
+impl RD {
+    pub fn code(&self) -> U1 {
+        return match self {
+            RD::NO => U1::new(RD::NO as u8),
+            RD::YES => U1::new(RD::YES as u8),
+        }
+    }
 
-mod names;
-mod rr;
+    pub fn name(&self) -> &'static str {
+        return match self {
+            RD::NO => "Recursion Not-Desirable",
+            RD::YES => "Recursion Desirable",
+        }
+    }
+
+    pub fn encode(t: &str) -> RD {
+        return match t {
+            "NO" | "RND" => RD::NO,
+            "YES" | "RD" => RD::YES,
+            _ => panic!("Can't encode RD!")
+        }
+    }
+
+    pub fn decode(t: &U1) -> RD {
+        return match t.get() {
+            0 => RD::NO,
+            1 => RD::YES,
+            _ => panic!("Can't decode RD!")
+        }
+    }
+}

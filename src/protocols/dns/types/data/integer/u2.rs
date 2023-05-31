@@ -26,12 +26,43 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+#[derive(Debug)]
+pub struct U2(u8);
 
-mod constants;
-pub mod connection;
+impl U2 {
+    pub fn new(value: u8) -> U2 {
+        return U2(value & 0b00000011);
+    }
 
-pub mod message;
+    fn set(&mut self, value: u8) {
+        if value > 0 && value <= 3 {
+            self.0 |= 0b00000011;
+        } else if value == 0 {
+            self.0 &= 0b00000000;
+        } else {
+            panic!("The value cannot be greater than 2 bits.")
+        }
+    }
 
-mod names;
-mod rr;
+    pub fn get(&self) -> u8 {
+        return self.0
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::U2;
+
+    #[test]
+    fn u2_test() {
+        let mut u2 = U2::new(1);
+
+        println!("u2 value: {}", u2.get());
+
+        u2.set(3);
+        println!("u2 value: {}", u2.get());
+
+        u2.set(0);
+        println!("u2 value: {}", u2.get());
+    }
+}

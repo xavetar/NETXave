@@ -26,12 +26,25 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+use super::{U1};
 
-mod constants;
-pub mod connection;
+pub enum DO {
+    DISABLED = 0,
+    ENABLED = 1
+}
 
-pub mod message;
+impl DO {
+    pub fn code(&self) -> U1 {
+        return match self {
+            DO::DISABLED => U1::new(DO::DISABLED as u8),
+            DO::ENABLED => U1::new(DO::ENABLED as u8)
+        }
+    }
 
-mod names;
-mod rr;
+    pub fn name(&self) -> &'static str {
+        return match self {
+            DO::DISABLED => "DNSSEC NO",
+            DO::ENABLED => "DNSSEC OK"
+        }
+    }
+}

@@ -26,12 +26,6 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+mod option_code_m;
 
-mod constants;
-pub mod connection;
-
-pub mod message;
-
-mod names;
-mod rr;
+pub use option_code_m::{OPTION_CODE};

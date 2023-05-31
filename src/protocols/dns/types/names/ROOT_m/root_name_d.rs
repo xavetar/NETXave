@@ -26,12 +26,24 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+pub struct ROOT_NAME_Details {
+    name: &'static str,
+    code: u8
+}
 
-mod constants;
-pub mod connection;
+impl ROOT_NAME_Details {
+    pub fn new(name: &'static str, code: u8) -> ROOT_NAME_Details {
+        return ROOT_NAME_Details {
+            name: name,
+            code: code
+        }
+    }
 
-pub mod message;
+    pub fn name(&self) -> &'static str {
+        return &self.name;
+    }
 
-mod names;
-mod rr;
+    pub fn code(&self) -> &u8 {
+        return &self.code;
+    }
+}

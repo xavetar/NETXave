@@ -26,12 +26,41 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+#[derive(Debug)]
+pub struct Question {
+    QNAME: Vec<u8>,
+    QTYPE: u16,
+    QCLASS: u16
+}
 
-mod constants;
-pub mod connection;
+impl Default for Question {
+    fn default() -> Question {
+        Question {
+            QNAME: Vec::<u8>::from(""),
+            QTYPE: 0 as u16,
+            QCLASS: 0 as u16
+        }
+    }
+}
 
-pub mod message;
+impl Question {
+    pub fn new(qname: Vec<u8>, qtype: u16, qclass: u16) -> Question {
+        Question {
+            QNAME: qname,
+            QTYPE: qtype,
+            QCLASS: qclass
+        }
+    }
 
-mod names;
-mod rr;
+    pub fn get_qname(&self) -> &Vec<u8> {
+        return &self.QNAME;
+    }
+
+    pub fn get_qtype(&self) -> &u16 {
+        return &self.QTYPE;
+    }
+
+    pub fn get_qclass(&self) -> &u16 {
+        return &self.QCLASS;
+    }
+}

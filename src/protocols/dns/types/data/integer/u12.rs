@@ -26,12 +26,56 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+use super::{Newable};
 
-mod constants;
-pub mod connection;
+#[derive(Debug)]
+pub struct U12(u16);
 
-pub mod message;
+impl U12 {
+    pub fn new(value: u16) -> U12 {
+        return U12(value & 0b_1111_1111_1111);
+    }
 
-mod names;
-mod rr;
+    fn set(&mut self, value: u16) {
+        if value > 0 && value <= 4095 {
+            self.0 |= 0b0000_1111_1111_1111;
+        } else if value == 0 {
+            self.0 &= 0b0000_0000_0000_0000;
+        } else {
+            panic!("The value cannot be greater than 12 bits.")
+        }
+    }
+
+    pub fn get(&self) -> u16 {
+        return self.0
+    }
+}
+
+impl<I> Newable<I, U12> for U12
+    where I: std::ops::BitAnd<u16, Output = u16> + PartialOrd<u16> + Into<u16> {
+    fn new(value: I) -> U12 {
+        if value >= 0 && value <= 4095 {
+            return U12(value & 0b0000_1111_1111_1111);
+        } else {
+            panic!("The value cannot be greater than 12 bits.")
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::U12;
+
+    #[test]
+    fn u12_test() {
+        let mut u12 = U12::new(1);
+
+        println!("u12 value: {}", u12.get());
+
+        u12.set(4095);
+        println!("u12 value: {}", u12.get());
+
+        u12.set(0);
+        println!("u12 value: {}", u12.get());
+    }
+}

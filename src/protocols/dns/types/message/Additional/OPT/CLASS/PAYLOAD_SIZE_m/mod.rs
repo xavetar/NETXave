@@ -26,12 +26,6 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+mod payload_size_m;
 
-mod constants;
-pub mod connection;
-
-pub mod message;
-
-mod names;
-mod rr;
+pub use payload_size_m::{PAYLOAD_SIZE};

@@ -26,12 +26,30 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+pub struct RCODE_Details<T> {
+    name: &'static str,
+    code: T,
+    description: &'static str
+}
 
-mod constants;
-pub mod connection;
+impl<T> RCODE_Details<T> {
+    pub fn new(name: &'static str, code: T, description: &'static str) -> RCODE_Details<T> {
+        return RCODE_Details {
+            name: name,
+            code: code,
+            description: description
+        }
+    }
 
-pub mod message;
+    pub fn code(&self) -> &T {
+        return &self.code;
+    }
 
-mod names;
-mod rr;
+    pub fn name(&self) -> &'static str {
+        return &self.name;
+    }
+
+    pub fn description(&self) -> &'static str {
+        return &self.description;
+    }
+}

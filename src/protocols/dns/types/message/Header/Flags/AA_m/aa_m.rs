@@ -26,12 +26,41 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+use super::{U1};
 
-mod constants;
-pub mod connection;
+pub enum AA {
+    NO = 0,
+    YES = 1
+}
 
-pub mod message;
+impl AA {
+    pub fn code(&self) -> U1 {
+        return match self {
+            AA::NO => U1::new(AA::NO as u8),
+            AA::YES => U1::new(AA::YES as u8),
+        }
+    }
 
-mod names;
-mod rr;
+    pub fn name(&self) -> &'static str {
+        return match self {
+            AA::NO => "Non-Authoritative Answer",
+            AA::YES => "Authoritative Answer",
+        }
+    }
+
+    pub fn encode(t: &str) -> AA {
+        return match t {
+            "NO" | "NAA" => AA::NO,
+            "YES" | "AA" => AA::YES,
+            _ => panic!("Can't encode AA!")
+        }
+    }
+
+    pub fn decode(t: &U1) -> AA {
+        return match t.get() {
+            0 => AA::NO,
+            1 => AA::YES,
+            _ => panic!("Can't decode AA!")
+        }
+    }
+}

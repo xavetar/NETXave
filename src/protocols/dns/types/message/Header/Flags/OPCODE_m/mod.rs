@@ -26,12 +26,12 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+mod opcode_m;
+mod opcode_d;
 
-mod constants;
-pub mod connection;
+pub(self) use crate::protocols::dns::types::constants::{UNASSIGNED};
+pub(self) use crate::protocols::dns::types::data::integer::{U4};
+pub(self) use crate::protocols::dns::types::data::result::{TwoResult};
 
-pub mod message;
-
-mod names;
-mod rr;
+pub use opcode_m::{OPCODE};
+pub use opcode_d::{OPCODE_Details};

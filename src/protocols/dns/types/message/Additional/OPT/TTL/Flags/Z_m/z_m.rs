@@ -26,12 +26,16 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+use super::{U15};
 
-mod constants;
-pub mod connection;
+pub enum Z {
+    BASE = 0
+}
 
-pub mod message;
-
-mod names;
-mod rr;
+impl Z {
+    pub fn code(&self) -> U15 {
+        return match self {
+            Z::BASE => U15::new(Z::BASE as u16)
+        }
+    }
+}

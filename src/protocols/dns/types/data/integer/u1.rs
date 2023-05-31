@@ -26,12 +26,43 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+#[derive(Debug)]
+pub struct U1(u8);
 
-mod constants;
-pub mod connection;
+impl U1 {
+    pub fn new(value: u8) -> U1 {
+        return U1(value & 0b00000001);
+    }
 
-pub mod message;
+    fn set(&mut self, value: u8) {
+        if value > 0 && value <= 1 {
+            self.0 |= 0b00000001;
+        } else if value == 0 {
+            self.0 &= 0b00000000;
+        } else {
+            panic!("The value cannot be greater than 1 bits.")
+        }
+    }
 
-mod names;
-mod rr;
+    pub fn get(&self) -> u8 {
+        return self.0
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::U1;
+
+    #[test]
+    fn u1_test() {
+        let mut u1 = U1::new(0);
+
+        println!("u1 value: {}", u1.get());
+
+        u1.set(1);
+        println!("u1 value: {}", u1.get());
+
+        u1.set(0);
+        println!("u1 value: {}", u1.get());
+    }
+}

@@ -26,12 +26,43 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+#[derive(Debug)]
+pub struct U15(u16);
 
-mod constants;
-pub mod connection;
+impl U15 {
+    pub fn new(value: u16) -> U15 {
+        return U15(value & 0b_0111_1111_1111_1111);
+    }
 
-pub mod message;
+    fn set(&mut self, value: u16) {
+        if value > 0 && value <= 32767 {
+            self.0 |= 0b_0111_1111_1111_1111;
+        } else if value == 0 {
+            self.0 &= 0b_0000_0000_0000_0000;
+        } else {
+            panic!("The value cannot be greater than 15 bits.")
+        }
+    }
 
-mod names;
-mod rr;
+    pub fn get(&self) -> u16 {
+        return self.0
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::U15;
+
+    #[test]
+    fn u15_test() {
+        let mut u15 = U15::new(1);
+
+        println!("u15 value: {}", u15.get());
+
+        u15.set(32767);
+        println!("u15 value: {}", u15.get());
+
+        u15.set(0);
+        println!("u15 value: {}", u15.get());
+    }
+}

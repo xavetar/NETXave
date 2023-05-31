@@ -26,12 +26,8 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+mod two;
+mod three;
 
-mod constants;
-pub mod connection;
-
-pub mod message;
-
-mod names;
-mod rr;
+pub use two::{TwoResult};
+pub use three::{ThreeResult};

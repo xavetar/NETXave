@@ -26,12 +26,24 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+pub struct CLASS_Details {
+    name: &'static str,
+    code: u16
+}
 
-mod constants;
-pub mod connection;
+impl CLASS_Details {
+    pub fn new(name: &'static str, code: u16) -> CLASS_Details {
+        return CLASS_Details {
+            name: name,
+            code: code
+        }
+    }
 
-pub mod message;
+    pub fn name(&self) -> &'static str {
+        return &self.name;
+    }
 
-mod names;
-mod rr;
+    pub fn code(&self) -> &u16 {
+        return &self.code;
+    }
+}

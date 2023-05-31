@@ -26,12 +26,37 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+use super::{ROOT_NAME_Details};
+use super::{TwoResult, TwoResult::First, TwoResult::Second};
 
-mod constants;
-pub mod connection;
+pub enum ROOT_NAME {
+    BASE = 0
+}
 
-pub mod message;
+impl ROOT_NAME {
+    pub fn code(&self) -> u8 {
+        return match self {
+            ROOT_NAME::BASE => ROOT_NAME::BASE as u8
+        }
+    }
 
-mod names;
-mod rr;
+    pub fn name(&self) -> &'static str {
+        return match self {
+            ROOT_NAME::BASE => "Base Root Domain"
+        }
+    }
+
+    pub fn encode(t: &str) -> ROOT_NAME {
+        return match t {
+            "BASE" | "ROOT" => ROOT_NAME::BASE,
+            _ => panic!("Can't encode ROOT NAME!")
+        }
+    }
+
+    pub fn decode(t: &u8) -> TwoResult<ROOT_NAME, ROOT_NAME_Details> {
+        return match *t {
+            0 => First(ROOT_NAME::BASE),
+            _ => panic!("Can't decode ROOT NAME!")
+        }
+    }
+}

@@ -26,12 +26,11 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
-
-mod constants;
-pub mod connection;
-
-pub mod message;
-
-mod names;
-mod rr;
+pub const RESERVED: &'static str = "Reserved";
+pub const UNASSIGNED: &'static str = "Unassigned";
+pub const PRIVATE_USE: &'static str = "Private Use";
+pub const UNALLOCATED: &'static str = "Unallocated";
+pub const RESERVED_PRIVATE_USE: &'static str = "RESERVED for Private Use";
+pub const RESERVED_FUTURE_EXPANSION: &'static str = "Reserved for future expansion";
+pub const RESERVED_FUTURE_EXPANSION_USE: &'static str = "Reserved for future expansion";
+pub const RESERVED_LOCAL_EXPERIMENTAL_USE: &'static str = "Reserved for Local/Experimental Use";

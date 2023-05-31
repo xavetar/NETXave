@@ -26,12 +26,13 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+mod DSO_TYPE_m;
+pub mod NAME;
+mod TYPE_m;
+mod CLASS_m;
+mod RDATA_m;
 
-mod constants;
-pub mod connection;
-
-pub mod message;
-
-mod names;
-mod rr;
+pub use DSO_TYPE_m::{DSO_TYPE};
+pub use TYPE_m::{TYPE};
+pub use CLASS_m::{CLASS};
+pub use RDATA_m::{RDATA};

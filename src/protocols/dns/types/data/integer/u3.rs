@@ -26,12 +26,43 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+#[derive(Debug)]
+pub struct U3(u8);
 
-mod constants;
-pub mod connection;
+impl U3 {
+    pub fn new(value: u8) -> U3 {
+        return U3(value & 0b00000111);
+    }
 
-pub mod message;
+    fn set(&mut self, value: u8) {
+        if value > 0 && value <= 7 {
+            self.0 |= 0b00000111;
+        } else if value == 0 {
+            self.0 &= 0b00000000;
+        } else {
+            panic!("The value cannot be greater than 3 bits.")
+        }
+    }
 
-mod names;
-mod rr;
+    pub fn get(&self) -> u8 {
+        return self.0
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::U3;
+
+    #[test]
+    fn u3_test() {
+        let mut u3 = U3::new(1);
+
+        println!("u3 value: {}", u3.get());
+
+        u3.set(7);
+        println!("u3 value: {}", u3.get());
+
+        u3.set(0);
+        println!("u3 value: {}", u3.get());
+    }
+}

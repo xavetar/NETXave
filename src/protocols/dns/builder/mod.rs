@@ -26,8 +26,7 @@
  * THE SOFTWARE.
  */
 
-mod header;
-mod question;
+mod meta;
+mod messages;
 
-pub use header::{HeaderSection, Flags, Z};
-pub use question::{QuestionSection};
+pub use messages::{BASE, SE, DSO};

@@ -26,12 +26,12 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+mod label_m;
+mod label_d;
 
-mod constants;
-pub mod connection;
+pub(self) use crate::protocols::dns::types::constants::{UNALLOCATED};
+pub(self) use crate::protocols::dns::types::data::integer::{U2};
+pub(self) use crate::protocols::dns::types::data::result::{TwoResult};
 
-pub mod message;
-
-mod names;
-mod rr;
+pub use label_m::{LABEL};
+pub use label_d::{LABEL_Details};

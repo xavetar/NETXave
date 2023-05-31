@@ -26,25 +26,30 @@
  * THE SOFTWARE.
  */
 
-use crate::data_types::{U1, U3, U4, U6};
-use crate::protocols::dns::builder::{HeaderSection, Flags, Z};
-use crate::protocols::dns::builder::{QuestionSection};
+use crate::protocols::dns::types::data::result::{TwoResult};
 
-use crate::protocols::dns::types::message::Header::{
-    QR, AA, TC, RD, RA, None, AD, CD, OPCODES, RCODES
+use crate::protocols::dns::types::data::integer::{U1, U2, U3, U4, U6, U12};
+use crate::protocols::dns::builder::BASE::{Header, Flags, Z};
+use crate::protocols::dns::builder::BASE::{Question};
+
+use crate::protocols::dns::types::message::Header::Flags::{
+    QR, AA, TC, RD, RA, OPCODE, RCODE
 };
-use crate::protocols::dns::types::message::Question::{QLABEL, QTYPE, QCLASS};
-use crate::protocols::dns::types::message::Additional::EDNS::{OPTCODES};
-use crate::protocols::dns::types::message::DSO::{DSOTYPE};
+
+use crate::protocols::dns::types::message::Header::Flags::Z::BASE::{NONE};
+use crate::protocols::dns::types::message::Question::{NAME::{LABEL}, TYPE, CLASS};
+use crate::protocols::dns::types::message::Additional::OPT::RDATA::{OPTION_CODE};
+
+use crate::protocols::dns::types::message::DSO::{DSO_TYPE};
 
 #[derive(Debug)]
 pub struct DNSMessage {
-    header: HeaderSection,
-    question: QuestionSection
+    header: Header<Flags>,
+    question: Question
 }
 
 impl DNSMessage {
-    pub fn new(header: HeaderSection, question: QuestionSection) -> DNSMessage {
+    pub fn new(header: Header<Flags>, question: Question) -> DNSMessage {
         DNSMessage {
             header: header,
             question: question
@@ -59,7 +64,7 @@ fn domain_to_qname(domain: &str) -> Result<Vec<u8>, String> {
         for part in addr_parts {
             if part.len() <= 63 {
                 // Push Normal Label and use bitwise "OR" for addition with a result of 6 bit length.
-                qname.push((QLABEL::NORMAL.code().get() << 6) | U6::new(part.len() as u8).get());
+                qname.push(LABEL::NORMAL.code()| U6::new(part.len() as u8).get());
                 qname.extend_from_slice(part.as_bytes());
             } else {
                 return Err(String::from("Label Length is big then 63 chars!"));
@@ -73,28 +78,23 @@ fn domain_to_qname(domain: &str) -> Result<Vec<u8>, String> {
 }
 
 pub fn get_query(domain: &str) -> String {
-
-    let mut header = HeaderSection::new(
+    let mut header = Header::new(
         43690, Flags::new(
-            QR::Query.code(),
-            OPCODES::Query.opcode(),
-            AA::NonAuthoritativeAnswer.code(),
-            TC::NonTruncated.code(),
-            RD::Recursive.code(),
-            RA::Available.code(),
-            Z::new(
-                None::None.code(),
-                AD::NonAuthentic.code(),
-                CD::NotDisabled.code()
-            ),
-            RCODES::NoError.rcode()
+            QR::QUERY.code(),
+            OPCODE::QUERY.code(),
+            AA::NO.code(),
+            TC::NO.code(),
+            RD::YES.code(),
+            RA::YES.code(),
+            Z::new(U3::new(0)),
+            RCODE::NoError.code::<u16, U4>()
         ), 1, 0, 0, 0
     );
 
     /// Question
 
-    let mut question = QuestionSection::new(
-        domain_to_qname(domain).unwrap(),QTYPE::A.code(),QCLASS::IN.code()
+    let mut question = Question::new(
+        domain_to_qname(domain).unwrap(),TYPE::A.code(),CLASS::IN.code()
     );
 
     /// Message (Query)
@@ -118,9 +118,12 @@ pub fn get_query(domain: &str) -> String {
     dns_flags |= (dns_message.header.get_flags().get_tc().get() as u16) << 9;
     dns_flags |= (dns_message.header.get_flags().get_rd().get() as u16) << 8;
     dns_flags |= (dns_message.header.get_flags().get_ra().get() as u16) << 7;
-    dns_flags |= (dns_message.header.get_flags().get_z().get_none().get() as u16) << 6;
-    dns_flags |= (dns_message.header.get_flags().get_z().get_ad().get() as u16) << 5;
-    dns_flags |= (dns_message.header.get_flags().get_z().get_cd().get() as u16) << 4;
+    // SE
+    // dns_flags |= (dns_message.header.get_flags().get_z().get_none().get() as u16) << 6;
+    // dns_flags |= (dns_message.header.get_flags().get_z().get_ad().get() as u16) << 5;
+    // dns_flags |= (dns_message.header.get_flags().get_z().get_cd().get() as u16) << 4;
+    // BASE
+    dns_flags |= (dns_message.header.get_flags().get_z().get_none().get() as u16) << 4;
     dns_flags |= (dns_message.header.get_flags().get_rcode().get() as u16) << 0;
 
     bytes_dns_message.extend_from_slice(&dns_flags.to_be_bytes());

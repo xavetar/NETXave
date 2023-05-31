@@ -26,12 +26,41 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+use super::{U1};
 
-mod constants;
-pub mod connection;
+pub enum QR {
+    QUERY = 0,
+    RESPONSE = 1
+}
 
-pub mod message;
+impl QR {
+    pub fn code(&self) -> U1 {
+        return match self {
+            QR::QUERY => U1::new(QR::QUERY as u8),
+            QR::RESPONSE => U1::new(QR::RESPONSE as u8),
+        }
+    }
 
-mod names;
-mod rr;
+    pub fn name(&self) -> &'static str {
+        return match self {
+            QR::QUERY => "Query",
+            QR::RESPONSE => "Response",
+        }
+    }
+
+    pub fn encode(t: &str) -> QR {
+        return match t {
+            "QUERY" => QR::QUERY,
+            "RESPONSE" => QR::RESPONSE,
+            _ => panic!("Can't encode QR!")
+        }
+    }
+
+    pub fn decode(t: &U1) -> QR {
+        return match t.get() {
+            0 => QR::QUERY,
+            1 => QR::RESPONSE,
+            _ => panic!("Can't decode QR!")
+        }
+    }
+}

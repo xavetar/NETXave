@@ -26,12 +26,8 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
-
-mod constants;
-pub mod connection;
-
-pub mod message;
-
-mod names;
-mod rr;
+pub enum ThreeResult<F, S, T> {
+    First(F),
+    Second(S),
+    Third(T),
+}

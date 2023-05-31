@@ -26,12 +26,43 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+#[derive(Debug)]
+pub struct U6(u8);
 
-mod constants;
-pub mod connection;
+impl U6 {
+    pub fn new(value: u8) -> U6 {
+        return U6(value & 0b00111111);
+    }
 
-pub mod message;
+    fn set(&mut self, value: u8) {
+        if value > 0 && value <= 63 {
+            self.0 |= 0b00111111;
+        } else if value == 0 {
+            self.0 &= 0b00000000;
+        } else {
+            panic!("The value cannot be greater than 6 bits.")
+        }
+    }
 
-mod names;
-mod rr;
+    pub fn get(&self) -> u8 {
+        return self.0
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::U6;
+
+    #[test]
+    fn u6_test() {
+        let mut u6 = U6::new(1);
+
+        println!("u1 value: {}", u6.get());
+
+        u6.set(63);
+        println!("u1 value: {}", u6.get());
+
+        u6.set(0);
+        println!("u1 value: {}", u6.get());
+    }
+}

@@ -26,12 +26,47 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+use super::{U6};
+use super::{EXTENDED};
+use super::{EXTANDED_LABEL_Details};
+use super::{RESERVED_FUTURE_EXPANSION};
+use super::{TwoResult, TwoResult::First, TwoResult::Second};
 
-mod constants;
-pub mod connection;
+pub enum EXTANDED_LABEL {
+    BINARY = 1
+}
 
-pub mod message;
+impl EXTANDED_LABEL {
+    pub fn code(&self) -> u8 {
+        return match self {
+            EXTANDED_LABEL::BINARY => EXTENDED.code() | U6::new(EXTANDED_LABEL::BINARY as u8).get()
+        }
+    }
 
-mod names;
-mod rr;
+    pub fn name(&self) -> &'static str {
+        return match self {
+            EXTANDED_LABEL::BINARY => "Extanded Binary Label"
+        }
+    }
+
+    pub fn details(&self) -> &'static str {
+        return match self {
+            EXTANDED_LABEL::BINARY => "Binary Label Representation"
+        }
+    }
+
+    pub fn encode(t: &str) -> EXTANDED_LABEL {
+        return match t {
+            "BINARY" => EXTANDED_LABEL::BINARY,
+            _ => panic!("Can't encode EXTANDED LABEL!")
+        }
+    }
+
+    pub fn decode(t: &U6) -> TwoResult<EXTANDED_LABEL, EXTANDED_LABEL_Details> {
+        return match t.get() {
+            1 => First(EXTANDED_LABEL::BINARY),
+            127 => Second(EXTANDED_LABEL_Details::new(RESERVED_FUTURE_EXPANSION, U6::new(t.get()), RESERVED_FUTURE_EXPANSION)),
+            _ => panic!("Can't decode EXTANDED LABEL!")
+        }
+    }
+}

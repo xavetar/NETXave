@@ -26,12 +26,49 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+#[derive(Debug)]
+pub struct Header<T> {
+    ID: u16,
+    FLAGS: T,
+    QDCOUNT: u16,
+    ANCOUNT: u16,
+    NSCOUNT: u16,
+    ARCOUNT: u16
+}
 
-mod constants;
-pub mod connection;
+impl<T> Header<T> {
+    pub fn new(ID: u16, FLAGS: T, QDCOUNT: u16, ANCOUNT: u16, NSCOUNT: u16, ARCOUNT: u16) -> Header<T> {
+        Header {
+            ID: ID,
+            FLAGS: FLAGS,
+            QDCOUNT: QDCOUNT,
+            ANCOUNT: ANCOUNT,
+            NSCOUNT: NSCOUNT,
+            ARCOUNT: ARCOUNT
+        }
+    }
 
-pub mod message;
+    pub fn get_id(&self) -> &u16 {
+        return &self.ID;
+    }
 
-mod names;
-mod rr;
+    pub fn get_flags(&self) -> &T {
+        return &self.FLAGS;
+    }
+
+    pub fn get_qdcount(&self) -> &u16 {
+        return &self.QDCOUNT;
+    }
+
+    pub fn get_ancount(&self) -> &u16 {
+        return &self.ANCOUNT;
+    }
+
+    pub fn get_nscount(&self) -> &u16 {
+        return &self.NSCOUNT;
+    }
+
+    pub fn get_arcount(&self) -> &u16 {
+        return &self.ARCOUNT;
+    }
+}

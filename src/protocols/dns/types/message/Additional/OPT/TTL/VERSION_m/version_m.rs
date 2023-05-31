@@ -26,12 +26,20 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+pub enum VERSION {
+    V0 = 0
+}
 
-mod constants;
-pub mod connection;
+impl VERSION {
+    pub fn code(&self) -> u8 {
+        return match self {
+            VERSION::V0 => VERSION::V0 as u8
+        }
+    }
 
-pub mod message;
-
-mod names;
-mod rr;
+    pub fn name(&self) -> &'static str {
+        return match self {
+            VERSION::V0 => "EDNS Version 0"
+        }
+    }
+}

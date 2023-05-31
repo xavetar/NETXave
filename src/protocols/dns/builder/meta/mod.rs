@@ -26,12 +26,8 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+mod HEADER_m;
+mod QUESTION_m;
 
-mod constants;
-pub mod connection;
-
-pub mod message;
-
-mod names;
-mod rr;
+pub use HEADER_m::{Header};
+pub use QUESTION_m::{Question};

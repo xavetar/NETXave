@@ -26,12 +26,4 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
-
-mod constants;
-pub mod connection;
-
-pub mod message;
-
-mod names;
-mod rr;
+pub use crate::protocols::dns::types::rr::{TYPE::OPT};

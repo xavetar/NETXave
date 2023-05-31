@@ -26,12 +26,43 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+#[derive(Debug)]
+pub struct U7(u8);
 
-mod constants;
-pub mod connection;
+impl U7 {
+    pub fn new(value: u8) -> U7 {
+        return U7(value & 0b01111111);
+    }
 
-pub mod message;
+    fn set(&mut self, value: u8) {
+        if value > 0 && value <= 127 {
+            self.0 |= 0b01111111;
+        } else if value == 0 {
+            self.0 &= 0b00000000;
+        } else {
+            panic!("The value cannot be greater than 7 bits.")
+        }
+    }
 
-mod names;
-mod rr;
+    pub fn get(&self) -> u8 {
+        return self.0
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::U7;
+
+    #[test]
+    fn u7_test() {
+        let mut u7 = U7::new(1);
+
+        println!("u1 value: {}", u7.get());
+
+        u7.set(127);
+        println!("u1 value: {}", u7.get());
+
+        u7.set(0);
+        println!("u1 value: {}", u7.get());
+    }
+}

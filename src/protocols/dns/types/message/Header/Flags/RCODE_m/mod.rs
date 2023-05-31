@@ -26,12 +26,14 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+mod rcode_m;
+mod rcode_d;
 
-mod constants;
-pub mod connection;
+pub(self) use crate::protocols::dns::types::constants::{RESERVED, UNASSIGNED, RESERVED_PRIVATE_USE};
+pub(self) use crate::protocols::dns::types::constants::{NOT_AUTH_W, BAD_VERS_BAD_SIG_W};
+pub(self) use crate::protocols::dns::types::data::integer::{U4, U12};
+pub(self) use crate::protocols::dns::types::data::meta::{Newable};
+pub(self) use crate::protocols::dns::types::data::result::{TwoResult};
 
-pub mod message;
-
-mod names;
-mod rr;
+pub use rcode_m::{RCODE};
+pub use rcode_d::{RCODE_Details};

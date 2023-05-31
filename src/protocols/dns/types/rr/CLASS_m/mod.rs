@@ -26,12 +26,11 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+mod class_m;
+mod class_d;
 
-mod constants;
-pub mod connection;
+pub(self) use crate::protocols::dns::types::constants::{RESERVED, UNASSIGNED, RESERVED_PRIVATE_USE};
+pub(self) use crate::protocols::dns::types::data::result::{TwoResult};
 
-pub mod message;
-
-mod names;
-mod rr;
+pub use class_m::{CLASS};
+pub use class_d::{CLASS_Details};

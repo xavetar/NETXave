@@ -26,12 +26,11 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+mod header;
 
-mod constants;
-pub mod connection;
+pub(self) use crate::protocols::dns::types::data::integer::{U1, U3, U4};
 
-pub mod message;
+pub use crate::protocols::dns::builder::meta::{Header};
+pub use crate::protocols::dns::builder::meta::{Question};
 
-mod names;
-mod rr;
+pub use header::{Flags, Z};

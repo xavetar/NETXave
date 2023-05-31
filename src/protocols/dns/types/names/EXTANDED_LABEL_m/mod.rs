@@ -26,12 +26,13 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+mod extanded_label_m;
+mod extanded_label_d;
 
-mod constants;
-pub mod connection;
+pub(self) use crate::protocols::dns::types::constants::{RESERVED_FUTURE_EXPANSION};
+pub(self) use crate::protocols::dns::types::names::{LABEL::EXTENDED};
+pub(self) use crate::protocols::dns::types::data::integer::{U6};
+pub(self) use crate::protocols::dns::types::data::result::{TwoResult};
 
-pub mod message;
-
-mod names;
-mod rr;
+pub use extanded_label_m::{EXTANDED_LABEL};
+pub use extanded_label_d::{EXTANDED_LABEL_Details};

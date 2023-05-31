@@ -26,12 +26,41 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+use super::{U1};
 
-mod constants;
-pub mod connection;
+pub enum TC {
+    NO = 0,
+    YES = 1
+}
 
-pub mod message;
+impl TC {
+    pub fn code(&self) -> U1 {
+        return match self {
+            TC::NO => U1::new(TC::NO as u8),
+            TC::YES => U1::new(TC::YES as u8),
+        }
+    }
 
-mod names;
-mod rr;
+    pub fn name(&self) -> &'static str {
+        return match self {
+            TC::NO => "Not-Truncated",
+            TC::YES => "Message is Truncated",
+        }
+    }
+
+    pub fn encode(t: &str) -> TC {
+        return match t {
+            "NO" | "NT" => TC::NO,
+            "YES" | "MT" => TC::YES,
+            _ => panic!("Can't encode TC!")
+        }
+    }
+
+    pub fn decode(t: &U1) -> TC {
+        return match t.get() {
+            0 => TC::NO,
+            1 => TC::YES,
+            _ => panic!("Can't decode TC!")
+        }
+    }
+}

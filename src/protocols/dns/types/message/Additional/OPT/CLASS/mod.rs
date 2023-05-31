@@ -26,12 +26,6 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+mod PAYLOAD_SIZE_m;
 
-mod constants;
-pub mod connection;
-
-pub mod message;
-
-mod names;
-mod rr;
+pub use PAYLOAD_SIZE_m::{PAYLOAD_SIZE};

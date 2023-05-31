@@ -26,12 +26,36 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+use super::{U1};
 
-mod constants;
-pub mod connection;
+pub enum NONE {
+    NONE =0
+}
 
-pub mod message;
+impl NONE {
+    pub fn code_se(&self) -> U1 {
+        return match self {
+            NONE::NONE => U1::new(NONE::NONE as u8),
+        }
+    }
 
-mod names;
-mod rr;
+    pub fn name(&self) -> &'static str {
+        return match self {
+            NONE::NONE => "None",
+        }
+    }
+
+    pub fn encode(t: &str) -> NONE {
+        return match t {
+            "NONE" => NONE::NONE,
+            _ => panic!("Can't encode None!")
+        }
+    }
+
+    pub fn decode(t: &U1) -> NONE {
+        return match t.get() {
+            0 => NONE::NONE,
+            _ => panic!("Can't decode None!")
+        }
+    }
+}

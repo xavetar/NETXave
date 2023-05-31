@@ -26,12 +26,6 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+mod EXTENDED_DNS_ERRORS_m;
 
-mod constants;
-pub mod connection;
-
-pub mod message;
-
-mod names;
-mod rr;
+pub use EXTENDED_DNS_ERRORS_m::{EXTENDED_DNS_ERRORS};

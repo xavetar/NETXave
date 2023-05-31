@@ -26,12 +26,20 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+///     ┌───────────────────────────────────────────────┐
+///     │                   ROOT NAME                   │
+///     └───────────────────────────────────────────────┘
+///
+///     The documentation does not restrict the use of any other root names/types.
+///     Root names other than the standard "0" <-> "." may be entered.
+///     This will not break compatibility with normal servers.
+///     Therefore, thanks to this, any alternative zones and servers can be used.
+///     Only the DNS Server should support alternative root names.
 
-mod constants;
-pub mod connection;
+mod root_name_m;
+mod root_name_d;
 
-pub mod message;
+pub(self) use crate::protocols::dns::types::data::result::{TwoResult};
 
-mod names;
-mod rr;
+pub use root_name_m::{ROOT_NAME};
+pub use root_name_d::{ROOT_NAME_Details};

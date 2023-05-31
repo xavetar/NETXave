@@ -26,12 +26,8 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+mod z_m;
 
-mod constants;
-pub mod connection;
+pub(self) use crate::protocols::dns::types::data::integer::{U15};
 
-pub mod message;
-
-mod names;
-mod rr;
+pub use z_m::{Z};

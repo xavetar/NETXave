@@ -26,12 +26,12 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+///     ┌───────────────────────────────────────────────┐
+///     │                     NAME                      │
+///     └───────────────────────────────────────────────┘
+///
+///     It might as well be a domain/label.
 
-mod constants;
-pub mod connection;
+pub use crate::protocols::dns::types::names::{LABEL, EXTANDED_LABEL};
 
-pub mod message;
-
-mod names;
-mod rr;
+pub use crate::protocols::dns::types::names::{ROOT_NAME};

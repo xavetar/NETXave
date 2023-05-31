@@ -26,12 +26,10 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+mod ROOT_m;
+mod LABEL_m;
+mod EXTANDED_LABEL_m;
 
-mod constants;
-pub mod connection;
-
-pub mod message;
-
-mod names;
-mod rr;
+pub use ROOT_m::{ROOT_NAME};
+pub use LABEL_m::{LABEL};
+pub use EXTANDED_LABEL_m::{EXTANDED_LABEL};

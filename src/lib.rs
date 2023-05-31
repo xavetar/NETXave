@@ -30,6 +30,5 @@
 #![allow(non_camel_case_types)]
 #![allow(unused_features)]
 
-pub mod data_types;
 pub mod protocols;
 pub mod tools;

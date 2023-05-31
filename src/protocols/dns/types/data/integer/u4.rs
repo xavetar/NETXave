@@ -26,12 +26,56 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
+use super::{Newable};
 
-mod constants;
-pub mod connection;
+#[derive(Debug)]
+pub struct U4(u8);
 
-pub mod message;
+impl U4 {
+    pub fn new(value: u8) -> U4 {
+        return U4(value & 0b00001111);
+    }
 
-mod names;
-mod rr;
+    fn set(&mut self, value: u8) {
+        if value > 0 && value <= 15 {
+            self.0 |= 0b00001111;
+        } else if value == 0 {
+            self.0 &= 0b00000000;
+        } else {
+            panic!("The value cannot be greater than 4 bits.")
+        }
+    }
+
+    pub fn get(&self) -> u8 {
+        return self.0
+    }
+}
+
+impl<I> Newable<I, U4> for U4
+    where I: std::ops::BitAnd<u16, Output = u16> + PartialOrd<u16> + Into<u16> {
+    fn new(value: I) -> U4 {
+        if value >= 0 && value <= 15 {
+            return U4((value & 0b0000_0000_0000_1111) as u8);
+        } else {
+            panic!("The value cannot be greater than 4 bits.")
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::U4;
+
+    #[test]
+    fn u4_test() {
+        let mut u4 = U4::new(1);
+
+        println!("u1 value: {}", u4.get());
+
+        u4.set(15);
+        println!("u1 value: {}", u4.get());
+
+        u4.set(0);
+        println!("u1 value: {}", u4.get());
+    }
+}

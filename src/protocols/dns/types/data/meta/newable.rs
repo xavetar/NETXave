@@ -26,12 +26,6 @@
  * THE SOFTWARE.
  */
 
-pub mod data;
-
-mod constants;
-pub mod connection;
-
-pub mod message;
-
-mod names;
-mod rr;
+pub trait Newable<I, R> {
+    fn new(value: I) -> R;
+}
